@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="stock_picking2_transport_carrier_delivery_form_view_inherit" model="ir.ui.view">
+            <field name="name">stock.picking.transport.carrier.delivery.inherit.form</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock_delivery.view_picking_withcarrier_out_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group/group/field[@name='carrier_id']" position="after">
+                    <field name="transport_carrier_id" domain="[('parent_id','=',False)]"/>
+                    <field name="carrier" invisible="1"/>
+                    <field name="carrier_cost"/>
+                    <field name="carrier_base_cost"/>
+                    <field name="tipo_porto"/>
+                    <field name="last_update_tracking"/>
+                    <field name="date_last_update"/>
+                    <field name="time_last_update"/>
+                    <field name="error_tracking"/>
+                    <field name="url_tracking"/>
+                </xpath>
+                <xpath expr="//group[@name='carrier_data']" position="after">
+                    <group string="Response Carrier" name="response_carrier">
+                        <field name="response_transport_carrier"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="stock_picking_tc_tree_view" model="ir.ui.view">
+            <field name="name">stock.picking.carrier.list.inherit</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.vpicktree"/>
+            <field name="arch" type="xml">
+                <field name="state" position="after">
+                    <field name="last_update_tracking" optional="hide"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="stock_picking_transport_carrier_search_view_inherit" model="ir.ui.view">
+            <field name="name">stock.picking.carrier.search</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_internal_search"/>
+            <field name="arch" type="xml">
+                <field name="name" position="after">
+                    <field name="transport_carrier_id"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="stock_picking_form_view_inherit" model="ir.ui.view">
+            <field name="name">stock.picking.form.view.inherit</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+                <field name="origin" position="after">
+                    <field name="tc_shipping_id"/>
+                    <field name="deletion_shipping" invisible="1"/>
+                    <field name="validation_shipping" invisible="1"/>
+                    <field name="error_create_shipping"/>
+                    <field name="cancellation_done" invisible="not deletion_shipping"/>
+                    <field name="validation_done" invisible="not validation_shipping"/>
+                </field>
+                <div name="tracking" position="after">
+                    <field name="number_of_packages" readonly="state == 'done'"/>
+                    <field name="dangerous_goods"/>
+                    <field name="amount_insurance"/>
+                    <field name="amount_cash_on_delivery"/>
+                    <field name="volume"/>
+                    <field name="pesovolume"/>
+                </div>
+                <xpath expr="//form/sheet/notebook/page[@name='extra']" position="before">
+                    <page name="body_request_label_transport_carrier"
+                          string="Request/Response TC" groups="base.group_no_one">
+                        <group string="Body Request">
+                            <field name="body_request_label_transport_carrier" string="Body Request TC"/>
+                        </group>
+                        <group string="Body Confirm">
+                            <field name="body_confirm_tc"/>
+                        </group>
+                        <group string="Response Create Shipping">
+                            <field name="response_create_shipping_tc"/>
+                        </group>
+                        <group string="Response Confirm">
+                            <field name="response_confirm_tc"/>
+                        </group>
+                        <group string="Response Tracking">
+                            <field name="response_tracking_tc"/>
+                        </group>
+                    </page>
+                    <page name="parcel_label" string="Labels">
+                        <field name="parcel_label_ids">
+                            <list>
+                                <field name="picking_id" column_invisible="True"/>
+                                <field name="name"/>
+                                <field name="package_type_id"/>
+                                <field name="segnacollo" readonly="1"/>
+                                <field name="product_id" readonly="1"/>
+<!--                                <field name="result_package_id" readonly="1"/>-->
+                                <field name="shipping_weight" readonly="1"/>
+                                <field name="volume" readonly="1"/>
+                                <field name="pesovolume" readonly="1"/>
+                                <field name="parcel_img_zpl" optional="hide"/>
+                                <field name="parcel_img" optional="hide"/>
+                                <field name="parcel_img2" optional="hide"/>
+                                <field name="parcel_img3" optional="hide"/>
+                                <field name="parcel_img4" optional="hide"/>
+                            </list>
+                            <form>
+                                <group>
+                                    <field name="picking_id" invisible="1"/>
+                                    <field name="segnacollo" readonly="1"/>
+                                    <field name="product_id" readonly="1"/>
+<!--                                    <field name="result_package_id" readonly="1"/>-->
+                                    <field name="shipping_weight" readonly="1"/>
+                                    <field name="volume" readonly="1"/>
+                                    <field name="pesovolume" readonly="1"/>
+                                    <field name="parcel_img"/>
+                                    <field name="parcel_img2"/>
+                                    <field name="parcel_img3"/>
+                                    <field name="parcel_img4"/>
+                                    <field name="parcel_img_zpl"/>
+                                </group>
+                            </form>
+                        </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

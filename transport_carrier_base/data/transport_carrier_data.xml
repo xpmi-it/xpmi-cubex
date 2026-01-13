@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <record id="transport_condition_dap" model="transport.condition">
+            <field name="name">DAP - Delivered at Place</field>
+        </record>
+
+        <record id="transport_condition_exw" model="transport.condition">
+            <field name="name">EXW - Ex Works</field>
+        </record>
+
+        <record id="action_recompute_carrier_new" model="ir.actions.server">
+            <field name="name">Recompute Carrier (New)</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="sale.model_sale_order" />
+            <field name="binding_model_id" ref="sale.model_sale_order" />
+            <field name="state">code</field>
+            <field name="code">records.recompute_carrier_new()</field>
+        </record>
+
+     </data>
+</odoo>

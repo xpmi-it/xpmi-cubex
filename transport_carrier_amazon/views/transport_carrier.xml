@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="transport_carrier_form_amz_code_view" model="ir.ui.view">
+        <field name="name">transport.carrier.amz.code.form</field>
+        <field name="model">transport.carrier</field>
+        <field name="inherit_id" ref="transport_carrier_base.transport_carrier_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form/group/field[@name='name']" position="after">
+                <field name="amz_carrier_code" invisible="context.get('show_children_fields', False)"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

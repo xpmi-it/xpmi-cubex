@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="sale_order_delivery_inherit_form_view" model="ir.ui.view">
+        <field name="name">sale.order.delivery.inherit.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="delivery.view_order_form_with_carrier"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='payment_term_id']" position="after">
+                <field name="transport_carrier_id" domain="[('parent_id','=',False)]"/>
+                <field name="carrier_cost"/>
+                <field name="carrier_base_cost"/>
+            </xpath>
+            <xpath expr="//field[@name='partner_shipping_id']" position="after">
+                <field name="force_street_ok"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="sale_order_quotation_check_street_search_view" model="ir.ui.view">
+            <field name="name">sale.order.quotation.check.street.search</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.sale_order_view_search_inherit_quotation"/>
+            <field name="arch" type="xml">
+                <filter name="my_quotation" position="before">
+                    <filter name="check_street_ok" string="Check Street OK"
+                            domain="[('check_street_tc', '=', 'check_ok')]"/>
+                    <filter name="check_street_ko" string="Check Street KO"
+                            domain="[('check_street_tc', '=', 'check_ko')]"/>
+                    <separator/>
+                </filter>
+            </field>
+        </record>
+
+    <record id="sale_order_check_street_search_view" model="ir.ui.view">
+            <field name="name">sale.order.check.street.search</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.sale_order_view_search_inherit_sale"/>
+            <field name="arch" type="xml">
+                <filter name="to_invoice" position="before">
+                    <filter name="check_street_ok" string="Check Street OK"
+                            domain="[('check_street_tc', '=', 'check_ok')]"/>
+                    <filter name="check_street_ko" string="Check Street KO"
+                            domain="[('check_street_tc', '=', 'check_ko')]"/>
+                    <separator/>
+                </filter>
+            </field>
+    </record>
+
+</odoo>

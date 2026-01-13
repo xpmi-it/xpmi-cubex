@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="transport_carrier_gls.report_label_gls">
+            <t t-call="web.html_container">
+                <div class="row">
+                    <t t-foreach="lines" t-as="label">
+                        <div class="page" style="page-break-after: always;">
+                            <img t-attf-src="data:image;base64,{{label}}"/>
+                        </div>
+                    </t>
+                </div>
+                <br/>
+            </t>
+        </template>
+
+        <template id="transport_carrier_gls.report_label_zpl_gls">
+<!--            <t t-foreach="labels" t-as="label">-->
+                <t t-translation="off">
+                    <t t-raw="labels"/>
+                </t>
+<!--            </t>-->
+        </template>
+
+    </data>
+</odoo>

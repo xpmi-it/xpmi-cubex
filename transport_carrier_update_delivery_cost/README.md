@@ -1,0 +1,1 @@
+This module update Cost of sale delivery order line when TC and total cost in update or when is update shipping cost.

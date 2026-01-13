@@ -1,0 +1,485 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* transport_carrier_brt
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-24 13:41+0000\n"
+"PO-Revision-Date: 2021-06-24 13:41+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: transport_carrier_brt
+#: model_terms:ir.ui.view,arch_db:transport_carrier_brt.bordero_layout
+msgid ""
+"<span>Page</span>\n"
+"                <span class=\"page\"/>\n"
+"                of\n"
+"                <span class=\"topage\"/>"
+msgstr ""
+"<span>Pagina</span>\n"
+"                <span class=\"page\"/>\n"
+"                di\n"
+"                <span class=\"topage\"/>"
+
+#. module: transport_carrier_brt
+#: model_terms:ir.ui.view,arch_db:transport_carrier_brt.report_picking_bordero_brt
+msgid "<strong>Totali</strong>"
+msgstr ""
+
+#. module: transport_carrier_brt
+#: model:ir.model.fields.selection,name:transport_carrier_brt.selection__sale_order__type_collection_cod__bb
+msgid "ACCEPT BANK CHECK FOR COURIER WITH INDEMNITY"
+msgstr "ACCETTARE ASSEGNO BANCARIO INTESTATO CORRIERE CON MANLEVA"
+
+#. module: transport_carrier_brt
+#: model:ir.model.fields.selection,name:transport_carrier_brt.selection__sale_order__type_collection_cod__bm
+msgid "ACCEPT BANK CHECK MADE TO THE SENDER"
+msgstr "ACCETTARE ASSEGNO BANCARIO INTESTATO ALLA MITTENTE"
+
+#. module: transport_carrier_brt
+#: model:ir.model.fields.selection,name:transport_carrier_brt.selection__sale_order__type_collection_cod___
+msgid "ACCEPT CASH"
+msgstr "ACCETTARE CONTANTE"
+
+#. module: transport_carrier_brt
+#: model:ir.model.fields.selection,name:transport_carrier_brt.selection__stock_picking__type_collection_cod___
+msgid "ACCEPT CASH"
+msgstr "ACCETTARE CONTANTE"
+
+#. module: transport_carrier_brt
+#: model:ir.model.fields.selection,name:transport_carrier_brt.selection__sale_order__type_collection_cod__om
+msgid "ACCEPT CHECK LISTED TO ORIGINAL SENDER"
+msgstr "ACCETTARE ASSEGNO INTESTATO AL MITTENTE ORIGINALE"
+
+#. module: transport_carrier_brt
+#: model:ir.model.fields.selection,name:transport_carrier_brt.selection__sale_order__type_collection_cod__oc
+msgid "ACCEPT CIRCULAR CHECK LISTED TO THE ORIGINAL SENDER"
+msgstr "ACCETTARE ASSEGNO CIRCOLARE INTESTATO AL MITTENTE ORIGINALE"
+
+#. module: transport_carrier_brt
+#: model:ir.model.fields.selection,name:transport_carrier_brt.selection__sale_order__type_collection_cod__cm
+msgid "ACCEPT CIRCULAR CHECK MADE TO THE SENDER"
+msgstr "ACCETTARE ASSEGNO CIRCOLARE INTESTATO ALLA MITTENTE"
+
+#. module: transport_carrier_brt
+#: model_terms:ir.ui.view,arch_db:transport_carrier_brt.report_picking_bordero_brt
+msgid "Al"
+msgstr ""
+
+#. module: transport_carrier_brt
+#: model:ir.model.fields,field_description:transport_carrier_brt.field_transport_carrier__alphanumeric_sender_reference
+msgid "Alphanumeric Sender Ref (vabrma)"
+msgstr "Riferimento mittente alfanumerico (vabrma)"
+
+#. module: transport_carrier_brt
+#: model:ir.model.fields,field_description:transport_carrier_brt.field_transport_carrier__barcode_control_row
+msgid "Barcode Control Row to Label"
+msgstr ""
+
+#. module: transport_carrier_brt
+#: model:ir.model.fields,field_description:transport_carrier_brt.field_transport_carrier__border
+msgid "Border to Label"
+msgstr "Bordi su Etichette"
+
+#. module: transport_carrier_brt
+#: model:ir.actions.report,print_report_name:transport_carrier_brt.report_bordero_brt
+msgid "Bordero BRT"
+msgstr ""
+
+#. module: transport_carrier_brt
+#: model_terms:ir.ui.view,arch_db:transport_carrier_brt.report_picking_bordero_brt
+msgid "CAP"
+msgstr ""
+
+#. module: transport_carrier_brt
+#: model_terms:ir.ui.view,arch_db:transport_carrier_brt.report_picking_bordero_brt
+msgid "Cod.Tar."
+msgstr ""
+
+#. module: transport_carrier_brt
+#: model_terms:ir.ui.view,arch_db:transport_carrier_brt.report_picking_bordero_brt
+msgid "Codice Bolla"
+msgstr ""
+
+#. module: transport_carrier_brt
+#: model_terms:ir.ui.view,arch_db:transport_carrier_brt.report_picking_bordero_brt
+msgid "Colli"
+msgstr ""
+
+#. module: transport_carrier_brt
+#: model:ir.model.fields,help:transport_carrier_brt.field_transport_carrier__departure_depot
+#: model:ir.model.fields,help:transport_carrier_brt.field_transport_carrier__parcels_handling_code
+msgid "Communicated by BRT"
+msgstr "Comunicato da BRT"
+
+#. module: transport_carrier_brt
+#: model:ir.model.fields,field_description:transport_carrier_brt.field_stock_picking__delivery_freight_type_code
+msgid "Delivery Freight Type Code (vabcbo)"
+msgstr "Tipo Porto"
+
+#. module: transport_carrier_brt
+#: model:ir.model.fields,field_description:transport_carrier_brt.field_transport_carrier__departure_depot
+msgid "Departure Depot (vablnp)"
+msgstr "Filiale di partenza"
+
+#. module: transport_carrier_brt
+#: model_terms:ir.ui.view,arch_db:transport_carrier_brt.report_picking_bordero_brt
+msgid "Destinatario"
+msgstr ""
+
+#. module: transport_carrier_brt
+#: model:ir.model.fields,field_description:transport_carrier_brt.field_picking_bordero_wizard__display_name
+#: model:ir.model.fields,field_description:transport_carrier_brt.field_print_label_wizard__display_name
+#: model:ir.model.fields,field_description:transport_carrier_brt.field_report_transport_carrier_brt_report_label_brt__display_name
+#: model:ir.model.fields,field_description:transport_carrier_brt.field_report_transport_carrier_brt_report_label_zpl_brt__display_name
+#: model:ir.model.fields,field_description:transport_carrier_brt.field_report_transport_carrier_brt_view_report_bordero__display_name
+#: model:ir.model.fields,field_description:transport_carrier_brt.field_sale_order__display_name
+#: model:ir.model.fields,field_description:transport_carrier_brt.field_stock_picking__display_name
+#: model:ir.model.fields,field_description:transport_carrier_brt.field_transport_carrier__display_name
+msgid "Display Name"
+msgstr "Nome visualizzato"
+
+#. module: transport_carrier_brt
+#: model:ir.model.fields,help:transport_carrier_brt.field_stock_picking__network
+msgid "EX: Italy: Empty, DPD: D, EuroExpress: E, Fedex: S"
+msgstr "ES: Italia: Vuoto, DPD: D, EuroExpress: E, Fedex: S"
+
+#. module: transport_carrier_brt
+#: model:ir.model.fields,field_description:transport_carrier_brt.field_picking_bordero_wizard__id
+#: model:ir.model.fields,field_description:transport_carrier_brt.field_print_label_wizard__id
+#: model:ir.model.fields,field_description:transport_carrier_brt.field_report_transport_carrier_brt_report_label_brt__id
+#: model:ir.model.fields,field_description:transport_carrier_brt.field_report_transport_carrier_brt_report_label_zpl_brt__id
+#: model:ir.model.fields,field_description:transport_carrier_brt.field_report_transport_carrier_brt_view_report_bordero__id
+#: model:ir.model.fields,field_description:transport_carrier_brt.field_sale_order__id
+#: model:ir.model.fields,field_description:transport_carrier_brt.field_stock_picking__id
+#: model:ir.model.fields,field_description:transport_carrier_brt.field_transport_carrier__id
+msgid "ID"
+msgstr ""
+
+#. module: transport_carrier_brt
+#: model_terms:ir.ui.view,arch_db:transport_carrier_brt.report_picking_bordero_brt
+msgid "Importo Assic."
+msgstr ""
+
+#. module: transport_carrier_brt
+#: model_terms:ir.ui.view,arch_db:transport_carrier_brt.report_picking_bordero_brt
+msgid "Importo C/Assegno"
+msgstr ""
+
+#. module: transport_carrier_brt
+#: model_terms:ir.ui.view,arch_db:transport_carrier_brt.report_picking_bordero_brt
+msgid "Indirizzo"
+msgstr ""
+
+#. module: transport_carrier_brt
+#: model_terms:ir.ui.view,arch_db:transport_carrier_brt.transport_carrier_brt_form_view_inherit
+msgid "Info BRT"
+msgstr ""
+
+#. module: transport_carrier_brt
+#: model_terms:ir.ui.view,arch_db:transport_carrier_brt.report_picking_bordero_brt
+msgid "LNA"
+msgstr ""
+
+#. module: transport_carrier_brt
+#: model:ir.actions.report,print_report_name:transport_carrier_brt.report_list_label_brt
+#: model:ir.model,name:transport_carrier_brt.model_report_transport_carrier_brt_report_label_brt
+msgid "Label BRT"
+msgstr "Etichette BRT"
+
+#. module: transport_carrier_brt
+#: model_terms:ir.ui.view,arch_db:transport_carrier_brt.brt_stock_picking_search_view_inherit
+msgid "Label BRT Ok"
+msgstr "Etichette BRT ok"
+
+#. module: transport_carrier_brt
+#: model_terms:ir.ui.view,arch_db:transport_carrier_brt.brt_stock_picking_search_view_inherit
+msgid "Label BRT To Process"
+msgstr "Etichette BRT da processare"
+
+#. module: transport_carrier_brt
+#: model:ir.actions.report,print_report_name:transport_carrier_brt.report_list_label_zpl_brt
+msgid "Label ZPL BRT"
+msgstr "Etichette ZPL BRT"
+
+#. module: transport_carrier_brt
+#: model:ir.model.fields.selection,name:transport_carrier_brt.selection__stock_picking__state_label_brt__ok
+msgid "Labels Ok"
+msgstr "Etichette OK"
+
+#. module: transport_carrier_brt
+#: model:ir.model.fields,field_description:transport_carrier_brt.field_picking_bordero_wizard____last_update
+#: model:ir.model.fields,field_description:transport_carrier_brt.field_print_label_wizard____last_update
+#: model:ir.model.fields,field_description:transport_carrier_brt.field_report_transport_carrier_brt_report_label_brt____last_update
+#: model:ir.model.fields,field_description:transport_carrier_brt.field_report_transport_carrier_brt_report_label_zpl_brt____last_update
+#: model:ir.model.fields,field_description:transport_carrier_brt.field_report_transport_carrier_brt_view_report_bordero____last_update
+#: model:ir.model.fields,field_description:transport_carrier_brt.field_sale_order____last_update
+#: model:ir.model.fields,field_description:transport_carrier_brt.field_stock_picking____last_update
+#: model:ir.model.fields,field_description:transport_carrier_brt.field_transport_carrier____last_update
+msgid "Last Modified on"
+msgstr "Ultima modifica il"
+
+#. module: transport_carrier_brt
+#: model_terms:ir.ui.view,arch_db:transport_carrier_brt.report_picking_bordero_brt
+msgid "Località"
+msgstr ""
+
+#. module: transport_carrier_brt
+#: model:ir.model.fields,field_description:transport_carrier_brt.field_transport_carrier__logo_label_brt
+msgid "Logo to Label"
+msgstr "Logo su etichette"
+
+#. module: transport_carrier_brt
+#: model_terms:ir.ui.view,arch_db:transport_carrier_brt.report_picking_bordero_brt
+msgid ""
+"Mittente BRT\n"
+"                                -"
+msgstr ""
+
+#. module: transport_carrier_brt
+#: model_terms:ir.ui.view,arch_db:transport_carrier_brt.brt_stock_picking_search_view_inherit
+msgid "NO BRT"
+msgstr "NO BRT"
+
+#. module: transport_carrier_brt
+#: model:ir.model.fields,field_description:transport_carrier_brt.field_stock_picking__network
+msgid "Network (vabatb)"
+msgstr "Network (vabatb)"
+
+#. module: transport_carrier_brt
+#: model:ir.model.fields.selection,name:transport_carrier_brt.selection__stock_picking__state_label_brt__no_brt
+msgid "No BRT"
+msgstr "No BRT"
+
+#. module: transport_carrier_brt
+#: model:ir.model.fields.selection,name:transport_carrier_brt.selection__transport_carrier__barcode_control_row__0
+msgid "No Barcode Control Row"
+msgstr ""
+
+#. module: transport_carrier_brt
+#: model:ir.model.fields.selection,name:transport_carrier_brt.selection__transport_carrier__border__0
+msgid "No Border"
+msgstr "No Bordi"
+
+#. module: transport_carrier_brt
+#: model:ir.model.fields.selection,name:transport_carrier_brt.selection__transport_carrier__logo_label_brt__0
+msgid "No Logo"
+msgstr "No logo"
+
+#. module: transport_carrier_brt
+#: model:ir.model.fields,field_description:transport_carrier_brt.field_transport_carrier__output_type
+msgid "Output Type"
+msgstr "Tipo Output"
+
+#. module: transport_carrier_brt
+#: model:ir.model.fields.selection,name:transport_carrier_brt.selection__transport_carrier__output_type__pdf
+msgid "PDF"
+msgstr "PDF"
+
+#. module: transport_carrier_brt
+#: model:ir.model.fields,field_description:transport_carrier_brt.field_transport_carrier__parcels_handling_code
+msgid "Parcels Handling Code (vabctm)"
+msgstr "Codice trattamento merce (vabctm)"
+
+#. module: transport_carrier_brt
+#: model_terms:ir.ui.view,arch_db:transport_carrier_brt.report_picking_bordero_brt
+msgid "Peso"
+msgstr ""
+
+#. module: transport_carrier_brt
+#: model_terms:ir.ui.view,arch_db:transport_carrier_brt.brt_stock_picking_search_view_inherit
+msgid "Pick BRT Done - No Bordero"
+msgstr "Picking BRT Validati - Senza Borderò"
+
+#. module: transport_carrier_brt
+#: model:ir.model,name:transport_carrier_brt.model_picking_bordero_wizard
+msgid "Picking Bordero General Wizard"
+msgstr "Wizard Bordero"
+
+#. module: transport_carrier_brt
+#: model:ir.model.fields,field_description:transport_carrier_brt.field_transport_carrier__pricing_condition_code
+msgid "Pricing Condition Code (vabctr)"
+msgstr "Codice Tariffa (vabctr)"
+
+#. module: transport_carrier_brt
+#: model_terms:ir.ui.view,arch_db:transport_carrier_brt.print_bordero_brt_wizard_view
+msgid "Print Bordero BRT'"
+msgstr "Stampa Bordero BRT"
+
+#. module: transport_carrier_brt
+#: model:ir.model,name:transport_carrier_brt.model_print_label_wizard
+msgid "Print Label Wizard"
+msgstr "Wizard Stampa Etichette"
+
+#. module: transport_carrier_brt
+#: model:ir.model,name:transport_carrier_brt.model_report_transport_carrier_brt_report_label_zpl_brt
+msgid "Report Label BRT ZPL"
+msgstr "Report Etichette BRT ZPL"
+
+#. module: transport_carrier_brt
+#: model:ir.model.fields,field_description:transport_carrier_brt.field_transport_carrier__alert_shipping
+msgid "Request Alert Shipping"
+msgstr "Richiesta Alert"
+
+#. module: transport_carrier_brt
+#: model_terms:ir.ui.view,arch_db:transport_carrier_brt.report_picking_bordero_brt
+msgid "Rif. Numerico"
+msgstr ""
+
+#. module: transport_carrier_brt
+#: model:ir.model,name:transport_carrier_brt.model_sale_order
+msgid "Sales Order"
+msgstr "Ordine di vendita"
+
+#. module: transport_carrier_brt
+#: model_terms:ir.ui.view,arch_db:transport_carrier_brt.report_picking_bordero_brt
+msgid "Segnacolli Dal"
+msgstr ""
+
+#. module: transport_carrier_brt
+#: model:ir.model.fields,field_description:transport_carrier_brt.field_transport_carrier__sender_customer_code
+msgid "Sender Customer Code (vabccm)"
+msgstr "Codice cliente mittente"
+
+#. module: transport_carrier_brt
+#: model:ir.model.fields.selection,name:transport_carrier_brt.selection__stock_picking__service_type__h
+msgid "Service 10:30"
+msgstr "Servizio 10:30"
+
+#. module: transport_carrier_brt
+#: model:ir.model.fields.selection,name:transport_carrier_brt.selection__stock_picking__service_type__e
+msgid "Service Priority"
+msgstr "Servizio priority"
+
+#. module: transport_carrier_brt
+#: model:ir.model.fields.selection,name:transport_carrier_brt.selection__stock_picking__service_type___
+msgid "Service Standard"
+msgstr "Servizio standard"
+
+#. module: transport_carrier_brt
+#: model:ir.model.fields,field_description:transport_carrier_brt.field_stock_picking__service_type
+msgid "Service Type"
+msgstr "Tipo Servizio"
+
+#. module: transport_carrier_brt
+#: model_terms:ir.ui.view,arch_db:transport_carrier_brt.report_picking_bordero_brt
+msgid "Spedizioni :"
+msgstr ""
+
+#. module: transport_carrier_brt
+#: model:ir.model.fields,field_description:transport_carrier_brt.field_stock_picking__state_label_brt
+msgid "Status Label BRT"
+msgstr "Stato etichette BRT"
+
+#. module: transport_carrier_brt
+#: model_terms:ir.ui.view,arch_db:transport_carrier_brt.report_picking_bordero_brt
+msgid "T.I. c/a"
+msgstr ""
+
+#. module: transport_carrier_brt
+#: model:ir.model.fields,field_description:transport_carrier_brt.field_transport_carrier__time_sleep
+msgid "Time Sleep"
+msgstr "Tempo Pausa"
+
+#. module: transport_carrier_brt
+#: model:ir.model.fields,help:transport_carrier_brt.field_transport_carrier__time_sleep
+msgid "Time sleep after every request for Labels"
+msgstr "Tempo di pausa dopo ogni richiesta di etichette"
+
+#. module: transport_carrier_brt
+#: model_terms:ir.ui.view,arch_db:transport_carrier_brt.report_picking_bordero_brt
+msgid "Tipo Servizio"
+msgstr ""
+
+#. module: transport_carrier_brt
+#: model:ir.model.fields.selection,name:transport_carrier_brt.selection__stock_picking__state_label_brt__to_process
+msgid "To Process"
+msgstr "Da Processare"
+
+#. module: transport_carrier_brt
+#: model:ir.model,name:transport_carrier_brt.model_stock_picking
+msgid "Transfer"
+msgstr "Trasferimento"
+
+#. module: transport_carrier_brt
+#: model:ir.model,name:transport_carrier_brt.model_transport_carrier
+msgid "Transport Carrier"
+msgstr ""
+
+#. module: transport_carrier_brt
+#: model:ir.model.fields,field_description:transport_carrier_brt.field_stock_picking__type_collection_cod
+msgid "Type Collection COD (vabtic)"
+msgstr "Tipo pagamento contrassegno (vabtic)"
+
+#. module: transport_carrier_brt
+#: model:ir.actions.server,name:transport_carrier_brt.ir_cron_update_tracking_brt_ir_actions_server
+#: model:ir.cron,cron_name:transport_carrier_brt.ir_cron_update_tracking_brt
+#: model:ir.cron,name:transport_carrier_brt.ir_cron_update_tracking_brt
+msgid "Update Tracking Shipping BRT"
+msgstr "Aggiornamento tracking spedizioni BRT"
+
+#. module: transport_carrier_brt
+#: model:ir.actions.server,name:transport_carrier_brt.ir_cron_update_tracking_brt_2_ir_actions_server
+#: model:ir.cron,cron_name:transport_carrier_brt.ir_cron_update_tracking_brt_2
+#: model:ir.cron,name:transport_carrier_brt.ir_cron_update_tracking_brt_2
+msgid "Update Tracking Shipping BRT 2"
+msgstr "Aggiornamento tracking spedizioni BRT 2"
+
+#. module: transport_carrier_brt
+#: model_terms:ir.ui.view,arch_db:transport_carrier_brt.report_picking_bordero_brt
+msgid "Volume"
+msgstr ""
+
+#. module: transport_carrier_brt
+#: model:ir.model.fields.selection,name:transport_carrier_brt.selection__transport_carrier__barcode_control_row__1
+msgid "Yes Barcode Control Row"
+msgstr ""
+
+#. module: transport_carrier_brt
+#: model:ir.model.fields.selection,name:transport_carrier_brt.selection__transport_carrier__border__1
+msgid "Yes Border"
+msgstr "Si Bordi"
+
+#. module: transport_carrier_brt
+#: model:ir.model.fields.selection,name:transport_carrier_brt.selection__transport_carrier__logo_label_brt__1
+msgid "Yes Logo"
+msgstr "Si Logo"
+
+#. module: transport_carrier_brt
+#: model:ir.model.fields.selection,name:transport_carrier_brt.selection__transport_carrier__output_type__zpl
+msgid "ZPL"
+msgstr "ZPL"
+
+#. module: transport_carrier_brt
+#: model:ir.model,name:transport_carrier_brt.model_report_transport_carrier_brt_view_report_bordero
+msgid "report.transport_carrier_brt.view_report_bordero"
+msgstr ""
+
+#. module: transport_carrier_brt
+#: model:ir.actions.report,name:transport_carrier_brt.report_bordero_brt
+msgid "transport_carrier_brt.report_bordero_brt"
+msgstr ""
+
+#. module: transport_carrier_brt
+#: model:ir.actions.report,name:transport_carrier_brt.report_list_label_brt
+msgid "transport_carrier_brt.report_label_brt"
+msgstr ""
+
+#. module: transport_carrier_brt
+#: model:ir.actions.report,name:transport_carrier_brt.report_list_label_zpl_brt
+msgid "transport_carrier_brt.report_label_zpl_brt"
+msgstr ""
+
+#. module: transport_carrier_brt
+#: model:ir.model.fields,field_description:transport_carrier_brt.field_res_partner__departure_depot_brt
+#: model:ir.model.fields,field_description:transport_carrier_brt.field_res_users__departure_depot_brt
+#: model:ir.model.fields,field_description:transport_carrier_brt.field_stock_warehouse__departure_depot_brt
+msgid "Departure Depot BRT"
+msgstr "Filiale Partenza BRT"

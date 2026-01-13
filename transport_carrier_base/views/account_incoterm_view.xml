@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem id="transport_carrier_incoterms_menu" name="Incoterms"
+              parent="stock.menu_stock_config_settings"
+              action="account.action_incoterms_tree"
+              groups="account.group_account_manager"
+              sequence="1"/>
+
+</odoo>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="stock_picking_transport_carrier_gls_form_view_inherit" model="ir.ui.view">
+            <field name="name">stock.picking.transport.carrier.gls.inherit.form</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id"
+                   ref="transport_carrier_base.stock_picking2_transport_carrier_delivery_form_view_inherit"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='tipo_porto']" position="after">
+                    <field name="accessories_services_gls" widget="many2many_tags"
+                           invisible="carrier != 'gls'"/>
+                    <field name="pricelist_code_gls" invisible="carrier != 'gls'"/>
+                    <field name="gdo" invisible="True"/>
+                    <field name="date_booking_gdo"
+                           invisible="carrier != 'gls' or not gdo"
+                           required="gdo"/>
+                    <field name="time_note_booking_gdo"
+                           invisible="carrier != 'gls' or not gdo"
+                           required="gdo"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="stock_picking_gls_form_view_inherit" model="ir.ui.view">
+            <field name="name">stock.picking.gls.form.inherit</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+                <field name="origin" position="after">
+                    <field name="status_shipping_gls" invisible="carrier != 'gls'"/>
+                    <field name="state_label_gls" invisible="carrier != 'gls'"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="stock_picking_gls_tree_view_inherit" model="ir.ui.view">
+            <field name="name">stock.picking.gls.tree.inherit.view</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.vpicktree"/>
+            <field name="arch" type="xml">
+                <field name="state" position="after">
+                    <field name="state_label_gls" optional="hide"/>
+                    <field name="status_shipping_gls" optional="hide"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="gls_stock_picking_search_view_inherit" model="ir.ui.view">
+            <field name="name">stock.picking.gls.search.inherit.view</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_internal_search"/>
+            <field name="arch" type="xml">
+                <filter name="available" position="after">
+                    <separator/>
+                    <filter name="pick_gls_done_no_bordero" string="Pickings GLS Done - No Bordero"
+                            domain="[('state','=','done'),('state_label_gls', 'in', ('ok','error_label')),
+                            ('num_bordero','=', False),
+                            ('carrier','=', 'gls')]"/>
+                    <separator/>
+                    <filter name="ok" string="Colli GLS Ok" domain="[('state_label_gls','=','ok')]"/>
+                    <filter name="da_elaborare" string="Label GLS To Process"
+                            domain="[('state_label_gls','=','to_process')]"/>
+                    <filter name="error_label" string="Label GLS Error"
+                            domain="[('state_label_gls','=','error_label')]"/>
+                    <filter name="no_gls" string="NO GLS"
+                            domain="[('state_label_gls','=','no_gls'),('state','!=','cancel')]"/>
+                </filter>
+            </field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_picking_bordero_gls" inherit_id="da_report_bordero_base.report_picking_bordero">
+        <xpath expr="//div/table/thead/tr/th[@id='city']" position="after">
+            <t t-if="transport_carrier_id == 'gls'">
+                <th>Num.Spedizione</th>
+                <th>BDA</th>
+                <th>Data</th>
+                <th>Listino</th>
+            </t>
+        </xpath>
+        <xpath expr="//div/table/thead/tr/th[@id='weight']" position="after">
+            <t t-if="transport_carrier_id == 'gls'">
+                <th>Pesovolume</th>
+            </t>
+        </xpath>
+        <xpath expr="//div/table/tbody/t/tr/td[@id='city']" position="after">
+            <t t-if="transport_carrier_id == 'gls'">
+                <td>
+                    <t t-esc="line['number_shipping']"/>
+                </td>
+                <td>
+                    <t t-esc="line['bda']"/>
+                </td>
+                <td>
+                    <t t-esc="line['date_done']"/>
+                </td>
+                <td>
+                    <t t-esc="line['pricelist_code_gls']"/>
+                </td>
+            </t>
+        </xpath>
+        <xpath expr="//div/table/tbody/t" position="after">
+            <t t-if="transport_carrier_id == 'gls'">
+                <t t-set="tot_pesovolume" t-value="0"/>
+            </t>
+        </xpath>
+        <xpath expr="//div/table/tbody/t/tr/td[@id='weight']" position="after">
+            <t t-if="transport_carrier_id == 'gls'">
+                <td>
+                    <t t-esc="line['pesovolume']"/>
+                    <t t-set="tot_pesovolume" t-value="tot_pesovolume + line['pesovolume']"/>
+                </td>
+            </t>
+        </xpath>
+
+        <xpath expr="//div/table/tbody/tr[@id='totals']/td" position="after">
+            <t t-if="transport_carrier_id == 'gls'">
+                <td />
+                <td />
+                <td />
+                <td />
+            </t>
+        </xpath>
+        <xpath expr="//div/table/tbody/tr[@id='totals']/td[@id='total_weight']" position="after">
+            <t t-if="transport_carrier_id == 'gls'">
+                <td id="total_weight" >
+                    <t t-esc="round(tot_pesovolume, 2)"/>
+                </td>
+            </t>
+        </xpath>
+    </template>
+
+</odoo>

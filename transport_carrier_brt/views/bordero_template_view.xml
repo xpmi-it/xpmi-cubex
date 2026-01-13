@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template
+            id="report_picking_bordero_brt"
+            inherit_id="da_report_bordero_base.report_picking_bordero">
+
+        <xpath expr="//div/table/thead/tr/th[@id='city']" position="after">
+            <t t-if="transport_carrier_id == 'brt'">
+                <th>Cod.Tar.</th>
+                <th>Rif.Numerico</th>
+                <th>Importo Assic.</th>
+                <th>Tipo Porto</th>
+                <th>Importo C/Assegno</th>
+                <th>Segnacollo dal</th>
+                <th>Segnacollo al</th>
+            </t>
+        </xpath>
+        <xpath expr="//div/table/tbody/t/tr/td[@id='city']" position="after">
+            <t t-if="transport_carrier_id == 'brt'">
+                <td>
+                    <t t-esc="line['pricing_condition_code']"/>
+                </td>
+                <td>
+                    <t t-esc="line['tipo_porto']"/>
+                </td>
+                <td>
+                    <t t-esc="line['amount_insurance']"/>
+                </td>
+                <td>
+                    <t t-esc="line['tipo_porto']"/>
+                </td>
+                <td>
+                    <t t-esc="line['amount_cash_on_delivery']"/>
+                </td>
+                <td>
+                    <t t-esc="line['label_from']"/>
+                </td>
+                <td>
+                    <t t-esc="line['label_to']"/>
+                </td>
+            </t>
+        </xpath>
+
+        <xpath expr="//div/table/tbody/tr[@id='totals']/td" position="after">
+            <t t-if="transport_carrier_id == 'brt'">
+                <td />
+                <td />
+                <td />
+                <td />
+                <td />
+                <td />
+                <td />
+            </t>
+        </xpath>
+    </template>
+</odoo>

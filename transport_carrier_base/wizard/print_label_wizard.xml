@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- wizard view -->
+    <record id="print_label_wizard_view" model="ir.ui.view">
+        <field name="name">Print Label Wizard</field>
+        <field name="model">print.label.wizard</field>
+        <field name="arch" type="xml">
+            <form name="Report Options">
+                <separator string="Print Label"/>
+                <footer>
+                    <button name="print_label" string="Print Labels" type="object" class="oe_highlight"/>
+                    or
+                    <button name="print_label_zpl" string="Print Labels ZPL" type="object" class="oe_highlight"/>
+                    <button string="Cancel" class="oe_link" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="print_label_wizard_action">
+        <field name="name">Print Label</field>
+        <field name="binding_model_id" ref="stock.model_stock_picking"/>
+        <field name="binding_view_types">list,form</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">print.label.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="print_label_wizard_view"/>
+        <field name="target">new</field>
+        <field name="groups_id" eval="[(4, ref('group_transport_carrier_base'))]"/>
+    </record>
+
+</odoo>

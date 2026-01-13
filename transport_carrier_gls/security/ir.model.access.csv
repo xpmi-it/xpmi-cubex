@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_accessories_services_gls_group_gls,accessories_services group_gls,model_accessories_services_gls,group_gls,1,1,1,1

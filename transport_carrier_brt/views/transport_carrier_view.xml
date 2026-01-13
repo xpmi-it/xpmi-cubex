@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="transport_carrier_brt_form_view_inherit" model="ir.ui.view">
+            <field name="name">transport.carrier.brt.form.inherit</field>
+            <field name="model">transport.carrier</field>
+            <field name="inherit_id" ref="transport_carrier_base.transport_carrier_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="/form/notebook/page[@name='function_allowed']" position="before">
+                    <page name="brt_info" string="Info BRT" invisible="carrier != 'brt'">
+                        <group>
+                            <field name="alert_shipping"/>
+                            <field name="use_picking_name_alphanumeric_sender_reference" required="carrier == 'brt'"/>
+<!--                            TODO - test se funziona invisible="use_picking_name_alphanumeric_sender_reference == True"-->
+                            <field name="alphanumeric_sender_reference"
+                                   required="carrier == 'brt' and not use_picking_name_alphanumeric_sender_reference"
+                                   invisible="use_picking_name_alphanumeric_sender_reference == True"/>
+                            <field name="pricing_condition_code" required="carrier == 'brt'"/>
+                            <field name="various_particularities_management_code"/>
+                            <field name="sender_customer_code" required="carrier == 'brt'"/>
+                            <field name="departure_depot" required="carrier == 'brt'"/>
+                            <field name="network"/>
+                            <field name="output_type" required="carrier == 'brt'"/>
+                            <field name="label_format"/>
+                            <field name="parcels_handling_code" required="carrier == 'brt'"/>
+                            <field name="border" required="carrier == 'brt'"/>
+                            <field name="logo_label_brt" required="carrier == 'brt'"/>
+                            <field name="barcode_control_row" required="carrier == 'brt'"/>
+                            <field name="time_sleep"/>
+                        </group>
+                    </page>
+                </xpath>
+                <xpath expr="/form/notebook/page[@name='tracking_info']/group/field[@name='end_link']" position="after">
+                    <field name="type_tracking_ref" invisible="carrier != 'brt'"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

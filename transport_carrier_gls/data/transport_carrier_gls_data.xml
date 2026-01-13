@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <record id="seq_gls" model="ir.sequence">
+            <field name="name">Segnacolli GLS</field>
+            <field name="code">picking.gls</field>
+            <field name="padding">9</field>
+            <field name="implementation">no_gap</field>
+        </record>
+
+        <record id="seq_bordero_gls" model="ir.sequence">
+            <field name="name">Bordero GLS</field>
+            <field name="code">picking.bordero.gls</field>
+            <field name="padding">1</field>
+            <field name="implementation">no_gap</field>
+        </record>
+
+        <record id="transport_carrier_base.transport_condition_dap" model="transport.condition">
+            <field name="code_gls">F</field>
+        </record>
+
+        <record id="transport_carrier_base.transport_condition_exw" model="transport.condition">
+            <field name="code_gls">A</field>
+        </record>
+
+     </data>
+</odoo>

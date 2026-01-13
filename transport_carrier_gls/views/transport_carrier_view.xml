@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="transport_carrier_gls_form_view_inherit" model="ir.ui.view">
+            <field name="name">transport.carrier.form.inherit</field>
+            <field name="model">transport.carrier</field>
+            <field name="inherit_id" ref="transport_carrier_base.transport_carrier_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="/form/notebook/page[@name='connection_info']/group/field[@name='passwd']" position="after">
+                    <field name="office_gls"
+                           invisible="carrier != 'gls'"
+                           required="carrier == 'gls'"/>
+                </xpath>
+                <xpath expr="/form/notebook/page[@name='function_allowed']" position="before">
+                    <page name="gls_info" string="Info GLS" invisible="carrier != 'gls'">
+                        <group>
+                            <field name="light_pricelist" required="carrier == 'gls'"/>
+                            <field name="standard_pricelist" required="carrier == 'gls'"/>
+                            <field name="weight_pricelist" required="carrier == 'gls'"/>
+                            <field name="generate_pdf" required="carrier == 'gls'"/>
+                            <field name="format_pdf" required="carrier == 'gls'"/>
+                            <field name="identpin" password="True"/>
+                            <field name="type_package" required="carrier == 'gls'"/>
+                            <field name="colletion_mode" required="carrier == 'gls'"/>
+                            <field name="supplementary_insurance"/>
+                            <field name="num_day_list_sped" required="carrier == 'gls'"/>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

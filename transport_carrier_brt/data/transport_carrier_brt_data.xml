@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <record id="seq_bordero_brt" model="ir.sequence">
+            <field name="name">Bordero BRT</field>
+            <field name="code">bordero.brt</field>
+            <field name="padding">1</field>
+            <field name="implementation">no_gap</field>
+        </record>
+
+        <record id="transport_carrier_base.transport_condition_dap" model="transport.condition">
+            <field name="code_brt">DAP</field>
+        </record>
+
+        <record id="transport_carrier_base.transport_condition_exw" model="transport.condition">
+            <field name="code_brt">EXW</field>
+        </record>
+
+     </data>
+</odoo>

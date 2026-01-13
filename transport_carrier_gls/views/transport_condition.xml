@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="transport_condition_form_view_inherit" model="ir.ui.view">
+            <field name="name">transport.condition.form.inherit</field>
+            <field name="model">transport.condition</field>
+            <field name="inherit_id" ref="transport_carrier_base.transport_condition_form_view"/>
+            <field name="arch" type="xml">
+                <field name="name" position="after">
+                    <field name="code_gls"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="transport_condition_tree_view_inherit" model="ir.ui.view">
+            <field name="name">transport.condition.tree.inherit</field>
+            <field name="model">transport.condition</field>
+            <field name="inherit_id" ref="transport_carrier_base.transport_condition_tree_view"/>
+            <field name="arch" type="xml">
+                <field name="name" position="after">
+                    <field name="code_gls"/>
+                </field>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="transport_carrier_bordero_form_view" model="ir.ui.view">
+            <field name="name">transport.carrier.bordero.form.inherit</field>
+            <field name="model">transport.carrier</field>
+            <field name="inherit_id" ref="transport_carrier_base.transport_carrier_form_view"/>
+            <field name="arch" type="xml">
+                <field name="name" position="after">
+                    <field name="sequence_bordero_id" invisible="context.get('show_children_fields', False)"/>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</odoo>

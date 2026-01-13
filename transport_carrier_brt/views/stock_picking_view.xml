@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="stock_picking_transport_carrier_brt_form_view_inherit" model="ir.ui.view">
+            <field name="name">stock.picking.transport.carrier.brt.inherit.form</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id"
+                   ref="transport_carrier_base.stock_picking2_transport_carrier_delivery_form_view_inherit"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='tipo_porto']" position="after">
+                    <field name="service_type" invisible="carrier != 'brt'"/>
+                    <field name="pricing_condition_code" invisible="carrier != 'brt'"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="stock_picking_type_collection_cod_form_view" model="ir.ui.view">
+            <field name="name">stock.picking.type_collection_cod.inherit.form</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="transport_carrier_base.stock_picking_form_view_inherit"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='amount_cash_on_delivery']" position="after">
+                    <field name="type_collection_cod" invisible="carrier != 'brt'"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="stock_picking_brt_tree_view_inherit" model="ir.ui.view">
+            <field name="name">stock.picking.brt.tree.inherit.view</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.vpicktree"/>
+            <field name="arch" type="xml">
+                <field name="state" position="after">
+                    <field name="state_label_brt" optional="hide"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="brt_stock_picking_search_view_inherit" model="ir.ui.view">
+            <field name="name">stock.picking.search.inherit.view</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_internal_search"/>
+            <field name="arch" type="xml">
+                <filter name="available" position="after">
+                    <separator/>
+                    <filter name="pick_brt_done_no_bordero" string="Pick BRT Done - No Bordero"
+                            domain="[('state','=','done'),
+                            ('state_label_brt', '=',  'ok'),
+                            ('num_bordero','=', False),
+                            ('carrier','=', 'brt')]"/>
+                    <separator/>
+                    <filter name="ok" string="Label BRT Ok" domain="[('state_label_brt','=','ok')]"/>
+                    <filter name="to_process" string="Label BRT To Process"
+                            domain="[('state_label_brt','=','to_process')]"/>
+                    <filter name="no_brt" string="NO BRT"
+                            domain="[('state_label_brt','=','no_brt'),('state','!=','cancel')]"/>
+                </filter>
+            </field>
+        </record>
+
+    </data>
+</odoo>

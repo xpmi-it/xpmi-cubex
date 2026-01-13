@@ -1,0 +1,92 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* da_report_bordero_base
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-05-31 15:24+0000\n"
+"PO-Revision-Date: 2021-05-31 15:24+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: da_report_bordero_base
+#: model_terms:ir.ui.view,arch_db:da_report_bordero_base.picking_bordero_wizard_view
+msgid "Cancel"
+msgstr "Annulla"
+
+#. module: da_report_bordero_base
+#: model:ir.model.fields,field_description:da_report_bordero_base.field_picking_bordero_wizard__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: da_report_bordero_base
+#: model:ir.model.fields,field_description:da_report_bordero_base.field_picking_bordero_wizard__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: da_report_bordero_base
+#: model:ir.model.fields,field_description:da_report_bordero_base.field_picking_bordero_wizard__display_name
+#: model:ir.model.fields,field_description:da_report_bordero_base.field_stock_picking__display_name
+#: model:ir.model.fields,field_description:da_report_bordero_base.field_transport_carrier__display_name
+msgid "Display Name"
+msgstr "Nome visualizzato"
+
+#. module: da_report_bordero_base
+#: model:ir.model.fields,field_description:da_report_bordero_base.field_picking_bordero_wizard__id
+#: model:ir.model.fields,field_description:da_report_bordero_base.field_stock_picking__id
+#: model:ir.model.fields,field_description:da_report_bordero_base.field_transport_carrier__id
+msgid "ID"
+msgstr ""
+
+#. module: da_report_bordero_base
+#: model:ir.model.fields,field_description:da_report_bordero_base.field_picking_bordero_wizard____last_update
+#: model:ir.model.fields,field_description:da_report_bordero_base.field_stock_picking____last_update
+#: model:ir.model.fields,field_description:da_report_bordero_base.field_transport_carrier____last_update
+msgid "Last Modified on"
+msgstr "Ultima modifica il"
+
+#. module: da_report_bordero_base
+#: model:ir.model.fields,field_description:da_report_bordero_base.field_picking_bordero_wizard__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: da_report_bordero_base
+#: model:ir.model.fields,field_description:da_report_bordero_base.field_picking_bordero_wizard__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: da_report_bordero_base
+#: model:ir.model.fields,field_description:da_report_bordero_base.field_stock_picking__num_bordero
+msgid "Nr. Bordero"
+msgstr "Nr. Bordero"
+
+#. module: da_report_bordero_base
+#: model:ir.model,name:da_report_bordero_base.model_picking_bordero_wizard
+msgid "Picking Bordero General Wizard"
+msgstr "Wizard Bordero"
+
+#. module: da_report_bordero_base
+#: model:ir.actions.act_window,name:da_report_bordero_base.bordero_action_wizard
+msgid "Print Bordero"
+msgstr "Stampa Bordero"
+
+#. module: da_report_bordero_base
+#: model:ir.model.fields,field_description:da_report_bordero_base.field_transport_carrier__sequence_bordero_id
+msgid "Sequence Bordero"
+msgstr "Sequenza Bordero"
+
+#. module: da_report_bordero_base
+#: model:ir.model,name:da_report_bordero_base.model_stock_picking
+msgid "Transfer"
+msgstr "Trasferimento"
+
+#. module: da_report_bordero_base
+#: model:ir.model,name:da_report_bordero_base.model_transport_carrier
+msgid "Transport Carrier"
+msgstr ""

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record model="ir.actions.act_window" id="transport_carrier_action_wizard">
+        <field name="name">Trasport Carrier</field>
+        <field name="binding_model_id" ref="stock.model_stock_picking"/>
+        <field name="res_model">transport.carrier.action.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="groups_id" eval="[(6, 0, [ref('group_transport_carrier_base')])]"/>
+    </record>
+
+    <record id="transport_carrier_action_wizard_view" model="ir.ui.view">
+        <field name="name">Transport Carrier Action Wizard</field>
+        <field name="model">transport.carrier.action.wizard</field>
+        <field name="arch" type="xml">
+            <form name="Action Courier">
+                <footer>
+                    <button name="carrier_create_label" string="Prepare Goods For Courier" type="object"
+                            class="oe_highlight"/>
+                    or
+                    <button name="carrier_delete_shipping" string="Delete Shipping Courier" type="object"
+                            class="oe_highlight"/>
+                    or
+                    <button name="carrier_validate_shipping" string="Validate Shipping Courier" type="object"
+                            class="oe_highlight"/>
+                    or
+                    <button name="carrier_get_tracking_shipping" string="Get Tracking Shipping" type="object"
+                            class="oe_highlight"/>
+                    or
+                    <button string="Cancel" class="oe_link" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+</odoo>

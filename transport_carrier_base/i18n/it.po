@@ -1,0 +1,1019 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* transport_carrier_base
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-02 11:08+0000\n"
+"PO-Revision-Date: 2025-10-02 11:08+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_stock_picking__amount_insurance
+msgid "Amount Insurance"
+msgstr "Importo Assicurazione"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields.selection,name:transport_carrier_base.selection__transport_carrier__delivery_type__base_on_rule
+msgid "Based on Rules"
+msgstr "Basato su regole"
+
+#. module: transport_carrier_base
+#: model_terms:ir.ui.view,arch_db:transport_carrier_base.stock_picking_form_view_inherit
+msgid "Body Confirm"
+msgstr "Risposta consegna confermata"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_stock_picking__body_confirm_tc
+msgid "Body Confirm TC"
+msgstr "Risposta consegna confermata (Transport Carrier)"
+
+#. module: transport_carrier_base
+#: model_terms:ir.ui.view,arch_db:transport_carrier_base.stock_picking_form_view_inherit
+msgid "Body Request"
+msgstr "Richiesta consegna inviata"
+
+#. module: transport_carrier_base
+#: model_terms:ir.ui.view,arch_db:transport_carrier_base.stock_picking_form_view_inherit
+msgid "Body Request TC"
+msgstr "Richiesta consegna inviata (Transport Carrier)"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_stock_picking__body_request_label_transport_carrier
+msgid "Body request label Transport Carrier"
+msgstr "Richiesta etichetta inviata (Transport Carrier)"
+
+#. module: transport_carrier_base
+#: model_terms:ir.ui.view,arch_db:transport_carrier_base.print_label_wizard_view
+#: model_terms:ir.ui.view,arch_db:transport_carrier_base.recompute_carrier_wizard_view
+#: model_terms:ir.ui.view,arch_db:transport_carrier_base.transport_carrier_action_wizard_view
+msgid "Cancel"
+msgstr "Annulla"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_stock_picking__cancellation_done
+msgid "Cancellation Carrier Done"
+msgstr "Cancellazione GLS Fatta"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_delivery_price_rule__carrier_id
+#: model:ir.model.fields,field_description:transport_carrier_base.field_stock_picking__carrier
+#: model:ir.model.fields,field_description:transport_carrier_base.field_transport_carrier__carrier
+msgid "Carrier"
+msgstr "Corriere"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_sale_order__carrier_base_cost
+#: model:ir.model.fields,field_description:transport_carrier_base.field_stock_picking__carrier_base_cost
+msgid "Carrier Base Cost"
+msgstr "Costo Base Corriere"
+
+#. module: transport_carrier_base
+#: model:ir.model,name:transport_carrier_base.model_carrier_checker_mixin
+msgid "Carrier Checker Mixin"
+msgstr ""
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_stock_picking__carrier_cost
+msgid "Carrier Cost"
+msgstr "Costo Corriere"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_sale_order__carrier_cost
+msgid "Carrier Cost Total"
+msgstr "Costo Totale Corriere"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_transport_carrier__check_max_weight
+msgid "Check Max Weight"
+msgstr "Controlla peso massimo"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_transport_carrier__check_min_weight
+msgid "Check Min Weight"
+msgstr "Controlla peso minimo"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_sale_order__check_street_tc
+msgid "Check Street"
+msgstr "Controlla indirizzo"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields.selection,name:transport_carrier_base.selection__sale_order__check_street_tc__check_ko
+#: model_terms:ir.ui.view,arch_db:transport_carrier_base.sale_order_check_street_search_view
+#: model_terms:ir.ui.view,arch_db:transport_carrier_base.sale_order_quotation_check_street_search_view
+msgid "Check Street KO"
+msgstr "Controllo indirizzo fallito"
+
+#. module: transport_carrier_base
+#: model_terms:ir.ui.view,arch_db:transport_carrier_base.sale_order_check_street_search_view
+#: model_terms:ir.ui.view,arch_db:transport_carrier_base.sale_order_quotation_check_street_search_view
+msgid "Check Street OK"
+msgstr "Controllo indirizzo riuscito"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields.selection,name:transport_carrier_base.selection__sale_order__check_street_tc__check_ok
+msgid "Check Street Ok"
+msgstr "Controllo indirizzo riuscito"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_transport_carrier__check_volume
+msgid "Check Volume greater than 0"
+msgstr "Controllo per Volume maggiore di 0"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_transport_carrier__check_and_force_weight
+msgid "Check and Force Weight"
+msgstr "Controllare e forzare peso"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,help:transport_carrier_base.field_transport_carrier__check_and_force_weight
+msgid ""
+"Check and force weight if weight is between Check Min Weight amd Check Max "
+"Weight.This control varies from carrier to carrier. At moment, check is "
+"present for GLS, BRT and DHL.Some carrier (like BRT) want the total weight "
+"of the shipment, so the check will be made on the total weight of the "
+"shipment.Other couriers however (e.g. GLS) receive the weight detail per "
+"parcel, so in this case the weight control and forcing takes place on each "
+"individual parcel."
+msgstr ""
+"Controlla e forza peso se il peso è compreso tra Controlla peso minimo e Controlla peso massimo "
+"Questo controllo varia da corriere a corriere. Al momento, il controllo è "
+"presente per GLS, BRT e DHL. Alcuni vettori (come BRT) vogliono il peso totale "
+"della spedizione, quindi verrà effettuato il controllo sul peso totale della "
+"spedizione. Altri corrieri tuttavia (ad es. GLS) ricevere il dettaglio del peso per "
+"pacco, quindi in questo caso il Controllare e forzare peso avvengono su ciascuno "
+"pacco individuale."
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_transport_carrier__check_weight
+msgid "Check if Weight greater than 0"
+msgstr "Controllo per Peso maggiore di 0"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_stock_picking__amount_cash_on_delivery
+msgid "Cod Value"
+msgstr "Valore Contrassegno"
+
+#. module: transport_carrier_base
+#: model_terms:ir.ui.view,arch_db:transport_carrier_base.transport_carrier_form_view
+msgid "Connection Info"
+msgstr "Info Connessione"
+
+#. module: transport_carrier_base
+#: model:ir.model,name:transport_carrier_base.model_res_partner
+msgid "Contact"
+msgstr "Contatto"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_transport_carrier__country_ids
+msgid "Countries"
+msgstr "Paesi"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_transport_carrier__group_into_single_package
+msgid "Create Single Package"
+msgstr "Crea singolo collo"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_delivery_product_extra__create_uid
+#: model:ir.model.fields,field_description:transport_carrier_base.field_print_label_wizard__create_uid
+#: model:ir.model.fields,field_description:transport_carrier_base.field_sale_order_recompute_carrier__create_uid
+#: model:ir.model.fields,field_description:transport_carrier_base.field_transport_carrier__create_uid
+#: model:ir.model.fields,field_description:transport_carrier_base.field_transport_carrier_action_wizard__create_uid
+#: model:ir.model.fields,field_description:transport_carrier_base.field_transport_condition__create_uid
+msgid "Created by"
+msgstr "Creato da"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_delivery_product_extra__create_date
+#: model:ir.model.fields,field_description:transport_carrier_base.field_print_label_wizard__create_date
+#: model:ir.model.fields,field_description:transport_carrier_base.field_sale_order_recompute_carrier__create_date
+#: model:ir.model.fields,field_description:transport_carrier_base.field_transport_carrier__create_date
+#: model:ir.model.fields,field_description:transport_carrier_base.field_transport_carrier_action_wizard__create_date
+#: model:ir.model.fields,field_description:transport_carrier_base.field_transport_condition__create_date
+msgid "Created on"
+msgstr "Creato il"
+
+#. module: transport_carrier_base
+#: model:transport.condition,name:transport_carrier_base.transport_condition_dap
+msgid "DAP - Delivered at Place"
+msgstr "PORTO FRANCO"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_stock_picking__dangerous_goods
+msgid "Dangerous Goods"
+msgstr "Merce Pericolosa"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_stock_picking__date_last_update
+msgid "Date Last Update"
+msgstr "Data ultimo aggiornamento"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_transport_carrier__default_package_type_id
+msgid "Default Package Type"
+msgstr "Tipologia collo predefinita"
+
+#. module: transport_carrier_base
+#: model_terms:ir.ui.view,arch_db:transport_carrier_base.transport_carrier_action_wizard_view
+msgid "Delete Shipping Courier"
+msgstr "Cancella Spedizione Corriere"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_stock_picking__deletion_shipping
+#: model:ir.model.fields,field_description:transport_carrier_base.field_transport_carrier__deletion_shipping
+msgid "Deletion Shipping"
+msgstr "Cancellazione spedizione"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_transport_carrier__delivery_carrier_ids
+msgid "Delivery Carrier"
+msgstr "Metodi di Consegna"
+
+#. module: transport_carrier_base
+#: model:ir.model,name:transport_carrier_base.model_choose_delivery_carrier
+msgid "Delivery Carrier Selection Wizard"
+msgstr "Procedura di selezione vettore di consegna"
+
+#. module: transport_carrier_base
+#: model:ir.model,name:transport_carrier_base.model_delivery_price_rule
+msgid "Delivery Price Rules"
+msgstr "Regole prezzo di consegna"
+
+#. module: transport_carrier_base
+#: model:ir.model,name:transport_carrier_base.model_delivery_product_extra
+msgid "Delivery Product Extra"
+msgstr "Consegna prodotto extra"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_transport_condition__name
+msgid "Description"
+msgstr "Descrizione"
+
+#. module: transport_carrier_base
+#: model_terms:ir.ui.view,arch_db:transport_carrier_base.transport_carrier_form_view
+msgid "Destination"
+msgstr "Destinazione"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_transport_carrier__destination_type
+msgid "Destination Type"
+msgstr "Tipo Destinazione"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_transport_carrier__child_ids
+msgid "Destination grid"
+msgstr ""
+
+#. module: transport_carrier_base
+#: model_terms:ir.ui.view,arch_db:transport_carrier_base.transport_carrier_form_view
+msgid "Destinations"
+msgstr "Destinazioni"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,help:transport_carrier_base.field_transport_carrier__sequence
+msgid "Determine the display order"
+msgstr "Determina l'ordine visualizzato"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_delivery_product_extra__display_name
+#: model:ir.model.fields,field_description:transport_carrier_base.field_print_label_wizard__display_name
+#: model:ir.model.fields,field_description:transport_carrier_base.field_sale_order_recompute_carrier__display_name
+#: model:ir.model.fields,field_description:transport_carrier_base.field_transport_carrier__display_name
+#: model:ir.model.fields,field_description:transport_carrier_base.field_transport_carrier_action_wizard__display_name
+#: model:ir.model.fields,field_description:transport_carrier_base.field_transport_condition__display_name
+msgid "Display Name"
+msgstr "Nome visualizzato"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_transport_carrier__divisor
+msgid "Divisor"
+msgstr "Divisore"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_transport_carrier__divisor2
+msgid "Divisor2"
+msgstr "Divisore2"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_stock_picking_type__dropshipping
+msgid "Dropshipping"
+msgstr ""
+
+#. module: transport_carrier_base
+#: model_terms:ir.ui.view,arch_db:transport_carrier_base.transport_carrier_form_view
+msgid "Duplica"
+msgstr ""
+
+#. module: transport_carrier_base
+#: model:transport.condition,name:transport_carrier_base.transport_condition_exw
+msgid "EXW - Ex Works"
+msgstr "PORTO ASSEGNATO"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_transport_carrier__efficienty
+msgid "Efficienty Carrier"
+msgstr "Efficienza Corriere"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_transport_carrier__end_link
+msgid "End Link"
+msgstr "Fine Link"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_stock_picking__error_create_shipping
+msgid "Error Create Shipping"
+msgstr "Errore creazione spedizione"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_stock_picking__error_tracking
+msgid "Error Tracking"
+msgstr "Errore Tracking"
+
+#. module: transport_carrier_base
+#: model_terms:ir.ui.view,arch_db:transport_carrier_base.transport_carrier_form_view
+msgid "Extra"
+msgstr ""
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_delivery_product_extra__extra_cost
+msgid "Extra Cost"
+msgstr "Costi Extra"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_transport_carrier__extra_fix
+msgid "Extra Fix"
+msgstr "Costo Extra Fisso"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_transport_carrier__extra_percent
+msgid "Extra Percent"
+msgstr "Percentuale Extra"
+
+#. module: transport_carrier_base
+#: model:ir.model,name:transport_carrier_base.model_ir_fields_converter
+msgid "Fields Converter"
+msgstr "Convertitore campi"
+
+#. module: transport_carrier_base
+#: model_terms:ir.ui.view,arch_db:transport_carrier_base.transport_carrier_form_view
+msgid ""
+"Filling this form allows you to filter delivery carriers according to the\n"
+"                                    delivery address of your customer."
+msgstr ""
+"La compilazione del form permette di filtrare i corrieri in base "
+"all'indirizzo di consegna del tuo cliente"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_transport_carrier__fixed_price
+#: model:ir.model.fields.selection,name:transport_carrier_base.selection__transport_carrier__delivery_type__fixed
+msgid "Fixed Price"
+msgstr "Prezzo Fisso"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_sale_order__force_street_ok
+msgid "Force Street Ok"
+msgstr "Forza Controllo Indirizzo"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_transport_carrier__force_weight
+msgid "Force Weight"
+msgstr "Forza peso"
+
+#. module: transport_carrier_base
+#: model_terms:ir.ui.view,arch_db:transport_carrier_base.transport_carrier_form_view
+msgid "Function Allowed"
+msgstr "Funzioni consentite"
+
+#. module: transport_carrier_base
+#: model_terms:ir.ui.view,arch_db:transport_carrier_base.transport_carrier_action_wizard_view
+msgid "Get Tracking Shipping"
+msgstr "Ottieni tracking spedizione"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields.selection,name:transport_carrier_base.selection__delivery_price_rule__variable__greater_weight_and_weightvolume
+msgid "Greater Between Weight and Weightvolume"
+msgstr "Maggiore tra peso e pesovolume"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_stock_package_type__height
+msgid "Height"
+msgstr "Altezza"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_delivery_product_extra__id
+#: model:ir.model.fields,field_description:transport_carrier_base.field_print_label_wizard__id
+#: model:ir.model.fields,field_description:transport_carrier_base.field_sale_order_recompute_carrier__id
+#: model:ir.model.fields,field_description:transport_carrier_base.field_transport_carrier__id
+#: model:ir.model.fields,field_description:transport_carrier_base.field_transport_carrier_action_wizard__id
+#: model:ir.model.fields,field_description:transport_carrier_base.field_transport_condition__id
+msgid "ID"
+msgstr ""
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,help:transport_carrier_base.field_transport_carrier__group_into_single_package
+msgid "If checked, all products will be packed into a single package"
+msgstr "Se selezionato, tutti i prodotti saranno confezionati in un unico collo"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,help:transport_carrier_base.field_transport_carrier__check_volume
+msgid ""
+"If checked, before prepare parcel, check if volume of all product is greater"
+" than 0"
+msgstr ""
+"Se spuntato, prima di elaborare pacchi, controlla se il volume di tutti i "
+"prodotti è maggiore di 0"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,help:transport_carrier_base.field_transport_carrier__check_weight
+msgid ""
+"If checked, before prepare parcel, check if weight of all product is greater"
+" than 0"
+msgstr ""
+"Se spuntato, prima di elaborare pacchi, controlla se il peso di tutti i "
+"prodotti è maggiore di 0"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,help:transport_carrier_base.field_transport_carrier__check_max_char_street
+msgid ""
+"If you set 35 on this field, if street partner in picking(with this TC)is "
+"longer than 35 char, we set 'Check KO' on picking, else 'Check OK'"
+msgstr ""
+"Se imposti 35 su questo campo, se l'indirizzo del partner nel trasferimento (con questo TC) è "
+"più lungo di 35 caratteri, impostiamo 'Controllo fallito' sul trasferimento, altrimenti 'Controllo riuscito'"
+
+#. module: transport_carrier_base
+#: model:ir.ui.menu,name:transport_carrier_base.transport_carrier_incoterms_menu
+msgid "Incoterms"
+msgstr "Termini di Resa"
+
+#. module: transport_carrier_base
+#: model_terms:ir.ui.view,arch_db:transport_carrier_base.transport_carrier_form_view
+msgid "Info Divisor"
+msgstr "Info Divisore"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_stock_quant_package__is_label
+msgid "Is Label"
+msgstr "È una etichetta"
+
+#. module: transport_carrier_base
+#: model_terms:ir.ui.view,arch_db:transport_carrier_base.stock_picking_form_view_inherit
+msgid "Labels"
+msgstr "Etichette"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_delivery_product_extra__write_uid
+#: model:ir.model.fields,field_description:transport_carrier_base.field_print_label_wizard__write_uid
+#: model:ir.model.fields,field_description:transport_carrier_base.field_sale_order_recompute_carrier__write_uid
+#: model:ir.model.fields,field_description:transport_carrier_base.field_transport_carrier__write_uid
+#: model:ir.model.fields,field_description:transport_carrier_base.field_transport_carrier_action_wizard__write_uid
+#: model:ir.model.fields,field_description:transport_carrier_base.field_transport_condition__write_uid
+msgid "Last Updated by"
+msgstr "Ultima modifica di"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_delivery_product_extra__write_date
+#: model:ir.model.fields,field_description:transport_carrier_base.field_print_label_wizard__write_date
+#: model:ir.model.fields,field_description:transport_carrier_base.field_sale_order_recompute_carrier__write_date
+#: model:ir.model.fields,field_description:transport_carrier_base.field_transport_carrier__write_date
+#: model:ir.model.fields,field_description:transport_carrier_base.field_transport_carrier_action_wizard__write_date
+#: model:ir.model.fields,field_description:transport_carrier_base.field_transport_condition__write_date
+msgid "Last Updated on"
+msgstr "Ultima modifica il"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_stock_picking__last_update_tracking
+msgid "Last update Tracking"
+msgstr "Ultimo aggiornamento Tracking"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_stock_package_type__packaging_length
+msgid "Length"
+msgstr "Lunghezza"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_transport_carrier__check_max_char_street
+msgid "Max Char Street for Check"
+msgstr "Caratteri massimi indirizzo per controllo"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_transport_carrier__max_circumference
+msgid "Max Circumference (cm)"
+msgstr "Massima circonferenza (cm)"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_transport_carrier__max_parcel
+msgid "Max Parcel for Shipping"
+msgstr "Pacco massimo per spedizione"
+
+#. module: transport_carrier_base
+#. odoo-python
+#: code:addons/transport_carrier_base/models/stock_picking.py:0
+msgid "Missing Default Package Type"
+msgstr "Tipologia collo predefinita mancante"
+
+#. module: transport_carrier_base
+#. odoo-python
+#: code:addons/transport_carrier_base/models/stock_picking.py:0
+msgid "Missing Volume on Product "
+msgstr "Volume sul prodotto mancante"
+
+#. module: transport_carrier_base
+#. odoo-python
+#: code:addons/transport_carrier_base/models/stock_picking.py:0
+msgid "Missing Weight on Product "
+msgstr "Peso sul prodotto mancante"
+
+#. module: transport_carrier_base
+#. odoo-python
+#: code:addons/transport_carrier_base/models/stock_picking.py:0
+msgid "Missing or different Transport Carriers on Selected Pickings"
+msgstr "Corrieri mancanti o diversi dai trasferimenti selezionati"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_stock_quant_package__move_line_id
+msgid "Move Line"
+msgstr "Riga movimento"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields.selection,name:transport_carrier_base.selection__transport_carrier__destination_type__multi
+msgid "Multiple destinations"
+msgstr "Destinazioni Multiple"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_transport_carrier__name
+msgid "Name Carrier"
+msgstr "Nome Corriere"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_transport_carrier__picking_in_note
+msgid "Name Picking in Note Shipping"
+msgstr "Picking in note spedizione"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,help:transport_carrier_base.field_stock_picking__deletion_shipping
+#: model:ir.model.fields,help:transport_carrier_base.field_transport_carrier__deletion_shipping
+msgid "Not All Carrier Allow Deletion"
+msgstr "Non tutti i corrieri permettono la cancellazione"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,help:transport_carrier_base.field_stock_picking__validation_shipping
+#: model:ir.model.fields,help:transport_carrier_base.field_transport_carrier__validation_shipping
+msgid "Not All Carrier Allow Validation"
+msgstr "Non tutti i corrieri permettono la validazione"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_stock_picking__number_of_packages
+msgid "Number of Packages"
+msgstr "Numero di Colli"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_product_product__number_package
+#: model:ir.model.fields,field_description:transport_carrier_base.field_product_template__number_package
+msgid "Number package"
+msgstr "Numero di Colli"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields.selection,name:transport_carrier_base.selection__transport_carrier__destination_type__one
+msgid "One destination"
+msgstr "Una destinazione"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_transport_carrier__option_check_street
+msgid "Option Check Street"
+msgstr "Opzione di controllo indirizzo"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_stock_quant_package__package_id
+msgid "Package"
+msgstr "Collo"
+
+#. module: transport_carrier_base
+#: model:ir.model,name:transport_carrier_base.model_stock_quant_package
+msgid "Packages"
+msgstr "Colli"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,help:transport_carrier_base.field_stock_package_type__height
+msgid "Packaging Height"
+msgstr "Altezza imballaggio"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,help:transport_carrier_base.field_stock_package_type__packaging_length
+msgid "Packaging Length"
+msgstr "Lunghezza imballaggio"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,help:transport_carrier_base.field_stock_package_type__width
+msgid "Packaging Width"
+msgstr "Larghezza imballaggio"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_stock_quant_package__parcel_img
+msgid "Parcel Image"
+msgstr "Immagine Collo"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_stock_quant_package__parcel_img2
+msgid "Parcel Image 2"
+msgstr "Immagine 2 Collo"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_stock_quant_package__parcel_img3
+msgid "Parcel Image 3"
+msgstr "Immagine 3 Collo"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_stock_quant_package__parcel_img4
+msgid "Parcel Image 4"
+msgstr "Immagine 4 Collo"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_stock_quant_package__parcel_img_zpl
+msgid "Parcel Image Zpl"
+msgstr "Immagine Collo Zpl"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_stock_picking__parcel_label_ids
+msgid "Parcel Label"
+msgstr "Etichette"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_transport_carrier__parent_id
+msgid "Parent carrier"
+msgstr "Corriere Genitore"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_transport_carrier__passwd
+msgid "Password"
+msgstr ""
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_transport_carrier__peso_campione
+msgid "Peso Campione"
+msgstr ""
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_stock_picking__pesovolume
+msgid "Pesovolume cm³"
+msgstr ""
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_stock_quant_package__picking_id
+msgid "Picking"
+msgstr "Trasferimento"
+
+#. module: transport_carrier_base
+#: model:ir.model,name:transport_carrier_base.model_stock_picking_type
+msgid "Picking Type"
+msgstr "Tipologia prelievo"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_stock_picking__tipo_porto
+msgid "Port type"
+msgstr "Tipo Porto"
+
+#. module: transport_carrier_base
+#: model_terms:ir.ui.view,arch_db:transport_carrier_base.transport_carrier_action_wizard_view
+msgid "Prepare Goods For Courier"
+msgstr "Prepara merce per il corriere"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_transport_carrier__delivery_type
+#: model_terms:ir.ui.view,arch_db:transport_carrier_base.transport_carrier_form_view
+msgid "Pricing"
+msgstr "Prezzi"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_transport_carrier__price_rule_ids
+msgid "Pricing Rules"
+msgstr "Regole sui prezzi"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_res_partner__print_child_in_label
+#: model:ir.model.fields,field_description:transport_carrier_base.field_res_users__print_child_in_label
+msgid "Print Child in Label"
+msgstr "Stampa contatto in Etichettazione"
+
+#. module: transport_carrier_base
+#: model:ir.actions.act_window,name:transport_carrier_base.print_label_wizard_action
+#: model_terms:ir.ui.view,arch_db:transport_carrier_base.print_label_wizard_view
+msgid "Print Label"
+msgstr "Stampa Etichette"
+
+#. module: transport_carrier_base
+#: model:ir.model,name:transport_carrier_base.model_print_label_wizard
+msgid "Print Label Wizard"
+msgstr "Wizard Stampa Etichette"
+
+#. module: transport_carrier_base
+#: model_terms:ir.ui.view,arch_db:transport_carrier_base.print_label_wizard_view
+msgid "Print Labels"
+msgstr "Stampa Etichette"
+
+#. module: transport_carrier_base
+#: model_terms:ir.ui.view,arch_db:transport_carrier_base.print_label_wizard_view
+msgid "Print Labels ZPL"
+msgstr "Stampa Etichette ZPL"
+
+#. module: transport_carrier_base
+#: model:ir.model,name:transport_carrier_base.model_product_template
+#: model:ir.model.fields,field_description:transport_carrier_base.field_delivery_product_extra__product_id
+#: model:ir.model.fields,field_description:transport_carrier_base.field_stock_quant_package__product_id
+msgid "Product"
+msgstr "Prodotto"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_transport_carrier__extra_ids
+#: model_terms:ir.ui.view,arch_db:transport_carrier_base.transport_carrier_form_view
+msgid "Product Extra"
+msgstr "Extra per Prodotti"
+
+#. module: transport_carrier_base
+#: model:ir.model,name:transport_carrier_base.model_product_product
+msgid "Product Variant"
+msgstr "Variante prodotto"
+
+#. module: transport_carrier_base
+#: model:ir.model,name:transport_carrier_base.model_purchase_order
+msgid "Purchase Order"
+msgstr "Ordine di acquisto"
+
+#. module: transport_carrier_base
+#: model:ir.actions.act_window,name:transport_carrier_base.action_recompute_carrier_wizard_action
+#: model_terms:ir.ui.view,arch_db:transport_carrier_base.recompute_carrier_wizard_view
+msgid "Recompute Carrier"
+msgstr "Ricalcola Corriere"
+
+#. module: transport_carrier_base
+#: model:ir.actions.server,name:transport_carrier_base.action_recompute_carrier_new
+msgid "Recompute Carrier (New)"
+msgstr "Ricalcola corriere (nuovo)"
+
+#. module: transport_carrier_base
+#: model:ir.model,name:transport_carrier_base.model_sale_order_recompute_carrier
+msgid "Recompute Carrier on Sale Order"
+msgstr "Ricalcola Corriere su Ordine di Vendita"
+
+#. module: transport_carrier_base
+#: model_terms:ir.ui.view,arch_db:transport_carrier_base.stock_picking_form_view_inherit
+msgid "Request/Response TC"
+msgstr "Richiesta/Risposte TC"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_stock_picking__response_transport_carrier
+#: model_terms:ir.ui.view,arch_db:transport_carrier_base.stock_picking2_transport_carrier_delivery_form_view_inherit
+msgid "Response Carrier"
+msgstr "Risposta Corriere"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_stock_picking__response_confirm_tc
+#: model_terms:ir.ui.view,arch_db:transport_carrier_base.stock_picking_form_view_inherit
+msgid "Response Confirm"
+msgstr "Risposta confermata"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_stock_picking__response_create_shipping_tc
+#: model_terms:ir.ui.view,arch_db:transport_carrier_base.stock_picking_form_view_inherit
+msgid "Response Create Shipping"
+msgstr "Risposta creazione spedizione"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_stock_picking__response_tracking_tc
+#: model_terms:ir.ui.view,arch_db:transport_carrier_base.stock_picking_form_view_inherit
+msgid "Response Tracking"
+msgstr "Risposta tracciamento"
+
+#. module: transport_carrier_base
+#: model:ir.model,name:transport_carrier_base.model_sale_order
+msgid "Sales Order"
+msgstr "Ordine di vendita"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_transport_carrier__team_ids
+msgid "Sales Team"
+msgstr "Team di vendita"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_stock_quant_package__segnacollo
+msgid "Segnacollo"
+msgstr ""
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_transport_carrier__sequence
+msgid "Sequence"
+msgstr "Sequenza"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_transport_carrier__sequence_id
+msgid "Sequence Parcel"
+msgstr "Sequenza Etichette"
+
+#. module: transport_carrier_base
+#. odoo-python
+#: code:addons/transport_carrier_base/mixins/carrier_checker.py:0
+msgid "Set country in partner"
+msgstr "Imposta paese sul contatto"
+
+#. module: transport_carrier_base
+#. odoo-python
+#: code:addons/transport_carrier_base/mixins/carrier_checker.py:0
+msgid "Set divisor on transport carrier: %s"
+msgstr "Imposta divisore su corriere: %s"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,help:transport_carrier_base.field_transport_carrier__max_circumference
+msgid ""
+"Set this field only if you want check circumference(shipping with 1 "
+"parcel).Total circumference is computed by:(Parcel Lenght * 2) + (Parcel "
+"Widht * 2) + Parcel Height.You should enter the UOM in cm for product "
+"measurements."
+msgstr ""
+"Imposta questo campo solo se vuoi controllare la circonferenza (spedizione con 1 "
+"pacco). La circonferenza totale è calcolata da: (lunghezza pacco * 2) + (larghezza "
+"pacco * 2) + altezza pacco. Dovresti inserire l'udm in cm per dimensioni "
+"del prodotto."
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_transport_carrier__start_link
+msgid "Start Link"
+msgstr "Inizio Link"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_transport_carrier__state_ids
+msgid "States"
+msgstr "Province"
+
+#. module: transport_carrier_base
+#: model:ir.model,name:transport_carrier_base.model_stock_move
+msgid "Stock Move"
+msgstr "Movimento di magazzino"
+
+#. module: transport_carrier_base
+#: model:ir.model,name:transport_carrier_base.model_stock_package_type
+msgid "Stock package type"
+msgstr "Tipo di pacchetto stock"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields.selection,name:transport_carrier_base.selection__transport_carrier__option_check_street__street
+msgid "Street"
+msgstr "Indirizzo"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields.selection,name:transport_carrier_base.selection__transport_carrier__option_check_street__street_street2
+msgid "Street and Street2"
+msgstr "Indirizzo e Indirizzo2"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_stock_picking__tc_shipping_id
+msgid "TC Shipping ID"
+msgstr "TC ID Spedizione"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,help:transport_carrier_base.field_transport_carrier__default_package_type_id
+msgid "This package type will be used when package are created automatically"
+msgstr "Questa tipologia collo verrà utilizzata quando il collo viene creato automaticamente"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_stock_picking__time_last_update
+msgid "Time Last Update"
+msgstr "Ora ultimo aggiornamento"
+
+#. module: transport_carrier_base
+#: model_terms:ir.ui.view,arch_db:transport_carrier_base.transport_carrier_form_view
+msgid "Tracking Info"
+msgstr "Info Tracking"
+
+#. module: transport_carrier_base
+#: model:ir.model,name:transport_carrier_base.model_stock_picking
+msgid "Transfer"
+msgstr "Trasferisci"
+
+#. module: transport_carrier_base
+#: model:ir.actions.act_window,name:transport_carrier_base.action_transport_carrier
+#: model:ir.model,name:transport_carrier_base.model_transport_carrier
+#: model:ir.model.fields,field_description:transport_carrier_base.field_delivery_price_rule__transport_carrier_id
+#: model:ir.model.fields,field_description:transport_carrier_base.field_delivery_product_extra__transport_carrier_id
+#: model:ir.model.fields,field_description:transport_carrier_base.field_sale_order__transport_carrier_id
+#: model:ir.model.fields,field_description:transport_carrier_base.field_stock_picking__transport_carrier_id
+#: model:ir.module.category,name:transport_carrier_base.transport_carrier
+#: model:ir.ui.menu,name:transport_carrier_base.transport_carrier_main_menu
+#: model:ir.ui.menu,name:transport_carrier_base.transport_carrier_menu
+msgid "Transport Carrier"
+msgstr ""
+
+#. module: transport_carrier_base
+#: model:res.groups,name:transport_carrier_base.group_transport_carrier_base
+msgid "Transport Carrier Base"
+msgstr ""
+
+#. module: transport_carrier_base
+#: model:ir.model,name:transport_carrier_base.model_transport_carrier_action_wizard
+msgid "Transport Carrier Wizard"
+msgstr "Wizard Corrieri"
+
+#. module: transport_carrier_base
+#: model:ir.actions.act_window,name:transport_carrier_base.action_transport_condition
+#: model:ir.model,name:transport_carrier_base.model_transport_condition
+#: model:ir.ui.menu,name:transport_carrier_base.transport_condition_menu
+msgid "Transport Condition"
+msgstr "Condizioni di Trasporto"
+
+#. module: transport_carrier_base
+#: model:ir.actions.act_window,name:transport_carrier_base.transport_carrier_action_wizard
+msgid "Trasport Carrier"
+msgstr ""
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_stock_picking__url_tracking
+msgid "Url Tracking"
+msgstr ""
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_transport_carrier__user
+msgid "User"
+msgstr "Utente"
+
+#. module: transport_carrier_base
+#: model_terms:ir.ui.view,arch_db:transport_carrier_base.transport_carrier_action_wizard_view
+msgid "Validate Shipping Courier"
+msgstr "Valida Spedizione lato Corriere"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_stock_picking__validation_done
+msgid "Validation Carrier Done"
+msgstr "Validazione corriere riuscita"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_stock_picking__validation_shipping
+#: model:ir.model.fields,field_description:transport_carrier_base.field_transport_carrier__validation_shipping
+msgid "Validation Shipping"
+msgstr "Validazione spedizione"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_transport_carrier__volume_conversion
+msgid "Value Conversion Volume"
+msgstr "Valore Conversione Volume"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,help:transport_carrier_base.field_transport_carrier__volume_conversion
+msgid ""
+"Value for conversion volume from UOM product and UOM for transport carrier"
+msgstr ""
+"Valore per conversione del volume dall'UDM del prodotto in UDM del corriere"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_delivery_price_rule__variable
+msgid "Variable"
+msgstr "Variabile"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_stock_picking__volume
+msgid "Volume"
+msgstr ""
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_stock_quant_package__volume
+msgid "Volume Parcel"
+msgstr "Volume collo"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_transport_carrier__warehouse_id
+msgid "Warehouse"
+msgstr "Magazzino"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_stock_quant_package__pesovolume
+msgid "Weight Volume Parcel cm³"
+msgstr "Pesovolume pacco cm³"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_stock_package_type__width
+msgid "Width"
+msgstr "Larghezza"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_transport_carrier__zip_from
+msgid "Zip From"
+msgstr "Cap da"
+
+#. module: transport_carrier_base
+#: model:ir.model.fields,field_description:transport_carrier_base.field_transport_carrier__zip_to
+msgid "Zip To"
+msgstr "Cap a"
+
+#. module: transport_carrier_base
+#: model_terms:ir.ui.view,arch_db:transport_carrier_base.print_label_wizard_view
+#: model_terms:ir.ui.view,arch_db:transport_carrier_base.recompute_carrier_wizard_view
+#: model_terms:ir.ui.view,arch_db:transport_carrier_base.transport_carrier_action_wizard_view
+msgid "or"
+msgstr "o"

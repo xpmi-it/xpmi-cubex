@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_picking_bordero">
+            <t t-call="web.html_container">
+                <t t-call="da_report_bordero_base.bordero_layout">
+                    <div class="page">
+                        <div>
+                            <b>
+                                Mittente
+                                <span t-esc="sender_company_name"/>
+                                -
+                                <span t-esc="sender_customer_code"/>
+                                -
+                                <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d-%m-%Y %H:%M')"/>
+                            </b>
+                        </div>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th id="partner">Destinatario</th>
+                                    <th id="street">Indirizzo</th>
+                                    <th id="zip">CAP</th>
+                                    <th id="city">Località</th>
+                                    <th id="volume">Volume</th>
+                                    <th id="number_label">Colli</th>
+                                    <th id="weight">Peso</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-set="tot_colli" t-value="0"/>
+                                <t t-set="tot_peso" t-value="0"/>
+                                <t t-set="tot_mc" t-value="0"/>
+                                <t t-foreach="picking_data" t-as="line">
+                                    <tr style="font-size:13px">
+                                        <td id="partner">
+                                            <t t-esc="line['destinatario']"/>
+                                            <br/>
+                                            <span t-esc="line['pick_name']" style="font-size:10px"/>
+                                        </td>
+                                        <td id="address">
+                                            <t t-esc="line['address']"/>
+                                        </td>
+                                        <td id="zip">
+                                            <t t-esc="line['zip']"/>
+                                        </td>
+                                        <td id="city">
+                                            <t t-esc="line['city_state']"/>
+                                        </td>
+                                        <td id="volume">
+                                            <t t-esc="line['volume']"/>
+                                        </td>
+                                        <td id="number_label">
+                                            <t t-esc="line['number_label']"/>
+                                            <t t-set="tot_colli" t-value="tot_colli + line['number_label']"/>
+                                        </td>
+                                        <td id="weight">
+                                            <t t-esc="line['weight']"/>
+                                            <t t-set="tot_peso" t-value="tot_peso + line['weight']"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                                <tr id="totals">
+                                    <td/>
+                                    <td/>
+                                    <td colspan="2">
+                                        <strong>Spedizioni :
+                                            <t t-esc="len(picking_data)"/>
+                                        </strong>
+                                    </td>
+                                    <td>
+                                        <strong>Totali</strong>
+                                    </td>
+                                    <td>
+                                        <t t-esc="tot_colli"/>
+                                    </td>
+                                    <td id="total_weight">
+                                        <t t-esc="round(tot_peso, 2)"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>

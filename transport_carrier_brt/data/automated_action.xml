@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <record id="ir_cron_update_tracking_brt" model="ir.cron">
+            <field name="name">Update Tracking Shipping BRT</field>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_type">hours</field>
+            <field name="interval_number">24</field>
+            <field name="model_id" ref="stock.model_stock_picking"/>
+            <field name="code">model._update_ship_tracking_brt_cron()</field>
+        </record>
+
+        <record id="ir_cron_update_tracking_brt_2" model="ir.cron">
+            <field name="name">Update Tracking Shipping BRT 2</field>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_type">hours</field>
+            <field name="interval_number">24</field>
+            <field name="model_id" ref="stock.model_stock_picking"/>
+            <field name="code">model._update_ship_tracking_brt_cron()</field>
+        </record>
+
+        <record id="ir_cron_update_missing_tracking_ref_brt" model="ir.cron">
+            <field name="name">Update Missing Tracking Ref BRT</field>
+            <field name="user_id" ref="base.user_root"/>
+            <field name="interval_type">hours</field>
+            <field name="interval_number">24</field>
+            <field name="model_id" ref="stock.model_stock_picking"/>
+            <field name="code">model._update_missing_tracking_ref_shipping_brt_cron()</field>
+        </record>
+
+</odoo>

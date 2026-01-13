@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="report_bordero" model="ir.actions.report">
+        <field name="name">da_report_bordero_base.report_bordero</field>
+        <field name="model">stock.picking</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">da_report_bordero_base.report_picking_bordero</field>
+        <field name="report_file">Bordero</field>
+        <field name="paperformat_id" ref="da_report_bordero_base.paperformat_bordero"/>
+        <field name="print_report_name">Bordero</field>
+        <field name="binding_type">report</field>
+        <field name="attachment_use">False</field>
+    </record>
+
+</odoo>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <record id="transport_carrier" model="ir.module.category">
+            <field name="name">Transport Carrier</field>
+            <field name="sequence">1</field>
+        </record>
+
+        <record id="group_transport_carrier_base" model="res.groups">
+            <field name="name">Transport Carrier Base</field>
+            <field name="users" eval="[(4, ref('base.user_root'))]"/>
+            <field name="category_id" ref="transport_carrier"/>
+        </record>
+
+    </data>
+</odoo>
