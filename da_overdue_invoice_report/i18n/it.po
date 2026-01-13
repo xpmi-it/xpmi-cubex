@@ -1,0 +1,112 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* da_overdue_invoice_report
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-12-05 16:17+0000\n"
+"PO-Revision-Date: 2025-12-05 16:17+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: da_overdue_invoice_report
+#: model_terms:ir.ui.view,arch_db:da_overdue_invoice_report.res_partner_form_followup_inherit_view
+msgid "<span class=\"o_stat_text\">Print Follow-up Letter</span>"
+msgstr "<span class=\"o_stat_text\">Stampa lettera di sollecito</span>"
+
+#. module: da_overdue_invoice_report
+#: model_terms:ir.ui.view,arch_db:da_overdue_invoice_report.overdue_inv_report_template
+msgid "Amount Due"
+msgstr "Totale dovuto"
+
+#. module: da_overdue_invoice_report
+#: model:ir.model,name:da_overdue_invoice_report.model_res_company
+msgid "Companies"
+msgstr "Aziende"
+
+#. module: da_overdue_invoice_report
+#: model:ir.model,name:da_overdue_invoice_report.model_res_partner
+msgid "Contact"
+msgstr "Contatto"
+
+#. module: da_overdue_invoice_report
+#: model_terms:ir.ui.view,arch_db:da_overdue_invoice_report.overdue_inv_report_template
+msgid "Date"
+msgstr "Data"
+
+#. module: da_overdue_invoice_report
+#: model_terms:ir.ui.view,arch_db:da_overdue_invoice_report.overdue_inv_report_template
+msgid "Date:"
+msgstr "Data:"
+
+#. module: da_overdue_invoice_report
+#: model_terms:ir.ui.view,arch_db:da_overdue_invoice_report.overdue_inv_report_template
+msgid "Dear"
+msgstr "Spett.le"
+
+#. module: da_overdue_invoice_report
+#: model_terms:ir.ui.view,arch_db:da_overdue_invoice_report.overdue_inv_report_template
+msgid "Due Date"
+msgstr "Scadenza"
+
+#. module: da_overdue_invoice_report
+#: model_terms:ir.ui.view,arch_db:da_overdue_invoice_report.overdue_inv_report_template
+msgid "General Total"
+msgstr "Totale generale"
+
+#. module: da_overdue_invoice_report
+#. odoo-python
+#: code:addons/da_overdue_invoice_report/models/res_partner.py:0
+msgid "No overdue invoices for partner %s."
+msgstr "Nessuna fattura scaduta per il partner %s."
+
+#. module: da_overdue_invoice_report
+#: model_terms:ir.ui.view,arch_db:da_overdue_invoice_report.overdue_inv_report_template
+msgid "Origin"
+msgstr "Documento di origine"
+
+#. module: da_overdue_invoice_report
+#: model:ir.model,name:da_overdue_invoice_report.model_report_da_overdue_invoice_report_overdue_inv_report_template
+msgid "Overdue Invoice Report"
+msgstr "Stampa fatture scadute"
+
+#. module: da_overdue_invoice_report
+#: model:ir.model.fields,field_description:da_overdue_invoice_report.field_res_company__overdue_invoice_report_message
+msgid "Overdue Invoice Report Message"
+msgstr "Messaggio stampa fatture scadute"
+
+#. module: da_overdue_invoice_report
+#: model:ir.actions.report,name:da_overdue_invoice_report.action_overdue_invoice_report
+msgid "Overdue Invoices"
+msgstr "Fatture scadute"
+
+#. module: da_overdue_invoice_report
+#: model_terms:ir.ui.view,arch_db:da_overdue_invoice_report.overdue_inv_report_template
+msgid "Partner Ref.:"
+msgstr "Rif. cliente:"
+
+#. module: da_overdue_invoice_report
+#: model_terms:ir.ui.view,arch_db:da_overdue_invoice_report.overdue_inv_report_template
+msgid "Payment Reminder"
+msgstr "Promemoria di pagamento"
+
+#. module: da_overdue_invoice_report
+#: model_terms:ir.ui.view,arch_db:da_overdue_invoice_report.overdue_inv_report_template
+msgid "Ref"
+msgstr "Comunicazioni"
+
+#. module: da_overdue_invoice_report
+#: model_terms:ir.ui.view,arch_db:da_overdue_invoice_report.overdue_inv_report_template
+msgid "Total Due"
+msgstr "Totale a scadere"
+
+#. module: da_overdue_invoice_report
+#: model_terms:ir.ui.view,arch_db:da_overdue_invoice_report.overdue_inv_report_template
+msgid "Total Overdue"
+msgstr "Totale dovuto"

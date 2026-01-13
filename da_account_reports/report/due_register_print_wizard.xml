@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="due_register_wizard_view" model="ir.ui.view">
+        <field name="name">Due Register Wizard</field>
+        <field name="model">due.register.wizard</field>
+        <field name="arch" type="xml">
+            <form name="Report Options">
+                <sheet>
+                    <group>
+                        <field name="date_at" string="Due Date" required="1"/>
+                        <field name="supplier_ids" widget="many2many_tags"/>
+                        <field name="order" required="1"/>
+                        <field name="order_view" required="1"/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="print_due_register_report" string="Print Report" type="object" class="oe_highlight"/>
+                    <button string="Cancel" class="oe_link" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record
+        id="action_due_register_menu"
+        model="ir.actions.act_window"
+    >
+        <field name="name">Due Register Report Wizard</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">due.register.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem
+        id="menu_da_account_report_root"
+        name="DA Reports"
+        parent="account.menu_finance"
+        groups="account.group_account_manager"
+        sequence="100"
+    />
+
+    <menuitem
+        id="due_register_menu_item"
+        name="Due Register Report Wizard"
+        parent="menu_da_account_report_root"
+        action="action_due_register_menu"
+        groups="account.group_account_manager"
+        sequence="101"
+    />
+</odoo>

@@ -1,0 +1,593 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Product Barand: STRAT -->
+    <template id="product_brand" name="Product Brand">
+        <t t-if="website.active_shop_brand_info">
+            <t t-if="product.product_brand_id and (product.product_brand_id.website_id == request.website or not product.product_brand_id.website_id)">
+                <div class="as-product-brand">
+                    <span t-esc="product.product_brand_id.name" />
+                </div>
+            </t>
+        </t>
+    </template>
+    <!-- Product Barand: END -->
+
+    <!-- Product Label: START -->
+    <template id="product_label" name="Product Label Option">
+        <t t-set="labels" t-value="product.sudo().pro_label_line_ids.filtered(lambda l: l.website_id.id == website.id)"/>
+        <div t-if="labels" class="as-ribbon-wrpa">
+            <div t-attf-class="ribbon-style-#{(labels.label.label_option).replace('option_', '')}" t-att-id="labels.label.label_option">
+                <span t-attf-style="background-color:#{labels.label.label_color} ; color:#{labels.label.label_text_color}"><i t-if="labels.label.label_option == 'option_5'" class="fa fa-tag"/> <t t-esc="labels.label.name" /></span>
+            </div>
+        </div>
+    </template>
+    <!-- Product Label: END -->
+
+    <!-- Login Popup: START -->
+    <template id="as_sign_in_popup" name="Login Popup" inherit_id="portal.user_sign_in">
+        <xpath expr="." position="replace">
+            <li t-nocache="Profile session and user group can change unrelated to parent caches."
+                t-nocache-_item_class="_item_class"
+                t-nocache-_link_class="_link_class"
+                groups="base.group_public" t-attf-class="#{_item_class} o_no_autohide_item">
+                <a t-attf-href="/web/login" t-attf-class="#{_link_class} #{'as_login_popup' if website.active_login_popup else ''}">Sign in<span t-if="request.session.profile_session" class="text-danger fa fa-circle"/></a>
+            </li>
+        </xpath>
+    </template>
+    <!-- Login Popup: END -->
+
+    <!-- User Dashboard: START -->
+    <template id="as_user_dropdown" inherit_id="portal.user_dropdown">
+        <xpath expr="//li[@t-if='is_connected']" position="replace">
+            <t t-if="website.active_user_dashboard_popup">
+                <li t-if="is_connected" t-attf-class="#{_item_class} o_no_autohide_item as_user_dashboard">
+                    <a href="#" role="button" data-bs-toggle="offcanvas" data-bs-target="#o_wsale_offcanvas_user_dashboard" t-attf-class="#{'' if _no_caret else 'dropdown-toggle'} #{_link_class}">
+                        <t t-if="_avatar">
+                            <t t-set="avatar_source" t-value="image_data_uri(user_id.avatar_256)"/>
+                            <img t-att-src="avatar_source" t-attf-class="rounded-circle o_object_fit_cover #{_avatar_class}" width="24" height="24" alt="" loading="eager"/>
+                        </t>
+                        <div t-if="_icon" t-attf-class="#{_icon_wrap_class}">
+                            <i t-attf-class="fa fa-1x fa-fw fa-user #{_icon_class}"/>
+                        </div>
+                        <span t-if="_user_name" t-attf-class="#{_user_name_class}" t-esc="user_id.name[:23] + '...' if user_id.name and len(user_id.name) &gt; 25 else user_id.name"/>
+                    </a>
+                </li>
+            </t>
+            <t t-else="">
+                <li t-if="is_connected" t-attf-class="#{_item_class} o_no_autohide_item">
+                    <a href="#" role="button" data-bs-toggle="dropdown" t-attf-class="#{'' if _no_caret else 'dropdown-toggle'} #{_link_class}">
+                        <t t-if="_avatar">
+                            <t t-set="avatar_source" t-value="image_data_uri(user_id.avatar_256)"/>
+                            <img t-att-src="avatar_source" t-attf-class="rounded-circle o_object_fit_cover #{_avatar_class}" width="24" height="24" alt="" loading="eager"/>
+                        </t>
+                        <div t-if="_icon" t-attf-class="#{_icon_wrap_class}">
+                            <i t-attf-class="fa fa-1x fa-fw fa-user #{_icon_class}"/>
+                        </div>
+                        <span t-if="_user_name" t-attf-class="#{_user_name_class}" t-esc="user_id.name[:23] + '...' if user_id.name and len(user_id.name) &gt; 25 else user_id.name"/>
+                    </a>
+                    <div t-attf-class="dropdown-menu js_usermenu #{_dropdown_menu_class}" role="menu">
+                        <a groups="base.group_user" href="/odoo" role="menuitem" class="dropdown-item ps-3" id="o_backend_user_dropdown_link">
+                            <i class="fa fa-fw fa-th me-1 small text-primary"/> Apps
+                        </a>
+                        <a href="/my/home" role="menuitem" class="dropdown-item ps-3">
+                            <i class="fa fa-fw fa-id-card-o me-1 small text-primary text-primary-emphasis"/> My Account
+                        </a>
+                        <div id="o_logout_divider" class="dropdown-divider"/>
+                        <a t-attf-href="/web/session/logout?redirect=/" role="menuitem" id="o_logout" class="dropdown-item ps-3">
+                            <i class="fa fa-fw fa-sign-out me-1 small text-primary"/> Logout
+                        </a>
+                    </div>
+                </li>
+            </t>
+        </xpath>
+    </template>
+    <!-- User Dashboard: END -->
+
+    <!-- Rating Info Template-->
+    <template id="as_rating_template" name="Rating Template">
+        <t t-if="website.active_shop_rating">
+            <div t-if="is_view_active('website_sale.product_comment') and product.rating_avg" class="as_product_rating">
+                <a class="text-reset" t-att-href="product.website_url + '?open=reviews'">
+                    <i class="fa fa-star"/>
+                    <t t-if="product.rating_avg % 1 == 0"><t t-esc="int(product.rating_avg)"/></t>
+                    <t t-else=""><t t-esc='"{:.1f}".format(product.rating_avg)'/></t>
+                    <span class="rating-count" t-if="product.rating_count"  t-esc="product.rating_count"/>
+                </a>
+            </div>
+        </t>
+    </template>
+
+    <!-- Brand Page: START -->
+     <template id="brand_list" name="Brand Page">
+        <t t-call="website.layout">
+            <div class="as-brand-breadcrumb">
+                <div class="container">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-md-6 text-center text-md-start">
+                            <h3 class="as-all-brand-title m-0">Brands</h3>
+                        </div>
+                        <div class="col-md-6">
+                            <ol class="breadcrumb justify-content-center justify-content-md-end m-0 p-0">
+                                <li class="breadcrumb-item">
+                                    <a href="/shop">All Products</a>
+                                </li>
+                                <li class="breadcrumb-item active">
+                                    <span>Brand</span>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="as-all-brand-page">
+                <div class="container">
+                    <div class="oe_structure" id="as_brands_page1" data-editor-message="Drag and drop the snippet"/>
+                    <div class="row as-letter-container-box g-3">
+                        <t t-foreach="brands" t-as="brand">
+                            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
+                                <div class="as-lp-brand-box">
+                                    <span class="brand-img" t-field="brand.logo" t-options="{'widget': 'image', 'class': 'img-rounded'}" />
+                                    <div class="as-lp-brand-info">
+                                        <h6>
+                                            <a t-att-href="'/shop?brand=%s' % brand.id" target="new">
+                                                <t t-esc="brand.name"/>
+                                            </a>
+                                        </h6>
+                                        <span class="brand-count">
+                                            <t t-if="len(brand.brand_product_ids) == 1">
+                                                <t t-esc="len(brand.brand_product_ids)" /> Product
+                                            </t>
+                                            <t t-else="">
+                                                <t t-esc="len(brand.brand_product_ids)" /> Products
+                                            </t>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </div>
+                    <t t-call="website.pager"/>
+                    <div class="oe_structure" id="as_brands_page2" data-editor-message="Drag and drop the snippet"/>
+                </div>
+            </div>
+        </t>
+    </template>
+    <!-- Brand Page: END -->
+
+    <!-- Menu Tags: START -->
+    <template id="as_menu_tags" name="Menu Tags">
+        <span class="as-menu-tags" t-if="submenu.sudo().is_tag_active" t-esc="submenu.sudo().tag_text"
+            t-attf-style="background-color:#{submenu.sudo().tag_bg_color};color:#{submenu.sudo().tag_text_color}"/>
+    </template>
+    <!-- Menu Tags: END -->
+
+    <!-- Menu highlight: START -->
+    <template id="as_website_menu" name="Website Menu Tags" inherit_id="website.submenu">
+        <xpath expr="//li" position="replace">
+
+            <li t-if="submenu.is_visible and not (submenu.child_id or submenu.is_mega_menu)" t-attf-class="#{item_class or ''} #{'as-advance-nav-dropdown' if submenu.is_advance_megamenu else ''}"  role="presentation">
+                <a t-att-href="submenu._clean_url()"
+                    t-attf-style="background-color:{{submenu.hlt_menu_bg_color if submenu.hlt_menu else '' }};color:{{submenu.hlt_menu_ft_col if submenu.hlt_menu else ''}} !important"
+                    t-attf-class="#{link_class or ''} #{submenu._is_active() and 'active'}"
+                    role="menuitem"
+                    t-ignore="true"
+                    t-att-target="'_blank' if submenu.new_window else None">
+                    <t t-call="theme_alan.as_menu_tags"/>
+                    <span t-if="submenu.hlt_menu" t-attf-class="fa {{submenu.hlt_menu_icon}}"/>
+                    <span t-field="submenu.name"/>
+                </a>
+                <t t-if="submenu.is_advance_megamenu">
+                    <span class="as-advance-nav-mob"></span>
+                </t>
+                <t t-if="submenu.is_advance_megamenu">
+                    <t t-call="atharva_theme_base.website_advance_megamenu">
+                        <t t-set="website_id" t-value="website"/>
+                        <t t-set="advance_menu_id" t-value="submenu.advance_megamenu_id"/>
+                    </t>
+                </t>
+            </li>
+        </xpath>
+        <xpath expr="//li[@t-elif='show_dropdown']" position="replace">
+            <li t-elif="show_dropdown" t-attf-class="#{item_class or ''} dropdown #{submenu.is_mega_menu and 'position-static'}">
+                <a t-attf-class="#{link_class or ''} dropdown-toggle #{submenu.is_mega_menu and 'o_mega_menu_toggle'} #{submenu._is_active() and 'active'} #{dropdown_toggler_classes}"
+                data-bs-toggle="dropdown" href="#"
+                t-attf-style="background-color:{{submenu.hlt_menu_bg_color if submenu.hlt_menu else '' }};color:{{submenu.hlt_menu_ft_col if submenu.hlt_menu else ''}} !important"
+                t-att-data-bs-display="'static' if submenu.is_mega_menu else None">
+                    <t t-call="theme_alan.as_menu_tags"/>
+                    <span t-if="submenu.hlt_menu" t-attf-class="fa {{submenu.hlt_menu_icon}}"/>
+                    <span t-field="submenu.name"/>
+                </a>
+                <t t-if="submenu.active_mega_tabs">
+                    <!--   Here is tabs is come  -->
+                    <div t-if="submenu.is_mega_menu"
+                        t-attf-class="dropdown-menu as-mega-tab-menu o_mega_menu #{submenu.mega_menu_classes}"
+                        data-name="Mega Menu">
+                        <div class="as-mm-tabs-container container">
+                            <div class="as-mm-tabs-levels">
+                                <t t-set="first_count" t-value="0"/>
+                                <t t-foreach="submenu.megamenu_tabs" t-as="mega_tab">
+
+                                    <!-- Loop -->
+                                    <div t-attf-class="as-mm-tabs-level-1 #{'active' if not first_count else ''}">
+                                        <t t-set="first_count" t-value="1"/>
+
+                                        <!-- Title Wrap  -->
+                                        <div class="s-mm-tabs-level-title">
+                                            <a t-att-href="mega_tab.redirect">
+                                                <span class="mm-t-icon"> <image t-att-src="request.website.image_url(mega_tab, 'icon')"/></span>
+                                                <span class="mm-t-title" t-esc="mega_tab.name"/>
+                                            </a>
+                                            <span class="as-mob-tab-menu">
+                                                <span />
+                                            </span>
+                                        </div>
+                                        <!-- End Title Wrap  -->
+                                        <!-- Content Wrap  -->
+                                        <div class="as-mm-tabs-level-2">
+                                            <div class="as-mm-tabs-level-2-in">
+                                                <!-- Content -->
+                                                <span class="mm-t-title" t-field="mega_tab.description"/>
+                                            </div>
+                                        </div>
+                                        <!-- End Content Wrap  -->
+                                    </div>
+                                    <!-- Loop -->
+                                </t>
+                            </div>
+                        </div>
+                    </div>
+                    <!--   Here is tabs is come  -->
+                </t>
+                <t t-else="">
+                    <div t-if="submenu.is_mega_menu and not is_mobile"
+                        t-attf-class="dropdown-menu o_mega_menu #{submenu.mega_menu_classes}"
+                        data-name="Mega Menu"
+                        t-field="submenu.mega_menu_content"/>
+                    <t t-elif="submenu.is_mega_menu"/>
+                    <div t-if="submenu.is_mega_menu" t-elif="False"
+                        t-attf-class="dropdown-menu o_mega_menu #{submenu.mega_menu_classes}"
+                        data-name="Mega Menu"
+                        t-field="submenu.mega_menu_content"
+                        role="menuitem"/>
+                    <ul t-else="" t-attf-class="dropdown-menu #{dropdown_menu_classes}" role="menu">
+                        <t t-foreach="submenu.child_id" t-as="submenu">
+                            <t t-call="website.submenu">
+                                <t t-set="item_class" t-value="None"/>
+                                <t t-set="link_class" t-valuef="dropdown-item"/>
+                            </t>
+                        </t>
+                    </ul>
+                </t>
+
+            </li>
+        </xpath>
+    </template>
+    <!-- Menu highlight: END -->
+
+    <!-- Mini Cart: START -->
+    <template id="as_shop_mini_cart" name="Mini Cart Extend" inherit_id="website_sale.header_cart_link" priority="1">
+        <xpath expr="//a[@href='/shop/cart']" position="attributes">
+            <attribute name="t-attf-class" separator=" " add="#{'as_mini_cart' if website.active_mini_cart else ''}"/>
+        </xpath>
+        <xpath expr="//sup[contains(@t-attf-class,'my_cart_quantity')]" position="attributes">
+            <attribute name="t-attf-class" separator=" " remove="#{'d-none' if (website_sale_cart_quantity == 0) else ''}"/>
+        </xpath>
+    </template>
+    <!-- Mini Cart: END -->
+
+    <!-- Mobile Header: START -->
+    <template id="template_header_mobile" name="Template Header Mobile" inherit_id="website.template_header_mobile">
+        <xpath expr="//t[@t-call='website.navbar']" position="replace">
+            <t t-call="website.navbar">
+                <t t-set="_navbar_classes" t-valuef="o_header_mobile d-block d-lg-none shadow-sm as-mobile-header"/>
+                <t t-set="_navbar_expand_class" t-valuef="None"/>
+                <t t-set="_navbar_name" t-valuef="Mobile"/>
+
+                <div id="o_main_nav" class="container flex-nowrap">
+
+                    <ul class="o_header_mobile_buttons_wrap as-mob-header-wrap navbar-nav flex-row align-items-center gap-2 mb-0">
+                        <li class="as-mob-toggle">
+                            <button
+                                class="btn hm-icon o_not_editable p-0"
+                                type="button"
+                                data-bs-toggle="offcanvas"
+                                data-bs-target="#top_menu_collapse_mobile"
+                                aria-controls="top_menu_collapse_mobile"
+                                aria-expanded="false"
+                                aria-label="Toggle navigation"
+                                >
+                                <span class="navbar-toggler-icon"/>
+                            </button>
+                        </li>
+                        <li class="as-mob-logo">
+                            <!-- Brand -->
+                            <t t-call="website.placeholder_header_brand"/>
+                        </li>
+                        <!-- Cart -->
+                        <t t-call="website_sale.header_cart_link">
+                            <t t-set="_icon" t-value="True"/>
+                            <t t-set="_link_class" t-value="'o_navlink_background hm-icon-item as-h-bag'"/>
+                            <t t-set="_badge_class" t-value="'h-sup'"/>
+                            <t t-set="_icon_wrap_class" t-value="'hm-icon'"/>
+                        </t>
+                    </ul>
+                    <div class="offcanvas offcanvas-end as-mob-search-offcanvas" tabindex="-1" id="as_mob_search_modal" aria-labelledby="as_mob_search_modalLabel">
+                        <div class="offcanvas-header">
+                            <h5 class="offcanvas-title" id="as_mob_search_modalLabel">Search our site</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body">
+                            <ul class="as-mob-search-ul">
+                                <t t-call="website.website_search_box_input">
+                                    <t t-set="search_type" t-valuef="as_advance_search"/>
+                                    <t t-set="action" t-valuef="/website/search"/>
+                                    <t t-set="limit" t-value="limit or '5'"/>
+                                    <t t-set="display_image" t-valuef="true"/>
+                                    <t t-set="display_description" t-valuef="true"/>
+                                    <t t-set="display_extra_link" t-valuef="true"/>
+                                    <t t-set="display_detail" t-valuef="true"/>
+                                </t>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Search bar -->
+
+                    <div t-attf-class="offcanvas #{_side if _side else 'offcanvas-start'} o_navbar_mobile" id="top_menu_collapse_mobile">
+                        <div class="offcanvas-header o_not_editable">
+                            <div class="offcanvas-header-overlay"></div>
+                            <ul class="as-mob-user">
+                                <!-- Sign In -->
+                                <t t-call="portal.placeholder_user_sign_in">
+                                    <t t-set="_link_class" t-valuef="as-mob-user-link"/>
+                                </t>
+                                <!-- User Dropdown -->
+                                <t t-call="portal.user_dropdown">
+                                    <t t-set="_icon" t-value="true"/>
+                                    <t t-set="_user_name" t-value="true"/>
+                                    <t t-set="_user_name_class" t-valuef=""/>
+                                    <t t-set="_link_class" t-valuef="as-mob-user-link"/>
+                                    <t t-set="_icon_class" t-valuef="as-mob-user-icon"/>
+                                    <t t-set="_item_class" t-valuef="dropdown dropup"/>
+                                    <t t-set="_dropdown_menu_class" t-valuef=""/>
+                                </t>
+                            </ul>
+                            <ul class="as-mob-extra">
+                                <!-- Website wishlist -->
+                                <t t-call="website_sale_wishlist.header_wishlist_link">
+                                    <t t-set="_text" t-value="True"/>
+                                    <t t-set="_icon" t-value="True"/>
+                                    <t t-set="_item_class" t-valuef="nav-item"/>
+                                    <t t-set="_link_class" t-value="'nav-link as-h-x-link'"/>
+                                    <t t-set="_badge_class" t-value="'position-absolute top-0 end-0 mt-n1 me-n1 rounded-pill'"/>
+                                    <t t-set="_icon_wrap_class" t-value="'position-relative'"/>
+                                </t>
+                                <!-- Language Selector -->
+                                <t t-call="website.placeholder_header_language_selector">
+                                    <t t-set="_btn_class" t-valuef="as-h-x-link"/>
+                                    <t t-set="_txt_class" t-valuef=""/>
+                                    <t t-set="_flag_class" t-valuef=""/>
+                                    <t t-set="_div_classes" t-valuef="dropup"/>
+                                    <t t-set="_dropdown_menu_class" t-valuef=""/>
+                                </t>
+                            </ul>
+                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close">
+                                <i class="asi asi-x"></i>
+                            </button>
+                        </div>
+                        <div class="offcanvas-body">
+                            <div t-if ="website.is_advance_megamenu" class="as-mob-2nd-menu">
+                                <button class="as_mob_2nd_btn">
+                                    <i class="asi asi-grid"></i>
+                                    <span>Categories</span>
+                                </button>
+                                <t t-call="atharva_theme_base.website_advance_megamenu">
+                                    <t t-set="website_id" t-value="request.env['website'].get_current_website()"/>
+                                    <t t-if="website_id and website_id.is_advance_megamenu" t-set="advance_menu_id" t-value="website_id.advance_megamenu_id"/>
+                                </t>
+                            </div>
+                            <ul class="navbar-nav">
+                                <!-- Navbar -->
+                                <t t-call="website.navbar_nav">
+                                    <t t-set="_no_autohide_menu_mobile" t-valuef="True"/>
+
+                                    <!-- Menu -->
+                                    <t t-foreach="website.menu_id.child_id" t-as="submenu">
+                                        <t t-call="website.submenu">
+                                            <t t-set="item_class" t-valuef="nav-item"/>
+                                            <t t-set="link_class" t-valuef="nav-link"/>
+                                            <t t-set="dropdown_toggler_classes" t-valuef="d-flex justify-content-between align-items-center"/>
+                                            <t t-set="dropdown_menu_classes" t-valuef="position-relative rounded-0 o_dropdown_without_offset"/>
+                                        </t>
+                                    </t>
+                                </t>
+                                <!-- <t t-call="website.placeholder_header_text_element">
+                                    <t t-set="_txt_elt_content" t-valuef="sentence"/>
+                                </t>
+
+                                <t t-call="website.placeholder_header_social_links">
+                                    <t t-set="_div_class" t-valuef="mt-2 border-top pt-2 o_border_contrast"/>
+                                </t> -->
+                            </ul>
+                            <ul class="as-mob-bottom-link">
+                                <!-- Call To Action -->
+                                <!-- <t t-call="website.header_call_to_action_large"/> -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </xpath>
+    </template>
+    <!-- Mobile Header: END -->
+
+    <!-- User Dashboard Popup: START -->
+    <template id="o_wsale_offcanvas_user_dashboard" name="LoginPopup">
+        <aside id="o_wsale_offcanvas_user_dashboard" class="o_website_offcanvas offcanvas offcanvas-end as-login-offcanvas as_login">
+            <div class="offcanvas-header">
+                <div class="as-lo-head">
+                    <t t-if="not user_id.is_public">
+                        <div class="as-lo-user">
+                            <t t-set="avatar_source" t-value="image_data_uri(user_id.avatar_256)"/>
+                            <div class="as-lo-avatar">
+                                <img t-att-src="avatar_source" t-attf-class="rounded-circle o_object_fit_cover #{_avatar_class}" alt="" loading="eager"/>
+                            </div>
+                            <div class="as-lo-user-info">
+                                <h6 t-attf-class="#{_user_name_class}" t-esc="user_id.name[:23] + '...' if user_id.name and len(user_id.name) &gt; 25 else user_id.name"/>
+                                <span t-esc="user_id.email[:50] + '...' if user_id.email and len(user_id.email) &gt; 25 else user_id.email  "/>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"/>
+            </div>
+            <div class="offcanvas_advance_user_dashboard_body offcanvas-body">
+                <t t-set="website_sale_cart_quantity" t-value="request.session['website_sale_cart_quantity'] if 'website_sale_cart_quantity' in request.session else website.sale_get_order().cart_quantity or 0"/>
+                <t t-set="wishcount" t-value="len(request.env['product.wishlist'].current())"/>
+                <t t-if="not user_id.is_public">
+                    <ul class="as-lo-cartbar">
+                        <li t-attf-class="o_wsale_my_cart #{'as_mini_cart' if website.active_mini_cart else ''}">
+                            <a href="/shop/cart" aria-label="eCommerce cart">
+                                <span class="as-lo-icon">
+                                    <i class="asi asi-shopping-cart"/>
+                                    <span t-if="website_sale_cart_quantity" class="as-lo-icon-qty my_cart_quantity" t-att-data-order-id="request.session.get('sale_order_id', '')"><t t-esc="website_sale_cart_quantity"/></span>
+                                </span>
+                                <span class="as-lo-label">My Cart <span t-if="website_sale_cart_quantity" class="as-lo-icon-qty my_cart_quantity" t-att-data-order-id="request.session.get('sale_order_id', '')"><t t-esc="website_sale_cart_quantity"/></span></span>
+                            </a>
+                        </li>
+                        <li class="as-lo-wishlist">
+                            <a href="/shop/wishlist">
+                                <span class="as-lo-icon">
+                                    <i class="asi asi-heart" />
+                                    <span t-if="wishcount" class="as-lo-icon-qty my_wish_quantity"><t t-esc="wishcount"/></span>
+                                </span>
+                                <span class="as-lo-label">Wishlist <span t-if="wishcount" class="as-lo-icon-qty my_wish_quantity"><t t-esc="wishcount"/></span></span>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <ul class="as-lo-links">
+                        <li>
+                            <a class="as-lo-link" href="/my/orders">
+                                <i class="asi asi-box"></i>
+                                <span class="as-lo-label">My Orders</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="as-lo-link" href="/my">
+                                <i class="asi asi-settings"></i>
+                                <span class="as-lo-label">My Account</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="as-lo-link" href="/my/account">
+                                <i class="asi asi-user"></i>
+                                <span class="as-lo-label">Edit Profile</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="as-lo-link" href="/my/security">
+                                <i class="asi asi-lock"></i>
+                                <span class="as-lo-label">Change Password</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="as-lo-link" href="/my/payment_method">
+                                <i class="asi asi-credit-card"></i>
+                                <span class="as-lo-label">Payment Methods</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="as-lo-link as-lo-link-logout" href="/web/session/logout?redirect=/">
+                                <i class="asi asi-log-out"></i>
+                                <span class="as-lo-label">Logout</span>
+                            </a>
+                        </li>
+                    </ul>
+                </t>
+            </div>
+        </aside>
+    </template>
+    <!-- User Dashboard Popup: END -->
+
+    <!-- WishList Page-->
+    <template id="custom_product_wishlist" inherit_id="website_sale_wishlist.product_wishlist" name="Theme Alan Custom Wishlist Page">
+        <xpath expr="." position="replace">
+            <t t-call="website.layout">
+                <t t-set="additional_title">Shop Wishlist</t>
+                <div id="wrap" class="js_sale">
+                    <div class="oe_structure" id="oe_structure_website_sale_wishlist_product_wishlist_1"/>
+                    <div class="container oe_website_sale pt-3">
+                        <section class="container wishlist-section">
+                            <div class="as_wishlist_title row align-items-center">
+                                <div class="col-12 mb-2">
+                                    <t t-set="wishcount" t-value="len(request.env['product.wishlist'].current())"/>
+                                    <h3 class="d-inline-block mb-0 me-2">My Wishlist</h3>
+                                    <span class="as_wishlist_count"><t t-esc="wishcount"/></span> items
+                                </div>
+                                <hr/>
+                            </div>
+                            <div t-if="not (request.env.user._is_public() and website.active_b2b_mode)" class="checkbox mb-2">
+                                <label class='text-muted'><input type="checkbox" id='b2b_wish' value="1" class="mr8"/>Add product to my cart but keep it in my wishlist</label>
+                            </div>
+
+                            <table class="table table-bordered table-striped table-hover text-center mt16 table-comparator " style="table-layout:auto" id="o_comparelist_table">
+                                <body>
+                                    <div class="row">
+                                        <t t-foreach="wishes" t-as="wish">
+                                            <t t-set="combination_info" t-value="wish.product_id._get_combination_info_variant()"/>
+                                            <div class="as_wish_product col-lg-3 d-flex" t-att-data-wish-id="wish.id" t-att-data-product-id="wish.product_id.id" t-att-data-product-tracking-info="'product_tracking_info' in combination_info and json.dumps(combination_info['product_tracking_info'])">
+                                                <div class="as_wish_product_card card">
+                                                    <a t-att-href="wish.product_id.website_url">
+                                                        <img t-attf-src="/web/image/product.product/#{wish.product_id.id}/image_1920" class="card-img-top" style="margin:auto;" alt="Product image"/>
+                                                    </a>
+                                                    <a href="#" class="shadow rounded-circle text-muted o_wish_rm position-absolute top-0 end-0 m-2" title="Remove Product from wishlist">
+                                                        <i class="fa fa-times"></i>
+                                                    </a>
+                                                    <t t-call="theme_alan.product_label">
+                                                        <t t-set="product" t-value="wish.product_id"/>
+                                                    </t>
+                                                    <div class="card-body">
+                                                        <strong><a t-att-href="wish.product_id.website_url"><t t-esc="wish.product_id.display_name" /></a></strong>
+                                                        <small class='d-none d-md-block'><p t-field="wish.product_id.description_sale" class="text-muted pro_desc"/></small>
+                                                        <div t-if="not (request.env.user._is_public() and website.active_b2b_mode)" class="as_wish_price">
+                                                            <span class="oe_price" style="white-space: nowrap;" t-esc="combination_info['price']" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                                                            <span t-attf-class="text-danger oe_default_price ms-1 {{'' if combination_info['has_discounted_price'] else 'd-none'}}" style="text-decoration: line-through !important; white-space: nowrap;"
+                                                            t-esc="combination_info['list_price']" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                                                        </div>
+                                                        <input name="product_id" t-att-value="wish.product_id.id" type="hidden"/>
+                                                        <a t-if="combination_info['prevent_zero_price_sale']" t-att-href="website.contact_us_button_url" class="btn btn-primary btn_cta">Contact Us</a>
+                                                        <div class="as_wish_btn">
+                                                            <div class="as_wish_cart">
+                                                                <button t-if="not (request.env.user._is_public() and website.active_b2b_mode)" id="add_to_cart_button" type="button" role="button" class="btn btn-secondary btn-block o_wish_add" >
+                                                                <i t-attf-class="fa fa-shopping-cart"></i>
+                                                                <span class='d-none d-md-inline'>Add to Cart</span>
+                                                                </button>
+                                                                <button t-else=" " href="/web/login" t-attf-class="#{'as_login_popup' if website.active_login_popup else ''} btn btn-secondary btn-block" type="button" role="button">
+                                                                Login for price
+                                                                </button>
+                                                            </div>
+                                                            <div class="as_add_to_compare">
+                                                                <t t-set="categories" t-value="wish.product_id.product_tmpl_id.valid_product_template_attribute_line_ids._prepare_categories_for_display()"/>
+                                                                <t t-set="product_variant_id" t-value="wish.product_id.product_tmpl_id._get_first_possible_variant_id()"/>
+                                                                <button t-if="is_view_active('website_sale_comparison.add_to_compare') and product_variant_id and categories" type="button" class="btn btn-primary o_add_to_compare no-decoration" t-att-data-product-id='wish.product_id.id'>
+                                                                        <small><i t-attf-class="fa fa-exchange"></i>
+                                                                        <span class='d-none d-md-inline'>Add to compare</span>
+                                                                    </small>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </t>
+                                     </div>
+                                </body>
+                            </table>
+                        </section>
+                    </div>
+                </div>
+            </t>
+        </xpath>
+    </template>
+
+</odoo>

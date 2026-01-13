@@ -1,0 +1,280 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* da_cubex
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-11-11 08:57+0000\n"
+"PO-Revision-Date: 2025-11-11 08:57+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: da_cubex
+#. odoo-python
+#: code:addons/da_cubex/models/account_move.py:0
+msgid ""
+"\n"
+"                <div style=\"margin: 0px; padding: 0px;\">\n"
+"                    <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"                        Dear,\n"
+"                        <br /><br />\n"
+"                        Here is summary invoices paid today\n"
+"                        <br /><br />\n"
+"                        <table class=\"table\">\n"
+"                            <thead>\n"
+"                                <th>Number</th>\n"
+"                                <th>Total</th>\n"
+"                                <th>Total Paid</th>\n"
+"                                <th>Amount Due</th>\n"
+"                            </thead>\n"
+"                            <tbody>\n"
+"                                {invoice_info}\n"
+"                            </tbody>\n"
+"                        </table>\n"
+"                    </p>\n"
+"                </div>\n"
+"            "
+msgstr ""
+"\n"
+"                <div style=\"margin: 0px; padding: 0px;\">\n"
+"                    <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"                        Ciao,\n"
+"                        <br /><br />\n"
+"                        Ecco una lista di fatture pagate oggi\n"
+"                        <br /><br />\n"
+"                        <table class=\"table\">\n"
+"                            <thead>\n"
+"                                <th>Numero</th>\n"
+"                                <th>Totale</th>\n"
+"                                <th>Totale pagato</th>\n"
+"                                <th>Scaduto</th>\n"
+"                            </thead>\n"
+"                            <tbody>\n"
+"                                {invoice_info}\n"
+"                            </tbody>\n"
+"                        </table>\n"
+"                    </p>\n"
+"                </div>\n"
+"            "
+
+#. module: da_cubex
+#: model_terms:ir.ui.view,arch_db:da_cubex.report_saleorder_document_inherit
+msgid "<strong>IBAN Code:</strong>"
+msgstr "<strong>Codice IBAN:</strong>"
+
+#. module: da_cubex
+#: model_terms:ir.ui.view,arch_db:da_cubex.report_picking_batch_cubex
+msgid "<strong>Lot/Serial Number</strong>"
+msgstr "<strong>Lotto/Numero di serie</strong>"
+
+#. module: da_cubex
+#: model_terms:ir.ui.view,arch_db:da_cubex.delivery_note_report_template_inherit
+msgid "<strong>Package Qty</strong>"
+msgstr "<strong>Quantità collo</strong>"
+
+#. module: da_cubex
+#: model_terms:ir.ui.view,arch_db:da_cubex.delivery_note_report_template_inherit
+#: model_terms:ir.ui.view,arch_db:da_cubex.report_picking_batch_cubex
+msgid "<strong>Package</strong>"
+msgstr "<strong>Collo</strong>"
+
+#. module: da_cubex
+#: model_terms:ir.ui.view,arch_db:da_cubex.report_picking_batch_cubex
+msgid "<strong>Product Barcode</strong>"
+msgstr "<strong>Codice a barre prodotto</strong>"
+
+#. module: da_cubex
+#: model_terms:ir.ui.view,arch_db:da_cubex.report_picking_batch_cubex
+msgid "<strong>Responsible:</strong>"
+msgstr "<strong>Responsabile:</strong>"
+
+#. module: da_cubex
+#: model_terms:ir.ui.view,arch_db:da_cubex.delivery_note_report_template_inherit
+msgid "<strong>Subtotal</strong>"
+msgstr "<strong>Imponibile</strong>"
+
+#. module: da_cubex
+#: model_terms:ir.ui.view,arch_db:da_cubex.delivery_note_report_template_inherit
+msgid "<strong>Total</strong>"
+msgstr "<strong>Totale</strong>"
+
+#. module: da_cubex
+#: model_terms:ir.ui.view,arch_db:da_cubex.report_saleorder_document_inherit
+msgid "Banca Stabiese"
+msgstr ""
+
+#. module: da_cubex
+#: model_terms:ir.ui.view,arch_db:da_cubex.report_picking_batch_cubex
+msgid "Barcode"
+msgstr "Codice a barre"
+
+#. module: da_cubex
+#: model:ir.actions.report,name:da_cubex.action_report_picking_batch_cubex
+msgid "Batch Transfer Cubex"
+msgstr "Trasferimento raggruppato Cubex"
+
+#. module: da_cubex
+#: model:ir.actions.server,name:da_cubex.action_delivery_note_confirm
+msgid "Confirm DN"
+msgstr "Valida DDT"
+
+#. module: da_cubex
+#: model:ir.model.fields,field_description:da_cubex.field_sale_order__partner_id
+msgid "Customer"
+msgstr "Cliente"
+
+#. module: da_cubex
+#: model_terms:ir.ui.view,arch_db:da_cubex.sale_order_search_inherit_view
+msgid "Delivery Address"
+msgstr "Indirizzo di consegna"
+
+#. module: da_cubex
+#: model_terms:ir.ui.view,arch_db:da_cubex.sale_order_commitment_date_form_view
+msgid "Delivery Date"
+msgstr "Data consegna"
+
+#. module: da_cubex
+#: model:ir.model,name:da_cubex.model_stock_delivery_note_line
+msgid "Delivery Note Line"
+msgstr "Riga DdT"
+
+#. module: da_cubex
+#: model_terms:ir.ui.view,arch_db:da_cubex.sale_order_commitment_date_form_view
+msgid "Expected:"
+msgstr "Prevista:"
+
+#. module: da_cubex
+#: model_terms:ir.ui.view,arch_db:da_cubex.report_saleorder_document_inherit
+msgid "IT96A0338822101000000015720"
+msgstr ""
+
+#. module: da_cubex
+#: model_terms:ir.ui.view,arch_db:da_cubex.report_saleorder_document_inherit
+msgid "Imponibile"
+msgstr ""
+
+#. module: da_cubex
+#: model:ir.model,name:da_cubex.model_account_journal
+msgid "Journal"
+msgstr "Registro"
+
+#. module: da_cubex
+#: model:ir.model,name:da_cubex.model_account_move
+msgid "Journal Entry"
+msgstr "Registrazione contabile"
+
+#. module: da_cubex
+#: model:ir.model.fields,field_description:da_cubex.field_account_journal__limit_journal
+msgid "Limit Journal"
+msgstr "Limita registro"
+
+#. module: da_cubex
+#: model_terms:ir.ui.view,arch_db:da_cubex.stock_move_line_sale_price_tree_view_inherit
+msgid "Prezzo di Vendita"
+msgstr ""
+
+#. module: da_cubex
+#: model:ir.model.fields,field_description:da_cubex.field_stock_delivery_note_line__price_subtotal
+msgid "Price Subtotal"
+msgstr "Imponibile"
+
+#. module: da_cubex
+#: model:ir.model.fields,field_description:da_cubex.field_stock_delivery_note_line__price_total
+msgid "Price Total"
+msgstr "Totale"
+
+#. module: da_cubex
+#: model_terms:ir.ui.view,arch_db:da_cubex.report_picking_batch_cubex
+msgid "Product"
+msgstr "Prodotto"
+
+#. module: da_cubex
+#: model:ir.model,name:da_cubex.model_purchase_order
+msgid "Purchase Order"
+msgstr "Ordine di acquisto"
+
+#. module: da_cubex
+#: model_terms:ir.ui.view,arch_db:da_cubex.report_picking_batch_cubex
+msgid "Quantity"
+msgstr "Quantità"
+
+#. module: da_cubex
+#: model_terms:ir.ui.view,arch_db:da_cubex.report_picking_batch_cubex
+msgid "Quantity Available"
+msgstr "Quantità disponibile"
+
+#. module: da_cubex
+#: model:ir.model,name:da_cubex.model_sale_advance_payment_inv
+msgid "Sales Advance Payment Invoice"
+msgstr "Fattura di vendita con pagamento anticipato"
+
+#. module: da_cubex
+#: model:ir.model,name:da_cubex.model_sale_order
+msgid "Sales Order"
+msgstr "Ordine di vendita"
+
+#. module: da_cubex
+#: model_terms:ir.ui.view,arch_db:da_cubex.report_picking_batch_cubex
+msgid "Scheduled Date"
+msgstr "Data programmata"
+
+#. module: da_cubex
+#: model_terms:ir.ui.view,arch_db:da_cubex.report_picking_batch_cubex
+msgid "Status"
+msgstr "Stato"
+
+#. module: da_cubex
+#: model:ir.model,name:da_cubex.model_stock_move
+msgid "Stock Move"
+msgstr "Movimento di magazzino"
+
+#. module: da_cubex
+#: model_terms:ir.ui.view,arch_db:da_cubex.delivery_note_report_template_inherit
+msgid "Subtotal"
+msgstr "Imponibile"
+
+#. module: da_cubex
+#. odoo-python
+#: code:addons/da_cubex/models/account_move.py:0
+#: model:ir.actions.server,name:da_cubex.cron_summary_invoices_paid_ir_actions_server
+msgid "Summary Invoices Paid"
+msgstr "Riepilogo fatture pagate"
+
+#. module: da_cubex
+#: model_terms:ir.ui.view,arch_db:da_cubex.report_picking_batch_cubex
+msgid "Summary:"
+msgstr "Riepilogo:"
+
+#. module: da_cubex
+#: model_terms:ir.ui.view,arch_db:da_cubex.report_picking_batch_cubex
+msgid "To"
+msgstr "A"
+
+#. module: da_cubex
+#: model_terms:ir.ui.view,arch_db:da_cubex.report_picking_batch_cubex
+msgid "To take from:"
+msgstr "Prelevamento da:"
+
+#. module: da_cubex
+#: model:ir.model,name:da_cubex.model_stock_picking
+#: model_terms:ir.ui.view,arch_db:da_cubex.report_picking_batch_cubex
+msgid "Transfer"
+msgstr "Trasferisci"
+
+#. module: da_cubex
+#: model:ir.model.fields,field_description:da_cubex.field_purchase_order__partner_id
+msgid "Vendor"
+msgstr "Fornitore"
+
+#. module: da_cubex
+#: model:ir.model.fields,help:da_cubex.field_purchase_order__partner_id
+msgid "You can find a vendor by its Name, TIN, Email or Internal Reference."
+msgstr ""
+"Un fornitore può essere trovato per nome, codice fiscale, e-mail o "
+"riferimento interno."

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <template id="report_invoice_document_inherit" inherit_id="account.report_invoice_document">
+            <xpath expr="//div[@id='informations']" position="inside">
+                <div class="col-auto col-3 mw-100 mb-2" t-if="o.partner_bank_id" name="partner_bank">
+                    <strong>IBAN Code:</strong>
+                    <p class="m-0" t-field="o.partner_bank_id.acc_number" />
+                    <p class="m-0" t-if="o.partner_bank_id.bank_id" t-field="o.partner_bank_id.bank_id.name" />
+                </div>
+            </xpath>
+            <xpath expr="//div[hasclass('page')]" position="inside">
+                <div class="mt-4 text-muted" name="info">
+                    <strong>ATTENZIONE:</strong> Dal 18 Giugno è in vigore il regolamento REACH 1907/2006
+                    <br/>
+                    <strong>VERIFICARE:</strong> Aggiornamento delle Schede di Sicurezza e Schede Tecniche dei detergenti utilizzati
+                    <br/>
+                    Formazione ed informazione sufficiente al Personale riguardo le implicazioni in campo ambientale e di sicurezza
+                </div>
+                <div class="mt-4 text-right text-uppercase" name="recipient_sign">
+                    <h3>
+                        <u>Recipient Sign</u>
+                    </h3>
+                </div>
+            </xpath>
+        </template>
+
+    </data>
+</odoo>

@@ -1,0 +1,866 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="1">
+
+    <!-- Data Feed Columns: product.product  -->
+    <record id="column_gmc_expiration_date" model="product.data.feed.column">
+        <field name="sequence">10</field>
+        <field name="name">expiration_date</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="product_data_feed_extra.field_product_product__feed_expiration_date"/>
+        <field name="limit">25</field>
+        <field name="format">%Y-%m-%dT%H:%M:%S%z</field>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_unit_pricing_measure" model="product.data.feed.column">
+        <field name="sequence">15</field>
+        <field name="name">unit_pricing_measure</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product"/>
+        <field name="type">special</field>
+        <field name="special_type">multi_field</field>
+        <field name="multi_field_names">base_unit_count,base_unit_id|name</field>
+        <field name="multi_field_format">%(base_unit_count).2f%(base_unit_id)s</field>
+        <field name="multi_field_values_are_required" eval="True"/>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_unit_pricing_base_measure" model="product.data.feed.column">
+        <field name="sequence">16</field>
+        <field name="name">unit_pricing_base_measure</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product"/>
+        <field name="type">special</field>
+        <field name="special_type">multi_field</field>
+        <field name="multi_field_names">base_unit_id|name</field>
+        <field name="multi_field_format">1%(base_unit_id)s</field>
+        <field name="multi_field_values_are_required" eval="True"/>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_identifier_exists" model="product.data.feed.column">
+        <field name="sequence">25</field>
+        <field name="name">identifier_exists</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="field_product_product__feed_gmc_identifier_exists"/>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_adult" model="product.data.feed.column">
+        <field name="sequence">27</field>
+        <field name="name">adult</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="field_product_product__feed_gmc_for_adult"/>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_multipack" model="product.data.feed.column">
+        <field name="sequence">28</field>
+        <field name="name">multipack</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="field_product_product__feed_gmc_multipack"/>
+        <field name="format">%d</field>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_is_bundle" model="product.data.feed.column">
+        <field name="sequence">29</field>
+        <field name="name">is_bundle</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="field_product_product__feed_gmc_is_bundle"/>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_energy_efficiency_class" model="product.data.feed.column">
+        <field name="sequence">30</field>
+        <field name="name">energy_efficiency_class</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="product_data_feed_energy_class.field_product_product__energy_efficiency_class"/>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_min_energy_efficiency_class" model="product.data.feed.column">
+        <field name="sequence">31</field>
+        <field name="name">min_energy_efficiency_class</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="field_product_product__feed_gmc_min_energy_efficiency_class"/>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_max_energy_efficiency_class" model="product.data.feed.column">
+        <field name="sequence">32</field>
+        <field name="name">max_energy_efficiency_class</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="field_product_product__feed_gmc_max_energy_efficiency_class"/>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_age_group" model="product.data.feed.column">
+        <field name="sequence">33</field>
+        <field name="name">age_group</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="field_product_product__feed_gmc_age_group"/>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_color" model="product.data.feed.column">
+        <field name="sequence">34</field>
+        <field name="name">color</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="product_data_feed_extra.field_product_product__feed_color"/>
+        <field name="limit">100</field>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_gender" model="product.data.feed.column">
+        <field name="sequence">35</field>
+        <field name="name">gender</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="product_data_feed_extra.field_product_product__feed_gender"/>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_material" model="product.data.feed.column">
+        <field name="sequence">36</field>
+        <field name="name">material</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="product_data_feed_extra.field_product_product__feed_material"/>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_pattern" model="product.data.feed.column">
+        <field name="sequence">37</field>
+        <field name="name">pattern</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="product_data_feed_extra.field_product_product__feed_pattern"/>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_size" model="product.data.feed.column">
+        <field name="sequence">38</field>
+        <field name="name">size</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="product_data_feed_extra.field_product_product__feed_size"/>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_size_type" model="product.data.feed.column">
+        <field name="sequence">39</field>
+        <field name="name">size_type</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="field_product_product__feed_gmc_size_type_ids"/>
+        <field name="multi_value_type">list</field>
+        <field name="multi_limit">2</field>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_size_system" model="product.data.feed.column">
+        <field name="sequence">40</field>
+        <field name="name">size_system</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="product_data_feed_extra.field_product_product__feed_size_system"/>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_product_length" model="product.data.feed.column">
+        <field name="sequence">42</field>
+        <field name="name">product_length</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="product_data_feed_extra.field_product_product__feed_length"/>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_product_width" model="product.data.feed.column">
+        <field name="sequence">43</field>
+        <field name="name">product_width</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="product_data_feed_extra.field_product_product__feed_width"/>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_product_height" model="product.data.feed.column">
+        <field name="sequence">44</field>
+        <field name="name">product_height</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="product_data_feed_extra.field_product_product__feed_height"/>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_product_weight" model="product.data.feed.column">
+        <field name="sequence">45</field>
+        <field name="name">product_weight</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product"/>
+        <field name="type">special</field>
+        <field name="special_type">product_weight</field>
+        <field name="format">%.2f</field>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_product_highlight" model="product.data.feed.column">
+        <field name="sequence">47</field>
+        <field name="name">product_highlight</field>
+        <field name="description">The most relevant highlights of your products.</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="product_data_feed_feature.field_product_product__feed_feature_ids"/>
+        <field name="multi_value_type">list</field>
+        <field name="multi_domain">[('feature_id.name', '=', 'gmc_highlight')]</field>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_product_ads_redirect" model="product.data.feed.column">
+        <field name="sequence">48</field>
+        <field name="name">ads_redirect</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="field_product_product__feed_gmc_ads_redirect_url"/>
+        <field name="limit">2000</field>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_product_custom_label" model="product.data.feed.column">
+        <field name="sequence">49</field>
+        <field name="name">custom_label_</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="product_data_feed_feature.field_product_product__feed_feature_ids"/>
+        <field name="multi_value_type">list</field>
+        <field name="multi_domain">[('feature_id.name', '=', 'custom_label')]</field>
+        <field name="multi_limit">5</field>
+        <field name="multi_suffix">number</field>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_pause" model="product.data.feed.column">
+        <field name="sequence">51</field>
+        <field name="name">pause</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="field_product_product__feed_gmc_pause"/>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_external_seller_id" model="product.data.feed.column">
+        <field name="sequence">54</field>
+        <field name="name">external_seller_id</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="field_product_product__feed_gmc_external_seller_id"/>
+        <field name="relation_field_id" ref="base.field_res_partner__id"/>
+        <field name="limit">50</field>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_shopping_ads_excluded_country" model="product.data.feed.column">
+        <field name="sequence">55</field>
+        <field name="name">shopping_ads_excluded_country</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="field_product_product__feed_gmc_shopping_ads_excluded_country"/>
+        <field name="relation_field_id" ref="base.field_res_country__code"/>
+        <field name="multi_value_type">list</field>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_included_destination" model="product.data.feed.column">
+        <field name="sequence">56</field>
+        <field name="name">included_destination</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="field_product_product__feed_gmc_included_destination_ids"/>
+        <field name="relation_field_id" ref="field_product_data_feed_gmc_destination__value"/>
+        <field name="multi_value_type">list</field>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_excluded_destination" model="product.data.feed.column">
+        <field name="sequence">57</field>
+        <field name="name">excluded_destination</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="field_product_product__feed_gmc_excluded_destination_ids"/>
+        <field name="relation_field_id" ref="field_product_data_feed_gmc_destination__value"/>
+        <field name="multi_value_type">list</field>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_shipping" model="product.data.feed.column">
+        <field name="sequence">58</field>
+        <field name="name">shipping</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product"/>
+        <field name="type">special</field>
+        <field name="special_type">product_shipping</field>
+        <field name="multi_value_type">list_of_dict</field>
+        <field name="multi_dict_keys">country,region,service,price,min_handling_time,max_handling_time,min_transit_time,max_transit_time</field>
+        <field name="multi_limit">100</field>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_shipping_label" model="product.data.feed.column">
+        <field name="sequence">59</field>
+        <field name="name">shipping_label</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="product_data_feed_shipping.field_product_product__feed_shipping_group_id"/>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_shipping_weight" model="product.data.feed.column">
+        <field name="sequence">60</field>
+        <field name="name">shipping_weight</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product"/>
+        <field name="type">special</field>
+        <field name="special_type">multi_field</field>
+        <field name="multi_field_names">feed_shipping_weight,feed_shipping_weight_uom</field>
+        <field name="multi_field_format">%(feed_shipping_weight).2f %(feed_shipping_weight_uom)s</field>
+        <field name="multi_field_values_are_required" eval="True"/>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_shipping_length" model="product.data.feed.column">
+        <field name="sequence">61</field>
+        <field name="name">shipping_length</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product"/>
+        <field name="type">special</field>
+        <field name="special_type">multi_field</field>
+        <field name="multi_field_names">feed_shipping_length,feed_shipping_size_uom</field>
+        <field name="multi_field_format">%(feed_shipping_length).2f %(feed_shipping_size_uom)s</field>
+        <field name="multi_field_values_are_required" eval="True"/>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_shipping_width" model="product.data.feed.column">
+        <field name="sequence">62</field>
+        <field name="name">shipping_width</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product"/>
+        <field name="type">special</field>
+        <field name="special_type">multi_field</field>
+        <field name="multi_field_names">feed_shipping_width,feed_shipping_size_uom</field>
+        <field name="multi_field_format">%(feed_shipping_width).2f %(feed_shipping_size_uom)s</field>
+        <field name="multi_field_values_are_required" eval="True"/>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_shipping_height" model="product.data.feed.column">
+        <field name="sequence">63</field>
+        <field name="name">shipping_height</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product"/>
+        <field name="type">special</field>
+        <field name="special_type">multi_field</field>
+        <field name="multi_field_names">feed_shipping_height,feed_shipping_size_uom</field>
+        <field name="multi_field_format">%(feed_shipping_height).2f %(feed_shipping_size_uom)s</field>
+        <field name="multi_field_values_are_required" eval="True"/>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_ships_from_country" model="product.data.feed.column">
+        <field name="sequence">64</field>
+        <field name="name">ships_from_country</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="product_data_feed_shipping.field_product_product__feed_ships_from_country_id"/>
+        <field name="relation_field_id" ref="base.field_res_country__code"/>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_transit_time_label" model="product.data.feed.column">
+        <field name="sequence">65</field>
+        <field name="name">transit_time_label</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="product_data_feed_shipping.field_product_product__feed_shipping_transit_time_group_id"/>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_min_handling_time" model="product.data.feed.column">
+        <field name="sequence">66</field>
+        <field name="name">min_handling_time</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="product_data_feed_shipping.field_product_product__feed_shipping_min_handling_time"/>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_max_handling_time" model="product.data.feed.column">
+        <field name="sequence">67</field>
+        <field name="name">max_handling_time</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="product_data_feed_shipping.field_product_product__feed_shipping_max_handling_time"/>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_tax" model="product.data.feed.column">
+        <field name="sequence">68</field>
+        <field name="name">tax</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product"/>
+        <field name="type">special</field>
+        <field name="special_type">product_tax</field>
+        <field name="multi_value_type">list_of_dict</field>
+        <field name="multi_dict_keys">country,rate</field>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_tax_category" model="product.data.feed.column">
+        <field name="sequence">69</field>
+        <field name="name">tax_category</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="product_data_feed_feature.field_product_product__feed_feature_ids"/>
+        <field name="multi_value_type">list</field>
+        <field name="multi_domain">[('feature_id.name', '=', 'gmc_tax_category')]</field>
+        <field name="multi_limit">1</field>
+        <field name="limit">100</field>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+
+    <!-- Data Feed Columns: product.template  -->
+    <record id="column_gmc_tmpl_expiration_date" model="product.data.feed.column">
+        <field name="sequence">10</field>
+        <field name="name">expiration_date</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product_template"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="product_data_feed_extra.field_product_template__feed_expiration_date"/>
+        <field name="limit">25</field>
+        <field name="format">%Y-%m-%dT%H:%M:%S%z</field>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_tmpl_unit_pricing_measure" model="product.data.feed.column">
+        <field name="sequence">15</field>
+        <field name="name">unit_pricing_measure</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product_template"/>
+        <field name="type">special</field>
+        <field name="special_type">multi_field</field>
+        <field name="multi_field_names">pricing_measure,uom_id|feed_gmc_alias</field>
+        <field name="multi_field_format">%(pricing_measure)d%(uom_id)s</field>
+        <field name="multi_field_values_are_required" eval="True"/>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_tmpl_unit_pricing_base_measure" model="product.data.feed.column">
+        <field name="sequence">16</field>
+        <field name="name">unit_pricing_base_measure</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product_template"/>
+        <field name="type">special</field>
+        <field name="special_type">multi_field</field>
+        <field name="multi_field_names">pricing_base_measure,uom_id|feed_gmc_alias</field>
+        <field name="multi_field_format">%(pricing_base_measure)d%(uom_id)s</field>
+        <field name="multi_field_values_are_required" eval="True"/>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_tmpl_identifier_exists" model="product.data.feed.column">
+        <field name="sequence">25</field>
+        <field name="name">identifier_exists</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product_template"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="field_product_template__feed_gmc_identifier_exists"/>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_tmpl_adult" model="product.data.feed.column">
+        <field name="sequence">27</field>
+        <field name="name">adult</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product_template"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="field_product_template__feed_gmc_for_adult"/>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_tmpl_multipack" model="product.data.feed.column">
+        <field name="sequence">28</field>
+        <field name="name">multipack</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product_template"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="field_product_template__feed_gmc_multipack"/>
+        <field name="format">%d</field>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_tmpl_is_bundle" model="product.data.feed.column">
+        <field name="sequence">29</field>
+        <field name="name">is_bundle</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product_template"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="field_product_template__feed_gmc_is_bundle"/>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_tmpl_energy_efficiency_class" model="product.data.feed.column">
+        <field name="sequence">30</field>
+        <field name="name">energy_efficiency_class</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product_template"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="product_data_feed_energy_class.field_product_template__energy_efficiency_class"/>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_tmpl_min_energy_efficiency_class" model="product.data.feed.column">
+        <field name="sequence">31</field>
+        <field name="name">min_energy_efficiency_class</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product_template"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="field_product_template__feed_gmc_min_energy_efficiency_class"/>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_tmpl_max_energy_efficiency_class" model="product.data.feed.column">
+        <field name="sequence">32</field>
+        <field name="name">max_energy_efficiency_class</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product_template"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="field_product_template__feed_gmc_max_energy_efficiency_class"/>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_tmpl_age_group" model="product.data.feed.column">
+        <field name="sequence">33</field>
+        <field name="name">age_group</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product_template"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="field_product_template__feed_gmc_age_group"/>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_tmpl_color" model="product.data.feed.column">
+        <field name="sequence">34</field>
+        <field name="name">color</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product_template"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="product_data_feed_extra.field_product_template__feed_color"/>
+        <field name="limit">100</field>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_tmpl_gender" model="product.data.feed.column">
+        <field name="sequence">35</field>
+        <field name="name">gender</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product_template"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="product_data_feed_extra.field_product_template__feed_gender"/>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_tmpl_material" model="product.data.feed.column">
+        <field name="sequence">36</field>
+        <field name="name">material</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product_template"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="product_data_feed_extra.field_product_template__feed_material"/>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_tmpl_pattern" model="product.data.feed.column">
+        <field name="sequence">37</field>
+        <field name="name">pattern</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product_template"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="product_data_feed_extra.field_product_template__feed_pattern"/>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_tmpl_size" model="product.data.feed.column">
+        <field name="sequence">38</field>
+        <field name="name">size</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product_template"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="product_data_feed_extra.field_product_template__feed_size"/>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_tmpl_size_type" model="product.data.feed.column">
+        <field name="sequence">39</field>
+        <field name="name">size_type</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product_template"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="field_product_product__feed_gmc_size_type_ids"/>
+        <field name="multi_value_type">list</field>
+        <field name="multi_limit">2</field>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_tmpl_size_system" model="product.data.feed.column">
+        <field name="sequence">40</field>
+        <field name="name">size_system</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product_template"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="product_data_feed_extra.field_product_template__feed_size_system"/>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_tmpl_product_length" model="product.data.feed.column">
+        <field name="sequence">42</field>
+        <field name="name">product_length</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product_template"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="product_data_feed_extra.field_product_template__feed_length"/>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_tmpl_product_width" model="product.data.feed.column">
+        <field name="sequence">43</field>
+        <field name="name">product_width</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product_template"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="product_data_feed_extra.field_product_template__feed_width"/>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_tmpl_product_height" model="product.data.feed.column">
+        <field name="sequence">44</field>
+        <field name="name">product_height</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product_template"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="product_data_feed_extra.field_product_template__feed_height"/>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_tmpl_product_weight" model="product.data.feed.column">
+        <field name="sequence">45</field>
+        <field name="name">product_weight</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product_template"/>
+        <field name="type">special</field>
+        <field name="special_type">product_weight</field>
+        <field name="format">%.2f</field>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_tmpl_product_highlight" model="product.data.feed.column">
+        <field name="sequence">47</field>
+        <field name="name">product_highlight</field>
+        <field name="description">The most relevant highlights of your products.</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product_template"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="product_data_feed_feature.field_product_template__feed_feature_ids"/>
+        <field name="multi_value_type">list</field>
+        <field name="multi_domain">[('feature_id.name', '=', 'gmc_highlight')]</field>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_tmpl_product_ads_redirect" model="product.data.feed.column">
+        <field name="sequence">48</field>
+        <field name="name">ads_redirect</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product_template"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="field_product_template__feed_gmc_ads_redirect_url"/>
+        <field name="limit">2000</field>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_tmpl_product_custom_label" model="product.data.feed.column">
+        <field name="sequence">49</field>
+        <field name="name">custom_label_</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product_template"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="product_data_feed_feature.field_product_template__feed_feature_ids"/>
+        <field name="multi_value_type">list</field>
+        <field name="multi_domain">[('feature_id.name', '=', 'custom_label')]</field>
+        <field name="multi_limit">5</field>
+        <field name="multi_suffix">number</field>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_tmpl_pause" model="product.data.feed.column">
+        <field name="sequence">51</field>
+        <field name="name">pause</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product_template"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="field_product_template__feed_gmc_pause"/>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_tmpl_external_seller_id" model="product.data.feed.column">
+        <field name="sequence">54</field>
+        <field name="name">external_seller_id</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product_template"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="field_product_template__feed_gmc_external_seller_id"/>
+        <field name="relation_field_id" ref="base.field_res_partner__id"/>
+        <field name="limit">50</field>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_tmpl_shopping_ads_excluded_country" model="product.data.feed.column">
+        <field name="sequence">55</field>
+        <field name="name">shopping_ads_excluded_country</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product_template"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="field_product_template__feed_gmc_shopping_ads_excluded_country"/>
+        <field name="relation_field_id" ref="base.field_res_country__code"/>
+        <field name="multi_value_type">list</field>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_tmpl_included_destination" model="product.data.feed.column">
+        <field name="sequence">56</field>
+        <field name="name">included_destination</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product_template"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="field_product_template__feed_gmc_included_destination_ids"/>
+        <field name="relation_field_id" ref="field_product_data_feed_gmc_destination__value"/>
+        <field name="multi_value_type">list</field>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_tmpl_excluded_destination" model="product.data.feed.column">
+        <field name="sequence">57</field>
+        <field name="name">excluded_destination</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product_template"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="field_product_template__feed_gmc_excluded_destination_ids"/>
+        <field name="relation_field_id" ref="field_product_data_feed_gmc_destination__value"/>
+        <field name="multi_value_type">list</field>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_tmpl_shipping" model="product.data.feed.column">
+        <field name="sequence">58</field>
+        <field name="name">shipping</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product_template"/>
+        <field name="type">special</field>
+        <field name="special_type">product_shipping</field>
+        <field name="multi_value_type">list_of_dict</field>
+        <field name="multi_dict_keys">country,region,service,price,min_handling_time,max_handling_time,min_transit_time,max_transit_time</field>
+        <field name="multi_limit">100</field>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_tmpl_shipping_label" model="product.data.feed.column">
+        <field name="sequence">59</field>
+        <field name="name">shipping_label</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product_template"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="product_data_feed_shipping.field_product_template__feed_shipping_group_id"/>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_tmpl_shipping_weight" model="product.data.feed.column">
+        <field name="sequence">60</field>
+        <field name="name">shipping_weight</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product_template"/>
+        <field name="type">special</field>
+        <field name="special_type">multi_field</field>
+        <field name="multi_field_names">feed_shipping_weight,feed_shipping_weight_uom</field>
+        <field name="multi_field_format">%(feed_shipping_weight).2f %(feed_shipping_weight_uom)s</field>
+        <field name="multi_field_values_are_required" eval="True"/>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_tmpl_shipping_length" model="product.data.feed.column">
+        <field name="sequence">61</field>
+        <field name="name">shipping_length</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product_template"/>
+        <field name="type">special</field>
+        <field name="special_type">multi_field</field>
+        <field name="multi_field_names">feed_shipping_length,feed_shipping_size_uom</field>
+        <field name="multi_field_format">%(feed_shipping_length).2f %(feed_shipping_size_uom)s</field>
+        <field name="multi_field_values_are_required" eval="True"/>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_tmpl_shipping_width" model="product.data.feed.column">
+        <field name="sequence">62</field>
+        <field name="name">shipping_width</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product_template"/>
+        <field name="type">special</field>
+        <field name="special_type">multi_field</field>
+        <field name="multi_field_names">feed_shipping_width,feed_shipping_size_uom</field>
+        <field name="multi_field_format">%(feed_shipping_width).2f %(feed_shipping_size_uom)s</field>
+        <field name="multi_field_values_are_required" eval="True"/>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_tmpl_shipping_height" model="product.data.feed.column">
+        <field name="sequence">63</field>
+        <field name="name">shipping_height</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product_template"/>
+        <field name="type">special</field>
+        <field name="special_type">multi_field</field>
+        <field name="multi_field_names">feed_shipping_height,feed_shipping_size_uom</field>
+        <field name="multi_field_format">%(feed_shipping_height).2f %(feed_shipping_size_uom)s</field>
+        <field name="multi_field_values_are_required" eval="True"/>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_tmpl_ships_from_country" model="product.data.feed.column">
+        <field name="sequence">64</field>
+        <field name="name">ships_from_country</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product_template"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="product_data_feed_shipping.field_product_template__feed_ships_from_country_id"/>
+        <field name="relation_field_id" ref="base.field_res_country__code"/>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_tmpl_transit_time_label" model="product.data.feed.column">
+        <field name="sequence">65</field>
+        <field name="name">transit_time_label</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product_template"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="product_data_feed_shipping.field_product_template__feed_shipping_transit_time_group_id"/>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_tmpl_min_handling_time" model="product.data.feed.column">
+        <field name="sequence">66</field>
+        <field name="name">min_handling_time</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product_template"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="product_data_feed_shipping.field_product_template__feed_shipping_min_handling_time"/>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_tmpl_max_handling_time" model="product.data.feed.column">
+        <field name="sequence">67</field>
+        <field name="name">max_handling_time</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product_template"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="product_data_feed_shipping.field_product_template__feed_shipping_max_handling_time"/>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_tmpl_tax" model="product.data.feed.column">
+        <field name="sequence">68</field>
+        <field name="name">tax</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product_template"/>
+        <field name="type">special</field>
+        <field name="special_type">product_tax</field>
+        <field name="multi_value_type">list_of_dict</field>
+        <field name="multi_dict_keys">country,rate</field>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+    <record id="column_gmc_tmpl_tax_category" model="product.data.feed.column">
+        <field name="sequence">69</field>
+        <field name="name">tax_category</field>
+        <field name="feed_id" ref="product_data_feed_gmc.feed_gmc_product_template"/>
+        <field name="type">field</field>
+        <field name="field_id" ref="product_data_feed_feature.field_product_template__feed_feature_ids"/>
+        <field name="multi_value_type">list</field>
+        <field name="multi_domain">[('feature_id.name', '=', 'gmc_tax_category')]</field>
+        <field name="multi_limit">1</field>
+        <field name="limit">100</field>
+        <field name="is_required" eval="False"/>
+        <field name="active" eval="False"/>
+    </record>
+
+</odoo>

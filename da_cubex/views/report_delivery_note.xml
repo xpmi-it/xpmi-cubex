@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="delivery_note_report_template_inherit" inherit_id="l10n_it_delivery_note.delivery_note_report_template">
+        <xpath expr="//table[@name='product_data']/thead/tr" position="inside">
+            <th t-if="doc.print_prices" class="text-right">
+                Subtotal
+            </th>
+        </xpath>
+        <xpath expr="//table[@name='product_data']/tbody/t" position="before">
+            <t t-set="amount_untaxed" t-value="0" />
+            <t t-set="amount_total" t-value="0" />
+            <t t-set="currency" t-value="0" />
+        </xpath>
+        <xpath expr="//table[@name='product_data']/tbody/t/tr/t[@t-if='not line.display_type']" position="inside">
+            <td t-if="doc.print_prices" class="text-right">
+                <span t-field="line.price_subtotal" />
+            </td>
+            <t t-set="amount_untaxed" t-value="amount_untaxed + line.price_subtotal" />
+            <t t-set="amount_total" t-value="amount_total + line.price_total" />
+            <t t-set="currency" t-value="line.currency_id" />
+        </xpath>
+        <xpath expr="//table[@name='product_data']" position="after">
+            <div class="clearfix" name="so_total_summary" t-if="doc.print_prices and doc.line_ids">
+                <div id="total" class="row" name="total">
+                    <div t-attf-class="#{'col-4' if report_type != 'html' else 'col-sm-7 col-md-5'} ml-auto">
+                        <table class="table table-sm">
+                            <tr class="border-black o_subtotal" style="">
+                                <td name="td_amount_untaxed_label"><strong>Subtotal</strong></td>
+                                <td name="td_amount_untaxed" class="text-right">
+                                    <span t-esc="amount_untaxed" t-options='{"widget": "monetary", "display_currency": currency}' />
+                                </td>
+                            </tr>
+                            <tr class="border-black o_total">
+                                <td name="td_amount_total_label"><strong>Total</strong></td>
+                                <td name="td_amount_total" class="text-right">
+                                    <span t-esc="amount_total" t-options='{"widget": "monetary", "display_currency": currency}' />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+
+        <!--PACKAGE-->
+        <xpath expr="//div/table[@name='product_data']/thead/tr/th[3]" position="after">
+            <th>
+                <strong>Package</strong>
+            </th>
+            <th>
+                <strong>Package Qty</strong>
+            </th>
+        </xpath>
+        <xpath expr="//div/table[@name='product_data']/tbody/t/tr[1]/t/td[3]" position="after">
+            <t t-set="data_package" t-value="line.move_id.return_package_from_so_line()"/>
+            <td>
+                <span t-if="data_package" t-esc="data_package[0]"/>
+            </td>
+            <td>
+                <span t-if="data_package[1]" t-esc="data_package[1]"/>
+            </td>
+        </xpath>
+    </template>
+
+</odoo>

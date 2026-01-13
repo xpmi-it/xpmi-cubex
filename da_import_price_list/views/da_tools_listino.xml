@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- ===================================================== -->
+    <!--                      FORM                             -->
+    <!-- ===================================================== -->
+    <record id="import_listino_form_view" model="ir.ui.view">
+        <field name="name">Import Pricelist Form</field>
+        <field name="model">da_tools.listino</field>
+        <field name="arch" type="xml">
+            <form>
+                <button
+                    name="auto_import_pricelist"
+                    string="Import Pricelist"
+                    type="object"
+                    class="oe_highlight"
+                />
+                <group>
+                    <field name="pricelist_name" />
+                    <field name="active" />
+                    <field name="evaso" />
+                    <field name="partner_code" />
+                    <field name="ragione_sociale" />
+                    <field name="applied_on" />
+                    <field name="codice" />
+                    <field name="sconto" />
+                    <field name="prezzo_fisso" />
+                    <field name="errore" />
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <!-- ===================================================== -->
+    <!--                      TREE                             -->
+    <!-- ===================================================== -->
+    <record id="import_listino_tree_view" model="ir.ui.view">
+        <field name="name">Import Pricelist Tree</field>
+        <field name="model">da_tools.listino</field>
+        <field name="arch" type="xml">
+            <list string="Import Listino">
+                <field name="pricelist_name" />
+                <field name="partner_code" />
+                <field name="ragione_sociale" />
+                <field name="applied_on" />
+                <field name="codice" />
+                <field name="sconto" />
+                <field name="prezzo_fisso" />
+                <field name="evaso" />
+                <field name="errore" />
+            </list>
+        </field>
+    </record>
+
+    <!-- ===================================================== -->
+    <!--                      SEARCH                           -->
+    <!-- ===================================================== -->
+    <record id="import_listino_search_view" model="ir.ui.view">
+        <field name="name">Import Pricelist Search</field>
+        <field name="model">da_tools.listino</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="pricelist_name" />
+                <field name="active" />
+                <field name="evaso" />
+                <field name="partner_code" />
+                <field name="ragione_sociale" />
+                <field name="codice" />
+                <field name="sconto" />
+                <field name="prezzo_fisso" />
+                <field name="errore" />
+                <separator />
+                <filter
+                    name="inactive"
+                    string="Archiviato"
+                    domain="[('active', '=', False)]"
+                />
+                <filter name="evaso" string="Evaso" domain="[('evaso', '=', True)]" />
+                <filter
+                    name="non_evaso"
+                    string="Non Evaso"
+                    domain="[('evaso', '=', False)]"
+                />
+                <group name="groupby">
+                    <filter
+                        name="evaso_groupby"
+                        string="Evaso"
+                        context="{'group_by': 'evaso'}"
+                    />
+                    <filter
+                        name="errore_groupby"
+                        string="Errore"
+                        context="{'group_by': 'errore'}"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="da_tools_listino_action" model="ir.actions.act_window">
+        <field name="name">Import Listino</field>
+        <field name="res_model">da_tools.listino</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem
+        id="import_listino_menu"
+        name="Listino Tools"
+        parent="da_import.menu_tools_import"
+        sequence="1"
+        action="da_tools_listino_action"
+    />
+</odoo>

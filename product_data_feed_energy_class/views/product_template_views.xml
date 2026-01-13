@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="product_template_only_form_view" model="ir.ui.view">
+        <field name="name">product.template.common.form.inherit.product_data_feed_energy_class</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product_data_feed_number.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='feed_additional']" position="inside">
+                <field name="energy_efficiency_class" invisible="product_variant_count > 1 or type == 'service'"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="product_template_tree_view" model="ir.ui.view">
+        <field name="name">product.template.product.list.inherit.product_data_feed_energy_class</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_tree_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='default_code']" position="after">
+                <field name="energy_efficiency_class" string="EEI" optional="hide"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="product_template_search_view" model="ir.ui.view">
+        <field name="name">product.template.search.inherit.product_data_feed_energy_class</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_search_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group" position="inside">
+                <filter string="Energy Efficiency" name="energy_efficiency_class" context="{'group_by': 'energy_efficiency_class'}"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

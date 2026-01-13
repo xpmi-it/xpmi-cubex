@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="stock_move_line_partner_tree_view_inherit" model="ir.ui.view">
+        <field name="name">stock.move.line.tree.inherit.form</field>
+        <field name="model">stock.move.line</field>
+        <field name="inherit_id" ref="stock.view_move_line_tree" />
+        <field name="arch" type="xml">
+            <field name="product_id" position="after">
+                <field name="picking_partner_id" string="Partner" />
+            </field>
+        </field>
+    </record>
+</odoo>

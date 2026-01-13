@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <record id="feature_gmc_highlight" model="product.data.feed.feature">
+        <field name="name">gmc_highlight</field>
+        <field name="description">Highlight (for Google Merchant Center)</field>
+    </record>
+    <record id="feature_gmc_tax_category" model="product.data.feed.feature">
+        <field name="name">gmc_tax_category</field>
+        <field name="description">Tax Category (for Google Merchant Center)</field>
+    </record>
+
+</odoo>

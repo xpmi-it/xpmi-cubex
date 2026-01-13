@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="1">
+
+    <record id="gmc_destination_shopping_ads" model="product.data.feed.gmc_destination">
+        <field name="name">Shopping Ads</field>
+        <field name="value">Shopping_ads</field>
+    </record>
+    <record id="gmc_destination_buy_on_google_listings" model="product.data.feed.gmc_destination">
+        <field name="name">Buy on Google listings</field>
+        <field name="value">Buy_on_Google_listings</field>
+    </record>
+    <record id="gmc_destination_display_ads" model="product.data.feed.gmc_destination">
+        <field name="name">Display Ads</field>
+        <field name="value">Display_ads</field>
+    </record>
+    <record id="gmc_destination_local_inventory_ads" model="product.data.feed.gmc_destination">
+        <field name="name">Local Inventory Ads</field>
+        <field name="value">Local_inventory_ads</field>
+    </record>
+    <record id="gmc_destination_free_listings" model="product.data.feed.gmc_destination">
+        <field name="name">Free Listings</field>
+        <field name="value">Free_listings</field>
+    </record>
+    <record id="gmc_destination_free_local_listings" model="product.data.feed.gmc_destination">
+        <field name="name">Free Local Listings</field>
+        <field name="value">Free_local_listings</field>
+    </record>
+    <record id="gmc_destination_youtube_shopping" model="product.data.feed.gmc_destination">
+        <field name="name">YouTube Shopping</field>
+        <field name="value">YouTube_Shopping</field>
+    </record>
+
+</odoo>

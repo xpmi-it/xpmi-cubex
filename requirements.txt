@@ -1,2 +1,5 @@
+# generated from manifests external_dependencies
+openupgradelib
+websockets
 pdf2image
 suds-py3

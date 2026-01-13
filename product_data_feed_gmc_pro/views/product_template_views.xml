@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="product_template_form_view" model="ir.ui.view">
+        <field name="name">product.template.common.form.inherit.product_data_feed_gmc_pro</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product_data_feed_gmc.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='gmc_availability']" position="before">
+                <group string="Product identifiers" name="gmc_identifiers"/>
+            </xpath>
+            <xpath expr="//group[@name='gmc_availability']" position="after">
+                <group string="Detailed product description" name="gmc_details"/>
+                <group string="Destinations" name="gmc_destination">
+                    <field name="feed_gmc_included_destination_ids" widget="many2many_tags" options="{'no_open': True, 'no_create': True}"/>
+                    <field name="feed_gmc_excluded_destination_ids" widget="many2many_tags" options="{'no_open': True, 'no_create': True}"/>
+                    <field name="feed_gmc_shopping_ads_excluded_country" widget="many2many_tags" options="{'no_open': True, 'no_create': True}"/>
+                </group>
+                <group string="Shopping campaigns" name="gmc_shopping"/>
+                <group string="Marketplaces" name="gmc_marketplaces">
+                    <field name="feed_gmc_external_seller_id"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="product_template_only_form_view" model="ir.ui.view">
+        <field name="name">product.template.common.form.inherit.product_data_feed_gmc_pro</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='gmc_identifiers']" position="inside">
+               <field name="feed_gmc_identifier_exists" invisible="product_variant_count > 1"/>
+            </xpath>
+            <xpath expr="//group[@name='gmc_details']" position="inside">
+               <field name="feed_gmc_multipack" invisible="product_variant_count > 1"/>
+               <field name="feed_gmc_is_bundle" invisible="product_variant_count > 1"/>
+               <label for="feed_gmc_min_energy_efficiency_class" string="EEI Range" help="Energy Efficiency Class Range." invisible="product_variant_count > 1"/>
+               <div class="o_row" invisible="product_variant_count > 1">
+                  <field name="feed_gmc_min_energy_efficiency_class" widget="selection"/>
+                  <span class="text-muted" title="Separator"> - </span>
+                  <field name="feed_gmc_max_energy_efficiency_class" widget="selection"/>
+               </div>
+               <field name="feed_gmc_age_group" string="Age Group" invisible="product_variant_count > 1"/>
+               <field name="feed_gmc_for_adult" invisible="product_variant_count > 1"/>
+            </xpath>
+            <xpath expr="//group[@name='gmc_shopping']" position="inside">
+                <field name="feed_gmc_ads_redirect_url" invisible="product_variant_count > 1"/>
+                <field name="feed_gmc_pause" invisible="product_variant_count > 1"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="extra_product_template_only_form_view" model="ir.ui.view">
+        <field name="name">product.template.common.form.inherit.product_data_feed_extra</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product_data_feed_extra.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='feed_size_system']" position="after">
+                <field name="feed_gmc_size_type_ids" widget="many2many_tags" invisible="product_variant_count > 1"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

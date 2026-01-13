@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="product_data_feed_view_form" model="ir.ui.view">
+        <field name="name">product.data.feed.view.form.inherit.product_data_feed_shipping</field>
+        <field name="model">product.data.feed</field>
+        <field name="inherit_id" ref="product_data_feed.product_data_feed_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='technical_settings']" position="before">
+                <group string="Shipping" name="shipping">
+                    <field name="feed_shipping_ids" widget="many2many_tags"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

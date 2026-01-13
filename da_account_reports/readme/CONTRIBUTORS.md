@@ -1,0 +1,1 @@
+- Andrea Barbato - Dinamiche Aziendali srl \<abarbato@dinamicheaziendali.it\>

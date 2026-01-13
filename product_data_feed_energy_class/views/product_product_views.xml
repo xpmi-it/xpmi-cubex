@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="product_normal_form_view" model="ir.ui.view">
+        <field name="name">product.product.form.inherit.product_data_feed_energy_class</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product_data_feed_number.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='feed_additional']" position="inside">
+                <field name="energy_efficiency_class" invisible="type == 'service'"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="product_product_tree_view" model="ir.ui.view">
+        <field name="name">product.product.list.inherit.product.data.feed.energy.class</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_product_tree_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="energy_efficiency_class" string="EEI" optional="hide"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,1687 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="language_selector_inherite" inherit_id="portal.language_selector" name="Language Selector">
+        <xpath expr="." position="replace">
+            <t t-nocache="The query strings can change for the same page and the same rendering."
+            t-nocache-no_text="no_text"
+            t-nocache-codes="codes"
+            t-nocache-_div_classes="_div_classes"
+            t-nocache-_btn_class="_btn_class"
+            t-nocache-_txt_class="_txt_class"
+            t-nocache-_dropdown_menu_class="_dropdown_menu_class">
+                <t t-set="language_selector_visible" t-value="len(frontend_languages) &gt; 1"/>
+                <div t-attf-class="js_language_selector #{_div_classes} d-print-none" t-if="language_selector_visible">
+                <t t-set="active_lang" t-value="frontend_languages[lang]"/>
+                    <button t-attf-class="border-0 dropdown-toggle #{_btn_class or 'btn btn-sm btn-outline-secondary'}" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        <t t-call="website.lang_flag">
+                            <t t-if="no_text and not codes" t-set="flag_lang_alt" t-value="active_lang.name.split('/').pop()"/>
+                            <t t-set="flag_image_url" t-value="active_lang.flag_image_url"/>
+                        </t>
+
+                        <span t-if="not no_text"
+                                t-attf-class="#{_txt_class}"
+                                t-esc="active_lang.name.split('/').pop()"/>
+                        <span t-elif="codes" class="align-middle" t-esc="active_lang.url_code.split('_').pop(0).upper()"/>
+                    </button>
+                    <div t-attf-class="dropdown-menu #{_dropdown_menu_class}" role="menu">
+
+                        <t t-foreach="frontend_languages.values()" t-as="lg">
+
+                            <a class="dropdown-item" t-att-href="url_localized(lang_code=lg.code, prefetch_langs=True, force_default_lang=True)"
+                            t-attf-class="dropdown-item js_change_lang #{active_lang == lg and 'active'}"
+                            t-att-data-url_code="lg.url_code" t-att-title="lg.name.split('/').pop()"
+                            role="menuitem">
+                                <t t-call="website.lang_flag">
+                                    <t t-if="no_text and not codes" t-set="flag_lang_alt" t-value="lg.name.split('/').pop()"/>
+                                    <t t-set="flag_image_url" t-value="lg.flag_image_url"/>
+                                </t>
+                                <span t-if="not no_text" t-esc="lg.name.split('/').pop()" t-attf-class="#{_txt_class}"/>
+                                <span t-elif="codes" t-esc="lg.url_code.split('_').pop(0).upper()" t-attf-class="align-middle #{_txt_class}"/>
+                            </a>
+                        </t>
+                    </div>
+                </div>
+            </t>
+        </xpath>
+
+    </template>
+
+    <!-- Advance Megamenu Navbar-->
+    <template id="as_advance_menu" inherit_id="website.layout" name="Advance Menu">
+        <xpath expr="//header" position="inside">
+            <t t-call="atharva_theme_base.website_advance_megamenu">
+                <t t-set="website_id" t-value="request.env['website'].get_current_website()"/>
+                <t t-if="website_id and website_id.is_advance_megamenu" t-set="advance_menu_id" t-value="website_id.advance_megamenu_id"/>
+            </t>
+        </xpath>
+        <xpath expr="//header" position="before">
+            <div class="header-mobile-bottom d-lg-none">
+                <ul class="h-mob-list">
+                    <li class="as-mob-home hm-icon-item">
+                        <a class="hm-icon" href="/">
+                          <i class="asi asi-home"></i>
+                        </a>
+                    </li>
+                    <li class="as-mob-shop hm-icon-item">
+                        <a class="hm-icon" href="/shop">
+                          <i class="asi asi-grid"></i>
+                        </a>
+                    </li>
+                    <li class="as-mob-search hm-icon-item">
+                        <button class="hm-icon" type="button" data-bs-toggle="offcanvas" data-bs-target="#as_mob_search_modal" aria-controls="as_mob_search_modal">
+                          <i class="asi asi-search"></i>
+                        </button>
+                    </li>
+                    <li class="as-mob-order hm-icon-item">
+                        <a class="hm-icon" href="/my/orders">
+                          <i class="asi asi-box"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </xpath>
+    </template>
+
+
+    <!-- Alan Header: 1-->
+    <template id="as_header_1" inherit_id="website.layout" name="Alan: Header 1" active="False">
+        <xpath expr="//header//nav" position="replace">
+            <t t-call="website.navbar">
+            <t t-set="_navbar_classes" t-valuef="o_header_force_no_radius d-none d-lg-block p-0 shadow-sm rounded-0 as-main-header"/>
+
+            <div id="o_main_nav">
+                <div class="o_header_hide_on_scroll">
+                    <div aria-label="Bottom" t-if="is_view_active('website.header_text_element') or is_view_active('website.header_social_links') or is_view_active('website.header_language_selector')" class="o_header_sales_one_bot o_header_hide_on_scroll gap-3 header-top">
+                        <div class="container as-h-container">
+                            <ul class="ht-top-start">
+                                <!-- Text element -->
+                                <t t-call="website.placeholder_header_text_element">
+                                    <t t-set="_txt_elt_content" t-valuef="phone_mail"/>
+                                    <t t-set="_div_class" t-valuef="as-header-phone-link"/>
+                                </t>
+                                <t t-call="website.header_call_to_action">
+                                    <t t-set="_div_class" t-valuef="as-header-button-link"/>
+                                </t>
+                            </ul>
+                            <ul class="ht-top-end">
+                                <!-- Social -->
+                                <t t-call="website.placeholder_header_social_links">
+                                    <t t-set="_div_class" t-valuef="as-header-social-link"/>
+                                </t>
+                                <!-- Language Selector -->
+                                <t t-call="website.placeholder_header_language_selector">
+                                    <t t-set="_btn_class" t-valuef="o_nav-link_secondary"/>
+                                    <t t-set="_txt_class" t-valuef="ms-1"/>
+                                    <t t-set="_dropdown_menu_class" t-valuef="dropdown-menu-end"/>
+                                    <t t-set="_item_class" t-valuef="position-relative"/>
+                                </t>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-middle">
+                    <div class="container">
+                        <!-- Brand -->
+                        <t t-call="website.placeholder_header_brand">
+                            <t t-set="_link_class" t-valuef="me-4"/>
+                        </t>
+                        <!-- Search bar -->
+                        <div class="hm-search">
+                            <t t-call="theme_alan.as_advance_headers"/>
+                        </div>
+
+                        <ul class="mh-end">
+                            <!-- Website wishlist -->
+                            <t t-call="website_sale_wishlist.header_wishlist_link">
+                                <t t-set="_icon" t-value="True"/>
+                                <t t-set="_link_class" t-value="'hm-icon as-h-wish'"/>
+                                <t t-set="_badge_class" t-value="'position-absolute top-0 end-0 mt-n1 me-n1 rounded-pill'"/>
+                            </t>
+                            <!-- Sign In -->
+                            <t t-call="portal.placeholder_user_sign_in">
+                                <t t-set="_link_class" t-valuef="hm-icon asi asi-user"/>
+                            </t>
+                            <!-- User Dropdown -->
+                            <t t-call="portal.user_dropdown">
+                                <t t-set="_user_name" t-value="true"/>
+                                <t t-set="_icon" t-value="true"/>
+                                <t t-set="_icon_class" t-valuef="as-h-user"/>
+                                <t t-set="_item_class" t-valuef="dropdown"/>
+                                <t t-set="_link_class" t-valuef="hm-icon hm-icon-pill"/>
+                                <t t-set="_icon_wrap_class" t-value="'hm-icon'"/>
+                                <t t-set="_dropdown_menu_class" t-valuef="dropdown-menu-end"/>
+                            </t>
+                            <!-- Website Cart -->
+                            <t t-call="website_sale.header_cart_link">
+                                <t t-set="_icon" t-value="True"/>
+                                <t t-set="_link_class" t-value="'o_navlink_background hm-icon as-h-cart'"/>
+                                <t t-set="_badge_class" t-value="'position-absolute top-0 end-0 mt-n1 me-n1 rounded-pill'"/>
+                            </t>
+                        </ul>
+                    </div>
+                </div>
+
+                <div aria-label="Bottom" class="header-navbar">
+                    <div class="container">
+                        <!-- Navbar -->
+                        <t t-call="website.navbar_nav">
+                            <t t-set="_nav_class" t-valuef="justify-content-end"/>
+                            <!-- Menu -->
+                            <t t-foreach="website.menu_id.child_id" t-as="submenu">
+                                <t t-call="website.submenu">
+                                    <t t-set="item_class" t-valuef="nav-item"/>
+                                    <t t-set="link_class" t-valuef="nav-link"/>
+                                </t>
+                            </t>
+                        </t>
+                    </div>
+                </div>
+            </div>
+        </t>
+        <t t-call="website.template_header_mobile">
+            <t t-set="_txt_elt_content" t-valuef="list"/>
+            <t t-set="_extra_navbar_classes" t-valuef="o_header_force_no_radius"/>
+        </t>
+        </xpath>
+    </template>
+
+    <template id="as_header_2" inherit_id="website.layout" name="Alan: Header 2" active="False">
+        <xpath expr="//header//nav" position="replace">
+            <t t-call="website.navbar">
+            <t t-set="_navbar_classes" t-valuef=" d-none d-lg-block p-0 shadow-sm as-main-header"/>
+
+            <div id="o_main_nav">
+                <div aria-label="Bottom" t-if="is_view_active('website.header_text_element') or is_view_active('website.header_social_links') or is_view_active('website.header_language_selector')" class="o_header_sales_one_bot o_header_hide_on_scroll gap-3 header-top">
+                    <div class="container">
+                        <ul class="ht-top-start">
+                            <!-- Text element -->
+                            <t t-call="website.placeholder_header_text_element">
+                                <t t-set="_txt_elt_content" t-valuef="phone_mail"/>
+                                <t t-set="_div_class" t-valuef="as-header-phone-link"/>
+                            </t>
+                            <t t-call="website.header_call_to_action">
+                                <t t-set="_div_class" t-valuef="as-header-button-link"/>
+                            </t>
+                        </ul>
+                        <ul class="ht-top-end">
+                            <!-- Social -->
+                            <t t-call="website.placeholder_header_social_links">
+                                <t t-set="_div_class" t-valuef="as-header-social-link"/>
+                            </t>
+                            <!-- Language Selector -->
+                            <t t-call="website.placeholder_header_language_selector">
+                                <t t-set="_btn_class" t-valuef="o_nav-link_secondary"/>
+                                <t t-set="_txt_class" t-valuef="ms-1"/>
+                                <t t-set="_dropdown_menu_class" t-valuef="dropdown-menu-end"/>
+                                <t t-set="_item_class" t-valuef="position-relative"/>
+                            </t>
+                        </ul>
+                    </div>
+                </div>
+                <div class="header-middle">
+                    <div class="container d-flex align-items-center justify-content-between">
+                        <!-- Brand -->
+                        <t t-call="website.placeholder_header_brand">
+                            <t t-set="_link_class" t-valuef="me-4"/>
+                        </t>
+
+                        <!-- Search bar -->
+                        <ul class="hm-search flex-fill px-lg-5  m-0 list-unstyled">
+                            <t t-call="theme_alan.as_advance_headers">
+                                <t t-set="_input_classes" t-valuef="as-h-search-input"/>
+                                <t t-set="_submit_classes" t-valuef="as-h-search-btn"/>
+                                <t t-set="_form_classes" t-valuef="as-h-search-form"/>
+                                <t t-set="_classes" t-valuef=""/>
+                            </t>
+                            <!-- <t t-call="website.placeholder_header_search_box">
+                                <t t-set="_input_classes" t-valuef="as-h-search-input"/>
+                                <t t-set="_submit_classes" t-valuef="as-h-search-btn"/>
+                                <t t-set="_form_classes" t-valuef="as-h-search-form"/>
+                                <t t-set="_classes" t-valuef=""/>
+                            </t> -->
+                        </ul>
+
+                        <ul class="mh-end d-flex m-0 list-unstyled gap-2">
+                            <!-- Website wishlist -->
+                            <t t-call="website_sale_wishlist.header_wishlist_link">
+                                <t t-set="_icon" t-value="True"/>
+                                <t t-set="_link_class" t-value="'hm-icon-item as-h-wish'"/>
+                                <t t-set="_badge_class" t-value="'h-sup'"/>
+                                <t t-set="_icon_wrap_class" t-value="'hm-icon'"/>
+                            </t>
+                            <!-- Sign In -->
+                            <t t-call="portal.placeholder_user_sign_in">
+                                <t t-set="_link_class" t-valuef="hm-icon as-login-icon as-h-user"/>
+                            </t>
+                            <!-- User Dropdown -->
+                            <t t-call="portal.user_dropdown">
+                                <t t-set="_user_name" t-value="false"/>
+                                <t t-set="_icon" t-value="true"/>
+                                <t t-set="_icon_class" t-valuef="fa-stack"/>
+                                <t t-set="_item_class" t-valuef="dropdown"/>
+                                <t t-set="_link_class" t-valuef="hm-icon-item p-0 dropdown-toggle-none"/>
+                                <t t-set="_icon_class" t-valuef="asi asi-user"/>
+                                <t t-set="_icon_wrap_class" t-value="'hm-icon'"/>
+                                <t t-set="_dropdown_menu_class" t-valuef="dropdown-menu-end"/>
+                            </t>
+
+                            <!-- Website Cart -->
+                            <t t-call="website_sale.header_cart_link">
+                                <t t-set="_icon" t-value="True"/>
+                                <t t-set="_link_class" t-value="'o_navlink_background hm-icon-item as-h-cart'"/>
+                                <t t-set="_badge_class" t-value="'h-sup'"/>
+                                <t t-set="_icon_wrap_class" t-value="'hm-icon'"/>
+                            </t>
+
+                        </ul>
+                    </div>
+                </div>
+
+
+                <div aria-label="Bottom" class="header-navbar">
+                    <div class="container">
+                        <!-- Navbar -->
+                        <t t-call="website.navbar_nav">
+                            <t t-set="_nav_class" t-valuef="justify-content-center"/>
+
+                            <!-- Menu -->
+                            <t t-foreach="website.menu_id.child_id" t-as="submenu">
+                                <t t-call="website.submenu">
+                                    <t t-set="item_class" t-valuef="nav-item"/>
+                                    <t t-set="link_class" t-valuef="nav-link"/>
+                                </t>
+                            </t>
+                        </t>
+                    </div>
+                </div>
+            </div>
+            </t>
+            <t t-call="website.template_header_mobile">
+                <t t-set="_txt_elt_content" t-valuef="list"/>
+                <t t-set="_extra_navbar_classes" t-valuef="o_header_force_no_radius"/>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="as_header_3" inherit_id="website.layout" name="Alan: Header 3" active="False">
+        <xpath expr="//header//nav" position="replace">
+            <t t-call="website.navbar">
+            <t t-set="_navbar_classes" t-valuef="d-none d-lg-block p-0 shadow-sm as-main-header"/>
+
+            <div id="o_main_nav">
+                <div aria-label="Bottom" t-if="is_view_active('website.header_text_element') or is_view_active('website.header_social_links') or is_view_active('website.header_language_selector')" class="o_header_sales_one_bot o_header_hide_on_scroll gap-3 header-top">
+                    <div class="container as-h-container">
+                        <ul class="ht-top-start">
+                            <!-- Social Links -->
+                            <t t-call="website.placeholder_header_social_links"/>
+                            <!-- Text element -->
+                            <t t-call="website.placeholder_header_text_element">
+                                <t t-set="_txt_elt_content" t-valuef="phone_mail"/>
+                                <t t-set="_div_class" t-valuef="as-header-phone-link"/>
+                            </t>
+                        </ul>
+                        <ul class="ht-top-end">
+                            <!-- Search bar -->
+                            <li>
+                                <t t-call="theme_alan.as_advance_headers">
+                                    <t t-set="_layout" t-valuef="modal"/>
+                                    <t t-set="_input_classes" t-valuef="border border-end-0 p-3"/>
+                                    <t t-set="_submit_classes" t-valuef="border border-start-0 px-4 bg-o-color-4"/>
+                                    <t t-set="_button_classes" t-valuef="ht-btn"/>
+                                </t>
+                            </li>
+                            <!-- <t t-call="website.placeholder_header_search_box">
+                                <t t-set="_layout" t-valuef="modal"/>
+                                <t t-set="_input_classes" t-valuef="border border-end-0 p-3"/>
+                                <t t-set="_submit_classes" t-valuef="border border-start-0 px-4 bg-o-color-4"/>
+                                <t t-set="_button_classes" t-valuef="ht-btn"/>
+                            </t> -->
+                            <!-- Language Selector -->
+                            <t t-call="website.placeholder_header_language_selector">
+                                <t t-set="_txt_class" t-valuef="small"/>
+                                <t t-set="_btn_class" t-valuef="ht-btn"/>
+                                <t t-set="_flag_class" t-valuef="m-2"/>
+                                <t t-set="_dropdown_menu_class" t-valuef="dropdown-menu-end"/>
+                            </t>
+                            <!-- Call To Action -->
+                            <t t-call="website.placeholder_header_call_to_action">
+                                <t t-set="_item_class" t-valuef="as-header-button-link"/>
+                            </t>
+                        </ul>
+                    </div>
+                </div>
+                <div class="header-middle">
+                    <div class="container as-h-container d-flex align-items-center justify-content-between">
+                        <!-- Brand -->
+                        <t t-call="website.placeholder_header_brand">
+                            <t t-set="_link_class" t-valuef="me-4"/>
+                        </t>
+
+                        <!-- Navbar -->
+                        <t t-call="website.navbar_nav">
+                            <t t-set="_nav_class" t-valuef="me-auto"/>
+
+                            <!-- Menu -->
+                            <t t-foreach="website.menu_id.child_id" t-as="submenu">
+                                <t t-call="website.submenu">
+                                    <t t-set="item_class" t-valuef="nav-item"/>
+                                    <t t-set="link_class" t-valuef="nav-link"/>
+                                </t>
+                            </t>
+                        </t>
+
+                        <ul class="mh-end d-flex m-0 list-unstyled">
+                            <!-- Website wishlist -->
+                            <t t-call="website_sale_wishlist.header_wishlist_link">
+                                <t t-set="_icon" t-value="True"/>
+                                <t t-set="_link_class" t-value="'hm-icon-item as-h-wish'"/>
+                                <t t-set="_badge_class" t-value="'h-sup'"/>
+                                <t t-set="_icon_wrap_class" t-value="'hm-icon'"/>
+                            </t>
+                            <!-- Sign In -->
+                            <t t-call="portal.placeholder_user_sign_in">
+                                <t t-set="_link_class" t-valuef="hm-icon as-login-icon as-h-user"/>
+                            </t>
+                            <!-- User Dropdown -->
+                            <t t-call="portal.user_dropdown">
+                                <t t-set="_user_name" t-value="false"/>
+                                <t t-set="_icon" t-value="true"/>
+                                <t t-set="_icon_class" t-valuef="fa-stack"/>
+                                <t t-set="_item_class" t-valuef="dropdown"/>
+                                <t t-set="_link_class" t-valuef="hm-icon-item p-0 dropdown-toggle-none"/>
+                                <t t-set="_icon_class" t-valuef="asi asi-user"/>
+                                <t t-set="_icon_wrap_class" t-value="'hm-icon'"/>
+                                <t t-set="_dropdown_menu_class" t-valuef="dropdown-menu-end"/>
+                            </t>
+
+                            <!-- Website Cart -->
+                            <t t-call="website_sale.header_cart_link">
+                                <t t-set="_icon" t-value="True"/>
+                                <t t-set="_link_class" t-value="'o_navlink_background hm-icon-item as-h-bag'"/>
+                                <t t-set="_badge_class" t-value="'h-sup'"/>
+                                <t t-set="_icon_wrap_class" t-value="'hm-icon'"/>
+                            </t>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            </t>
+            <t t-call="website.template_header_mobile">
+                <t t-set="_txt_elt_content" t-valuef="list"/>
+                <t t-set="_extra_navbar_classes" t-valuef="o_header_force_no_radius"/>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="as_header_4" inherit_id="website.layout" name="Alan: Header 4" active="False">
+        <xpath expr="//header//nav" position="replace">
+            <t t-call="website.navbar">
+            <t t-set="_navbar_classes" t-valuef="d-none d-lg-block p-0 as-main-header"/>
+
+            <div id="o_main_nav">
+                <div aria-label="Bottom" t-if="is_view_active('website.header_text_element') or is_view_active('website.header_social_links') or is_view_active('website.header_language_selector')" class="o_header_sales_one_bot o_header_hide_on_scroll gap-3 header-top">
+                    <div class="container as-h-container">
+                        <ul class="ht-top-start">
+                            <!-- Social Links -->
+                            <t t-call="website.placeholder_header_social_links"/>
+                            <!-- Text element -->
+                            <t t-call="website.placeholder_header_text_element">
+                                <t t-set="_txt_elt_content" t-valuef="phone_mail"/>
+                                <t t-set="_div_class" t-valuef="as-header-phone-link"/>
+                            </t>
+                        </ul>
+                        <ul class="ht-top-end">
+
+                            <!-- Language Selector -->
+                            <t t-call="website.placeholder_header_language_selector">
+                                <t t-set="_txt_class" t-valuef="small"/>
+                                <t t-set="_btn_class" t-valuef="ht-btn"/>
+                                <t t-set="_flag_class" t-valuef="m-2"/>
+                                <t t-set="_dropdown_menu_class" t-valuef="dropdown-menu-end"/>
+                            </t>
+                            <!-- Call To Action -->
+                            <t t-call="website.placeholder_header_call_to_action">
+                                <t t-set="_item_class" t-valuef="as-header-button-link"/>
+                            </t>
+                        </ul>
+                    </div>
+                </div>
+                <div class="header-middle shadow-sm">
+                    <div class="container as-h-container d-flex align-items-center justify-content-between">
+                        <!-- Brand -->
+                        <t t-call="website.placeholder_header_brand">
+                            <t t-set="_link_class" t-valuef="me-4"/>
+                        </t>
+
+                        <ul class="mh-end d-flex m-0 list-unstyled">
+                            <!-- Search bar -->
+                            <t t-call="theme_alan.as_advance_headers">
+                                <t t-set="_layout" t-valuef="modal"/>
+                                <t t-set="_input_classes" t-valuef="border border-end-0 p-3"/>
+                                <t t-set="_submit_classes" t-valuef="border border-start-0 px-4 bg-o-color-4"/>
+                                <t t-set="_button_classes" t-valuef="hm-icon"/>
+                            </t>
+                            <!-- <t t-call="website.placeholder_header_search_box">
+                                <t t-set="_layout" t-valuef="modal"/>
+                                <t t-set="_input_classes" t-valuef="border border-end-0 p-3"/>
+                                <t t-set="_submit_classes" t-valuef="border border-start-0 px-4 bg-o-color-4"/>
+                                <t t-set="_button_classes" t-valuef="hm-icon"/>
+                                <t t-set="_icon_wrap_class" t-value="'hm-icon-item as-h-search'"/>
+                            </t> -->
+                            <!-- Website wishlist -->
+                            <t t-call="website_sale_wishlist.header_wishlist_link">
+                                <t t-set="_icon" t-value="True"/>
+                                <t t-set="_link_class" t-value="'hm-icon-item as-h-wish'"/>
+                                <t t-set="_badge_class" t-value="'h-sup'"/>
+                                <t t-set="_icon_wrap_class" t-value="'hm-icon'"/>
+                            </t>
+                            <!-- Sign In -->
+                            <t t-call="portal.placeholder_user_sign_in">
+                                <t t-set="_link_class" t-valuef="hm-icon as-login-icon as-h-user"/>
+                            </t>
+                            <!-- User Dropdown -->
+                            <t t-call="portal.user_dropdown">
+                                <t t-set="_user_name" t-value="false"/>
+                                <t t-set="_icon" t-value="true"/>
+                                <t t-set="_icon_class" t-valuef="fa-stack"/>
+                                <t t-set="_item_class" t-valuef="dropdown"/>
+                                <t t-set="_link_class" t-valuef="hm-icon-item p-0 dropdown-toggle-none"/>
+                                <t t-set="_icon_class" t-valuef="asi asi-user"/>
+                                <t t-set="_icon_wrap_class" t-value="'hm-icon'"/>
+                                <t t-set="_dropdown_menu_class" t-valuef="dropdown-menu-end"/>
+                            </t>
+
+                            <!-- Website Cart -->
+                            <t t-call="website_sale.header_cart_link">
+                                <t t-set="_icon" t-value="True"/>
+                                <t t-set="_link_class" t-value="'o_navlink_background hm-icon-item as-h-cart'"/>
+                                <t t-set="_badge_class" t-value="'h-sup'"/>
+                                <t t-set="_icon_wrap_class" t-value="'hm-icon'"/>
+                            </t>
+
+                        </ul>
+                    </div>
+                </div>
+                <div aria-label="Bottom" class="header-navbar">
+                    <div class="container">
+                        <!-- Navbar -->
+                        <t t-call="website.navbar_nav">
+                            <t t-set="_nav_class" t-valuef="as-navbar-nav"/>
+
+                            <!-- Menu -->
+                            <t t-foreach="website.menu_id.child_id" t-as="submenu">
+                                <t t-call="website.submenu">
+                                    <t t-set="item_class" t-valuef="nav-item"/>
+                                    <t t-set="link_class" t-valuef="nav-link"/>
+                                </t>
+                            </t>
+                        </t>
+                    </div>
+                </div>
+            </div>
+            </t>
+            <t t-call="website.template_header_mobile">
+                <t t-set="_txt_elt_content" t-valuef="list"/>
+                <t t-set="_extra_navbar_classes" t-valuef="o_header_force_no_radius"/>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="as_header_5" inherit_id="website.layout" name="Alan: Header 5" active="False">
+        <xpath expr="//header//nav" position="replace">
+            <t t-call="website.navbar">
+            <t t-set="_navbar_classes" t-valuef="d-none d-lg-block p-0 shadow-sm as-main-header"/>
+
+            <div id="o_main_nav">
+                <div class="o_header_hide_on_scroll">
+                    <div aria-label="Bottom" t-if="is_view_active('website.header_text_element') or is_view_active('website.header_social_links') or is_view_active('website.header_language_selector')" class="o_header_sales_one_bot gap-3 header-top">
+                        <div class="container">
+                            <ul class="ht-top-start">
+                                <!-- Text element -->
+                                <t t-call="website.placeholder_header_text_element">
+                                    <t t-set="_txt_elt_content" t-valuef="phone_mail"/>
+                                    <t t-set="_div_class" t-valuef="as-header-phone-link"/>
+                                </t>
+                                <t t-call="website.header_call_to_action">
+                                    <t t-set="_div_class" t-valuef="as-header-button-link"/>
+                                </t>
+                            </ul>
+                            <ul class="ht-top-end">
+                                <!-- Social -->
+                                <t t-call="website.placeholder_header_social_links">
+                                    <t t-set="_div_class" t-valuef="as-header-social-link"/>
+                                </t>
+                                <!-- Language Selector -->
+                                <t t-call="website.placeholder_header_language_selector">
+                                    <t t-set="_btn_class" t-valuef="o_nav-link_secondary"/>
+                                    <t t-set="_txt_class" t-valuef="ms-1"/>
+                                    <t t-set="_dropdown_menu_class" t-valuef="dropdown-menu-end"/>
+                                    <t t-set="_item_class" t-valuef="position-relative"/>
+                                </t>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="header-middle">
+                        <div class="container d-flex align-items-center justify-content-between">
+                            <!-- Brand -->
+                            <t t-call="website.placeholder_header_brand">
+                                <t t-set="_link_class" t-valuef=""/>
+                            </t>
+
+                            <!-- Search bar -->
+                            <ul class="hm-search flex-fill px-lg-5  m-0 list-unstyled">
+                                <t t-call="theme_alan.as_advance_headers">
+                                    <t t-set="_input_classes" t-valuef="as-h-search-input"/>
+                                    <t t-set="_submit_classes" t-valuef="as-h-search-btn"/>
+                                    <t t-set="_form_classes" t-valuef="as-h-search-form"/>
+                                    <t t-set="_classes" t-valuef=""/>
+                                </t>
+                                <!-- <t t-call="website.placeholder_header_search_box">
+                                    <t t-set="_input_classes" t-valuef="as-h-search-input"/>
+                                    <t t-set="_submit_classes" t-valuef="as-h-search-btn"/>
+                                    <t t-set="_form_classes" t-valuef="as-h-search-form"/>
+                                    <t t-set="_classes" t-valuef=""/>
+                                </t> -->
+                            </ul>
+
+                            <ul class="mh-end d-flex m-0 list-unstyled gap-2">
+                                <!-- Website Cart -->
+                                <t t-call="website_sale.header_cart_link">
+                                    <t t-set="_icon" t-value="True"/>
+                                    <t t-set="_link_class" t-value="'o_navlink_background hm-icon-item as-h-cart'"/>
+                                    <t t-set="_badge_class" t-value="'h-sup'"/>
+                                    <t t-set="_icon_wrap_class" t-value="'hm-icon'"/>
+                                </t>
+                                <!-- Website wishlist -->
+                                <t t-call="website_sale_wishlist.header_wishlist_link">
+                                    <t t-set="_icon" t-value="True"/>
+                                    <t t-set="_link_class" t-value="'hm-icon-item as-h-wish'"/>
+                                    <t t-set="_badge_class" t-value="'h-sup'"/>
+                                    <t t-set="_icon_wrap_class" t-value="'hm-icon'"/>
+                                </t>
+                                <!-- Sign In -->
+                                <t t-call="portal.placeholder_user_sign_in">
+                                    <t t-set="_link_class" t-valuef="hm-icon as-login-icon as-h-user"/>
+                                </t>
+                                <!-- User Dropdown -->
+                                <t t-call="portal.user_dropdown">
+                                    <t t-set="_user_name" t-value="false"/>
+                                    <t t-set="_icon" t-value="true"/>
+                                    <t t-set="_icon_class" t-valuef="fa-stack"/>
+                                    <t t-set="_item_class" t-valuef="dropdown"/>
+                                    <t t-set="_link_class" t-valuef="hm-icon-item p-0 dropdown-toggle-none"/>
+                                    <t t-set="_icon_class" t-valuef="asi asi-user"/>
+                                    <t t-set="_icon_wrap_class" t-value="'hm-icon'"/>
+                                    <t t-set="_dropdown_menu_class" t-valuef="dropdown-menu-end"/>
+                                </t>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div aria-label="Bottom" class="header-navbar">
+                    <t t-call="website.placeholder_header_brand">
+                        <t t-set="_link_class" t-valuef=""/>
+                    </t>
+                    <div class="container">
+                        <!-- Navbar -->
+                        <t t-call="website.navbar_nav">
+                            <t t-set="_nav_class" t-valuef="justify-content-center"/>
+
+                            <!-- Menu -->
+                            <t t-foreach="website.menu_id.child_id" t-as="submenu">
+                                <t t-call="website.submenu">
+                                    <t t-set="item_class" t-valuef="nav-item"/>
+                                    <t t-set="link_class" t-valuef="nav-link"/>
+                                </t>
+                            </t>
+                        </t>
+                    </div>
+                    <ul class="mh-end d-flex m-0 list-unstyled gap-2 justify-content-end">
+                        <!-- Website Cart -->
+                        <t t-call="website_sale.header_cart_link">
+                            <t t-set="_icon" t-value="True"/>
+                            <t t-set="_link_class" t-value="'o_navlink_background hm-icon-item as-h-cart'"/>
+                            <t t-set="_badge_class" t-value="'h-sup'"/>
+                            <t t-set="_icon_wrap_class" t-value="'hm-icon'"/>
+                        </t>
+                        <!-- Website wishlist -->
+                        <t t-call="website_sale_wishlist.header_wishlist_link">
+                            <t t-set="_icon" t-value="True"/>
+                            <t t-set="_link_class" t-value="'hm-icon-item as-h-wish'"/>
+                            <t t-set="_badge_class" t-value="'h-sup'"/>
+                            <t t-set="_icon_wrap_class" t-value="'hm-icon'"/>
+                        </t>
+                    </ul>
+                </div>
+            </div>
+            </t>
+            <t t-call="website.template_header_mobile">
+                <t t-set="_txt_elt_content" t-valuef="list"/>
+                <t t-set="_extra_navbar_classes" t-valuef="o_header_force_no_radius"/>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="as_header_6" inherit_id="website.layout" name="Alan: Header 6" active="False">
+        <xpath expr="//header//nav" position="replace">
+            <t t-call="website.navbar">
+            <t t-set="_navbar_classes" t-valuef="d-none d-lg-block p-0 as-main-header shadow-sm"/>
+
+            <div id="o_main_nav">
+                <div class="o_header_hide_on_scroll">
+                    <div aria-label="Bottom" t-if="is_view_active('website.header_text_element') or is_view_active('website.header_social_links') or is_view_active('website.header_language_selector')" class="o_header_sales_one_bot gap-3 header-top">
+                        <div class="container as-h-container">
+                            <ul class="ht-top-start">
+                                <!-- Social Links -->
+                                <t t-call="website.placeholder_header_social_links"/>
+                                <!-- Text element -->
+                                <t t-call="website.placeholder_header_text_element">
+                                    <t t-set="_txt_elt_content" t-valuef="phone_mail"/>
+                                    <t t-set="_div_class" t-valuef="as-header-phone-link"/>
+                                </t>
+                            </ul>
+                            <ul class="ht-top-end">
+
+                                <!-- Language Selector -->
+                                <t t-call="website.placeholder_header_language_selector">
+                                    <t t-set="_txt_class" t-valuef="small"/>
+                                    <t t-set="_btn_class" t-valuef="ht-btn"/>
+                                    <t t-set="_flag_class" t-valuef="m-2"/>
+                                    <t t-set="_dropdown_menu_class" t-valuef="dropdown-menu-end"/>
+                                </t>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="header-middle">
+                        <div class="container as-h-container d-flex align-items-center justify-content-between">
+                            <!-- Brand -->
+                            <t t-call="website.placeholder_header_brand">
+                                <t t-set="_link_class" t-valuef="me-4"/>
+                            </t>
+
+                            <ul class="mh-end d-flex m-0 list-unstyled">
+                                <!-- Search bar -->
+                                <t t-call="theme_alan.as_advance_headers">
+                                    <t t-set="_layout" t-valuef="modal"/>
+                                    <t t-set="_input_classes" t-valuef="border border-end-0 p-3"/>
+                                    <t t-set="_submit_classes" t-valuef="border border-start-0 px-4 bg-o-color-4"/>
+                                    <t t-set="_form_classes" t-valuef=""/>
+                                    <t t-set="_button_classes" t-valuef="hm-icon"/>
+                                </t>
+                                <!-- <t t-call="website.placeholder_header_search_box">
+                                    <t t-set="_layout" t-valuef="modal"/>
+                                    <t t-set="_input_classes" t-valuef="border border-end-0 p-3"/>
+                                    <t t-set="_submit_classes" t-valuef="border border-start-0 px-4 bg-o-color-4"/>
+                                    <t t-set="_button_classes" t-valuef="hm-icon"/>
+                                    <t t-set="_icon_wrap_class" t-value="'hm-icon-item as-h-search'"/>
+                                </t> -->
+                                <!-- Website wishlist -->
+                                <t t-call="website_sale_wishlist.header_wishlist_link">
+                                    <t t-set="_icon" t-value="True"/>
+                                    <t t-set="_link_class" t-value="'hm-icon-item as-h-wish'"/>
+                                    <t t-set="_badge_class" t-value="'h-sup'"/>
+                                    <t t-set="_icon_wrap_class" t-value="'hm-icon'"/>
+                                </t>
+                                <!-- Sign In -->
+                                <t t-call="portal.placeholder_user_sign_in">
+                                    <t t-set="_link_class" t-valuef="hm-icon as-login-icon as-h-user"/>
+                                </t>
+                                <!-- User Dropdown -->
+                                <t t-call="portal.user_dropdown">
+                                    <t t-set="_user_name" t-value="false"/>
+                                    <t t-set="_icon" t-value="true"/>
+                                    <t t-set="_icon_class" t-valuef="fa-stack"/>
+                                    <t t-set="_item_class" t-valuef="dropdown"/>
+                                    <t t-set="_link_class" t-valuef="hm-icon-item p-0 dropdown-toggle-none"/>
+                                    <t t-set="_icon_class" t-valuef="asi asi-user"/>
+                                    <t t-set="_icon_wrap_class" t-value="'hm-icon'"/>
+                                    <t t-set="_dropdown_menu_class" t-valuef="dropdown-menu-end"/>
+                                </t>
+
+                                <!-- Website Cart -->
+                                <t t-call="website_sale.header_cart_link">
+                                    <t t-set="_icon" t-value="True"/>
+                                    <t t-set="_link_class" t-value="'o_navlink_background hm-icon-item as-h-bag'"/>
+                                    <t t-set="_badge_class" t-value="'h-sup'"/>
+                                    <t t-set="_icon_wrap_class" t-value="'hm-icon'"/>
+                                </t>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div aria-label="Bottom" class="header-navbar">
+                    <div class="container">
+                        <!-- Navbar -->
+                        <t t-call="website.navbar_nav">
+                            <t t-set="_nav_class" t-valuef="me-auto"/>
+
+                            <!-- Menu -->
+                            <t t-foreach="website.menu_id.child_id" t-as="submenu">
+                                <t t-call="website.submenu">
+                                    <t t-set="item_class" t-valuef="nav-item"/>
+                                    <t t-set="link_class" t-valuef="nav-link"/>
+                                </t>
+                            </t>
+                        </t>
+                        <ul class="h-cta" t-if="is_view_active('website.placeholder_header_call_to_action')">
+                            <!-- Call To Action -->
+                            <t t-call="website.placeholder_header_call_to_action">
+                                <t t-set="_item_class" t-valuef="as-header-button-link"/>
+                            </t>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            </t>
+            <t t-call="website.template_header_mobile">
+                <t t-set="_txt_elt_content" t-valuef="list"/>
+                <t t-set="_extra_navbar_classes" t-valuef="o_header_force_no_radius"/>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="as_header_7" inherit_id="website.layout" name="Alan: Header 7" active="False">
+        <xpath expr="//header//nav" position="replace">
+            <t t-call="website.navbar">
+            <t t-set="_navbar_classes" t-valuef="d-none d-lg-block p-0 shadow-sm as-main-header"/>
+
+            <div id="o_main_nav">
+                <div aria-label="Bottom" t-if="is_view_active('website.header_text_element') or is_view_active('website.header_social_links') or is_view_active('website.header_language_selector')" class="o_header_sales_one_bot o_header_hide_on_scroll gap-3 header-top header-alan_topbar">
+                    <div class="container">
+                        <ul class="ht-top-start">
+                            <!-- Social -->
+                            <t t-call="website.placeholder_header_social_links">
+                                <t t-set="_div_class" t-valuef="as-header-social-link"/>
+                            </t>
+                            <!-- Text element -->
+                            <t t-call="website.placeholder_header_text_element">
+                                <t t-set="_txt_elt_content" t-valuef="sentence"/>
+                            </t>
+                            <t t-call="website.header_call_to_action">
+                                <t t-set="_div_class" t-valuef="as-header-button-link"/>
+                            </t>
+                            <!-- Language Selector -->
+                            <t t-call="website.placeholder_header_language_selector">
+                                <t t-set="_btn_class" t-valuef="o_nav-link_secondary"/>
+                                <t t-set="_txt_class" t-valuef="ms-1"/>
+                                <t t-set="_dropdown_menu_class" t-valuef="dropdown-menu-end"/>
+                                <t t-set="_item_class" t-valuef="position-relative"/>
+                            </t>
+                        </ul>
+                    </div>
+                </div>
+                <div class="header-middle">
+                    <div class="container d-flex align-items-center justify-content-between">
+                        <!-- Search bar -->
+                        <ul class="hm-search m-0 list-unstyled">
+                            <t t-call="theme_alan.as_advance_headers">
+                                <t t-set="_input_classes" t-valuef="as-h-search-input"/>
+                                <t t-set="_submit_classes" t-valuef="as-h-search-btn"/>
+                                <t t-set="_form_classes" t-valuef="as-h-search-form"/>
+                                <t t-set="_classes" t-valuef=""/>
+                            </t>
+                            <!-- <t t-call="website.placeholder_header_search_box">
+                                <t t-set="_input_classes" t-valuef="as-h-search-input"/>
+                                <t t-set="_submit_classes" t-valuef="as-h-search-btn"/>
+                                <t t-set="_form_classes" t-valuef="as-h-search-form"/>
+                                <t t-set="_classes" t-valuef=""/>
+                            </t> -->
+                        </ul>
+                        <!-- Brand -->
+                        <div class="h-logo">
+                            <t t-call="website.placeholder_header_brand">
+                                <t t-set="_link_class" t-valuef=""/>
+                            </t>
+                        </div>
+
+                        <ul class="mh-end d-flex m-0 list-unstyled">
+                            <!-- Website wishlist -->
+                            <t t-call="website_sale_wishlist.header_wishlist_link">
+                                <t t-set="_icon" t-value="True"/>
+                                <t t-set="_link_class" t-value="'hm-icon-item as-h-wish'"/>
+                                <t t-set="_badge_class" t-value="'h-sup'"/>
+                                <t t-set="_icon_wrap_class" t-value="'hm-icon'"/>
+                            </t>
+                            <!-- Sign In -->
+                            <t t-call="portal.placeholder_user_sign_in">
+                                <t t-set="_link_class" t-valuef="hm-icon as-login-icon as-h-user"/>
+                            </t>
+                            <!-- User Dropdown -->
+                            <t t-call="portal.user_dropdown">
+                                <t t-set="_user_name" t-value="false"/>
+                                <t t-set="_icon" t-value="true"/>
+                                <t t-set="_icon_class" t-valuef="fa-stack"/>
+                                <t t-set="_item_class" t-valuef="dropdown"/>
+                                <t t-set="_link_class" t-valuef="hm-icon-item p-0 dropdown-toggle-none"/>
+                                <t t-set="_icon_class" t-valuef="asi asi-user"/>
+                                <t t-set="_icon_wrap_class" t-value="'hm-icon'"/>
+                                <t t-set="_dropdown_menu_class" t-valuef="dropdown-menu-end"/>
+                            </t>
+
+                            <!-- Website Cart -->
+                            <t t-call="website_sale.header_cart_link">
+                                <t t-set="_icon" t-value="True"/>
+                                <t t-set="_link_class" t-value="'o_navlink_background hm-icon-item as-h-bag'"/>
+                                <t t-set="_badge_class" t-value="'h-sup'"/>
+                                <t t-set="_icon_wrap_class" t-value="'hm-icon'"/>
+                            </t>
+
+                        </ul>
+                    </div>
+                </div>
+
+
+                <div aria-label="Bottom" class="header-navbar">
+                    <div class="container">
+                        <!-- Navbar -->
+                        <t t-call="website.navbar_nav">
+                            <t t-set="_nav_class" t-valuef="justify-content-center"/>
+
+                            <!-- Menu -->
+                            <t t-foreach="website.menu_id.child_id" t-as="submenu">
+                                <t t-call="website.submenu">
+                                    <t t-set="item_class" t-valuef="nav-item"/>
+                                    <t t-set="link_class" t-valuef="nav-link"/>
+                                </t>
+                            </t>
+                        </t>
+                    </div>
+                </div>
+            </div>
+            </t>
+            <t t-call="website.template_header_mobile">
+                <t t-set="_txt_elt_content" t-valuef="list"/>
+                <t t-set="_extra_navbar_classes" t-valuef="o_header_force_no_radius"/>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="as_header_8" inherit_id="website.layout" name="Alan: Header 8" active="False">
+        <xpath expr="//header//nav" position="replace">
+            <t t-call="website.navbar">
+            <t t-set="_navbar_classes" t-valuef="d-none d-lg-block p-0 shadow-sm as-main-header"/>
+
+            <div id="o_main_nav">
+                <div aria-label="Bottom" t-if="is_view_active('website.header_text_element') or is_view_active('website.header_social_links') or is_view_active('website.header_language_selector')" class="o_header_sales_one_bot o_header_hide_on_scroll gap-3 header-top">
+                    <div class="container">
+                        <ul class="ht-top-start">
+                            <!-- Text element -->
+                            <t t-call="website.placeholder_header_text_element">
+                                <t t-set="_txt_elt_content" t-valuef="phone_mail"/>
+                                <t t-set="_div_class" t-valuef="as-header-phone-link"/>
+                            </t>
+                            <t t-call="website.header_call_to_action">
+                                <t t-set="_div_class" t-valuef="as-header-button-link"/>
+                            </t>
+                        </ul>
+                        <ul class="ht-top-end">
+                            <!-- Social -->
+                            <t t-call="website.placeholder_header_social_links">
+                                <t t-set="_div_class" t-valuef="as-header-social-link"/>
+                            </t>
+                            <!-- Language Selector -->
+                            <t t-call="website.placeholder_header_language_selector">
+                                <t t-set="_btn_class" t-valuef="o_nav-link_secondary"/>
+                                <t t-set="_txt_class" t-valuef="ms-1"/>
+                                <t t-set="_dropdown_menu_class" t-valuef="dropdown-menu-end"/>
+                                <t t-set="_item_class" t-valuef="position-relative"/>
+                            </t>
+                        </ul>
+                    </div>
+                </div>
+                <div class="header-middle">
+                    <div class="container d-flex align-items-center justify-content-between">
+                        <!-- Brand -->
+                        <t t-call="website.placeholder_header_brand">
+                            <t t-set="_link_class" t-valuef="me-4"/>
+                        </t>
+                        <!-- Navbar -->
+                        <t t-call="website.navbar_nav">
+                            <t t-set="_nav_class" t-valuef="me-auto"/>
+
+                            <!-- Menu -->
+                            <t t-foreach="website.menu_id.child_id" t-as="submenu">
+                                <t t-call="website.submenu">
+                                    <t t-set="item_class" t-valuef="nav-item"/>
+                                    <t t-set="link_class" t-valuef="nav-link"/>
+                                </t>
+                            </t>
+                        </t>
+
+                        <ul class="mh-end d-flex m-0 list-unstyled">
+                            <!-- Search bar -->
+                            <ul class="hm-search m-0 list-unstyled">
+                                <t t-call="theme_alan.as_advance_headers">
+                                    <t t-set="_input_classes" t-valuef="as-h-search-input"/>
+                                    <t t-set="_submit_classes" t-valuef="as-h-search-btn"/>
+                                    <t t-set="_form_classes" t-valuef="as-h-search-form"/>
+                                    <t t-set="_classes" t-valuef=""/>
+                                </t>
+                                <!-- <t t-call="website.placeholder_header_search_box">
+                                    <t t-set="_input_classes" t-valuef="as-h-search-input"/>
+                                    <t t-set="_submit_classes" t-valuef="as-h-search-btn"/>
+                                    <t t-set="_form_classes" t-valuef="as-h-search-form"/>
+                                    <t t-set="_classes" t-valuef=""/>
+                                </t> -->
+                            </ul>
+                            <!-- Website wishlist -->
+                            <t t-call="website_sale_wishlist.header_wishlist_link">
+                                <t t-set="_icon" t-value="True"/>
+                                <t t-set="_link_class" t-value="'hm-icon-item as-h-wish'"/>
+                                <t t-set="_badge_class" t-value="'h-sup'"/>
+                                <t t-set="_icon_wrap_class" t-value="'hm-icon'"/>
+                            </t>
+                            <!-- Sign In -->
+                            <t t-call="portal.placeholder_user_sign_in">
+                                <t t-set="_link_class" t-valuef="hm-icon as-login-icon as-h-user"/>
+                            </t>
+                            <!-- User Dropdown -->
+                            <t t-call="portal.user_dropdown">
+                                <t t-set="_user_name" t-value="false"/>
+                                <t t-set="_icon" t-value="true"/>
+                                <t t-set="_icon_class" t-valuef="fa-stack"/>
+                                <t t-set="_item_class" t-valuef="dropdown"/>
+                                <t t-set="_link_class" t-valuef="hm-icon-item p-0 dropdown-toggle-none"/>
+                                <t t-set="_icon_class" t-valuef="asi asi-user"/>
+                                <t t-set="_icon_wrap_class" t-value="'hm-icon'"/>
+                                <t t-set="_dropdown_menu_class" t-valuef="dropdown-menu-end"/>
+                            </t>
+
+                            <!-- Website Cart -->
+                            <t t-call="website_sale.header_cart_link">
+                                <t t-set="_icon" t-value="True"/>
+                                <t t-set="_link_class" t-value="'o_navlink_background hm-icon-item as-h-bag'"/>
+                                <t t-set="_badge_class" t-value="'h-sup'"/>
+                                <t t-set="_icon_wrap_class" t-value="'hm-icon'"/>
+                            </t>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            </t>
+            <t t-call="website.template_header_mobile">
+                <t t-set="_txt_elt_content" t-valuef="list"/>
+                <t t-set="_extra_navbar_classes" t-valuef="o_header_force_no_radius"/>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="as_header_9" inherit_id="website.layout" name="Alan: Header 9" active="False">
+        <xpath expr="//header" position="before">
+            <ul class="as-alone-search">
+                <t t-call="theme_alan.as_advance_headers">
+                    <t t-set="_layout" t-valuef="modal"/>
+                    <t t-set="_input_classes" t-valuef="border border-end-0 p-3"/>
+                    <t t-set="_submit_classes" t-valuef="border border-start-0 px-4 bg-o-color-4"/>
+                    <t t-set="_button_classes" t-valuef="d-none"/>
+                    <t t-set="_icon_wrap_class" t-value="'hm-icon-item as-h-search'"/>
+                </t>
+                <!-- <t t-call="website.placeholder_header_search_box">
+                    <t t-set="_layout" t-valuef="modal"/>
+                    <t t-set="_input_classes" t-valuef="border border-end-0 p-3"/>
+                    <t t-set="_submit_classes" t-valuef="border border-start-0 px-4 bg-o-color-4"/>
+                    <t t-set="_button_classes" t-valuef="d-none"/>
+                    <t t-set="_icon_wrap_class" t-value="'hm-icon-item as-h-search'"/>
+                </t> -->
+            </ul>
+        </xpath>
+        <xpath expr="//header//nav" position="replace">
+            <t t-call="website.navbar">
+            <t t-set="_navbar_classes" t-valuef="d-none d-lg-block p-0 shadow-sm as-main-header"/>
+
+            <div id="o_main_nav">
+                <div aria-label="Bottom" t-if="is_view_active('website.header_text_element') or is_view_active('website.header_social_links') or is_view_active('website.header_language_selector')" class="o_header_sales_one_bot o_header_hide_on_scroll gap-3 header-top">
+                    <div class="container as-h-container">
+                        <ul class="ht-top-start">
+                            <!-- Text element -->
+                            <t t-call="website.placeholder_header_text_element">
+                                <t t-set="_txt_elt_content" t-valuef="phone_mail"/>
+                                <t t-set="_div_class" t-valuef="as-header-phone-link"/>
+                            </t>
+                            <t t-call="website.header_call_to_action">
+                                <t t-set="_div_class" t-valuef="as-header-button-link"/>
+                            </t>
+                        </ul>
+                        <ul class="ht-top-end">
+                            <!-- Social -->
+                            <t t-call="website.placeholder_header_social_links">
+                                <t t-set="_div_class" t-valuef="as-header-social-link"/>
+                            </t>
+                            <!-- Language Selector -->
+                            <t t-call="website.placeholder_header_language_selector">
+                                <t t-set="_btn_class" t-valuef="o_nav-link_secondary"/>
+                                <t t-set="_txt_class" t-valuef="ms-1"/>
+                                <t t-set="_dropdown_menu_class" t-valuef="dropdown-menu-end"/>
+                                <t t-set="_item_class" t-valuef="position-relative"/>
+                            </t>
+                        </ul>
+                    </div>
+                </div>
+                <div class="header-middle">
+                    <div class="container d-flex align-items-center justify-content-between as-h-container">
+                        <!-- Brand -->
+                        <t t-call="website.placeholder_header_brand">
+                            <t t-set="_link_class" t-valuef="me-4"/>
+                        </t>
+                        <!-- Navbar -->
+                        <t t-call="website.navbar_nav">
+                            <t t-set="_nav_class" t-valuef="me-auto"/>
+
+                            <!-- Menu -->
+                            <t t-foreach="website.menu_id.child_id" t-as="submenu">
+                                <t t-call="website.submenu">
+                                    <t t-set="item_class" t-valuef="nav-item"/>
+                                    <t t-set="link_class" t-valuef="nav-link"/>
+                                </t>
+                            </t>
+                        </t>
+
+                        <ul class="mh-end d-flex m-0 list-unstyled">
+                           <!-- Search bar -->
+                           <li>
+                                <a data-bs-target="#o_search_modal" data-bs-toggle="modal" role="button" title="Search" class="btn rounded-circle p-1 lh-1 hm-icon o_not_editable">
+                                    <i class="oi oi-search fa-stack lh-lg"></i>
+                                </a>
+                           </li>
+
+                            <!-- Website wishlist -->
+                            <t t-call="website_sale_wishlist.header_wishlist_link">
+                                <t t-set="_icon" t-value="True"/>
+                                <t t-set="_link_class" t-value="'hm-icon-item as-h-wish'"/>
+                                <t t-set="_badge_class" t-value="'h-sup'"/>
+                                <t t-set="_icon_wrap_class" t-value="'hm-icon'"/>
+                            </t>
+                            <!-- Website Cart -->
+                            <t t-call="website_sale.header_cart_link">
+                                <t t-set="_icon" t-value="True"/>
+                                <t t-set="_link_class" t-value="'o_navlink_background hm-icon-item as-h-bag'"/>
+                                <t t-set="_badge_class" t-value="'h-sup'"/>
+                                <t t-set="_icon_wrap_class" t-value="'hm-icon'"/>
+                            </t>
+                            <!-- Sign In -->
+                            <t t-call="portal.placeholder_user_sign_in">
+                                <t t-set="_link_class" t-valuef="hm-icon as-login-icon as-h-user"/>
+                            </t>
+                            <!-- User Dropdown -->
+                            <t t-call="portal.user_dropdown">
+                                <t t-set="_user_name" t-value="false"/>
+                                <t t-set="_icon" t-value="true"/>
+                                <t t-set="_icon_class" t-valuef="fa-stack"/>
+                                <t t-set="_item_class" t-valuef="dropdown"/>
+                                <t t-set="_link_class" t-valuef="hm-icon-item p-0 dropdown-toggle-none"/>
+                                <t t-set="_icon_class" t-valuef="asi asi-user"/>
+                                <t t-set="_icon_wrap_class" t-value="'hm-icon'"/>
+                                <t t-set="_dropdown_menu_class" t-valuef="dropdown-menu-end"/>
+                            </t>
+
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            </t>
+            <t t-call="website.template_header_mobile">
+                <t t-set="_txt_elt_content" t-valuef="list"/>
+                <t t-set="_extra_navbar_classes" t-valuef="o_header_force_no_radius"/>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="as_header_10" inherit_id="website.layout" name="Alan: Header 10" active="False">
+        <xpath expr="//header" position="before">
+            <ul class="as-alone-search">
+                <t t-call="theme_alan.as_advance_headers">
+                    <t t-set="_layout" t-valuef="modal"/>
+                    <t t-set="_input_classes" t-valuef="border border-end-0 p-3"/>
+                    <t t-set="_submit_classes" t-valuef="border border-start-0 px-4 bg-o-color-4"/>
+                    <t t-set="_button_classes" t-valuef="d-none"/>
+                    <t t-set="_icon_wrap_class" t-value="'hm-icon-item as-h-search'"/>
+                </t>
+                <!-- <t t-call="website.placeholder_header_search_box">
+                    <t t-set="_layout" t-valuef="modal"/>
+                    <t t-set="_input_classes" t-valuef="border border-end-0 p-3"/>
+                    <t t-set="_submit_classes" t-valuef="border border-start-0 px-4 bg-o-color-4"/>
+                    <t t-set="_button_classes" t-valuef="d-none"/>
+                    <t t-set="_icon_wrap_class" t-value="'hm-icon-item as-h-search'"/>
+                </t> -->
+            </ul>
+        </xpath>
+        <xpath expr="//header//nav" position="replace">
+            <t t-call="website.navbar">
+            <t t-set="_navbar_classes" t-valuef="d-none d-lg-block p-0 shadow-sm as-main-header"/>
+            <div id="o_main_nav">
+                <div aria-label="Bottom" t-if="is_view_active('website.header_text_element') or is_view_active('website.header_social_links') or is_view_active('website.header_language_selector')" class="o_header_sales_one_bot o_header_hide_on_scroll gap-3 header-top">
+                    <div class="container as-h-container">
+                        <ul class="ht-top-start">
+                            <!-- Text element -->
+                            <t t-call="website.placeholder_header_text_element">
+                                <t t-set="_txt_elt_content" t-valuef="phone_mail"/>
+                                <t t-set="_div_class" t-valuef="as-header-phone-link"/>
+                            </t>
+
+                        </ul>
+                        <ul class="ht-top-end">
+                            <!-- Social -->
+                            <t t-call="website.placeholder_header_social_links">
+                                <t t-set="_div_class" t-valuef="as-header-social-link"/>
+                            </t>
+                        </ul>
+                    </div>
+                </div>
+                <div class="header-middle">
+                    <div class="container d-flex align-items-center justify-content-between as-h-container">
+                        <ul class="mh-start d-flex">
+                            <!-- Language Selector -->
+                            <t t-call="website.placeholder_header_language_selector">
+                                <t t-set="_btn_class" t-valuef="o_nav-link_secondary btn-primary"/>
+                                <t t-set="_txt_class" t-valuef="ms-1"/>
+                                <t t-set="_dropdown_menu_class" t-valuef="dropdown-menu-end"/>
+                                <t t-set="_item_class" t-valuef="position-relative"/>
+                            </t>
+                            <t t-call="website.header_call_to_action">
+                                <t t-set="_div_class" t-valuef="as-header-button-link"/>
+                            </t>
+                        </ul>
+                        <!-- Brand -->
+                        <div class="h-logo">
+                            <t t-call="website.placeholder_header_brand">
+                                <t t-set="_link_class" t-valuef="me-4"/>
+                            </t>
+                        </div>
+
+                        <ul class="mh-end d-flex m-0 list-unstyled">
+                           <!-- Search bar -->
+                           <li>
+                                <a data-bs-target="#o_search_modal" data-bs-toggle="modal" role="button" title="Search" class="btn rounded-circle p-1 lh-1 hm-icon o_not_editable">
+                                    <i class="oi oi-search fa-stack lh-lg"></i>
+                                </a>
+                           </li>
+
+                            <!-- Website wishlist -->
+                            <t t-call="website_sale_wishlist.header_wishlist_link">
+                                <t t-set="_icon" t-value="True"/>
+                                <t t-set="_link_class" t-value="'hm-icon-item as-h-wish'"/>
+                                <t t-set="_badge_class" t-value="'h-sup'"/>
+                                <t t-set="_icon_wrap_class" t-value="'hm-icon'"/>
+                            </t>
+                            <!-- Website Cart -->
+                            <t t-call="website_sale.header_cart_link">
+                                <t t-set="_icon" t-value="True"/>
+                                <t t-set="_link_class" t-value="'o_navlink_background hm-icon-item as-h-bag'"/>
+                                <t t-set="_badge_class" t-value="'h-sup'"/>
+                                <t t-set="_icon_wrap_class" t-value="'hm-icon'"/>
+                            </t>
+                            <!-- Sign In -->
+                            <t t-call="portal.placeholder_user_sign_in">
+                                <t t-set="_link_class" t-valuef="hm-icon as-login-icon as-h-user"/>
+                            </t>
+                            <!-- User Dropdown -->
+                            <t t-call="portal.user_dropdown">
+                                <t t-set="_user_name" t-value="false"/>
+                                <t t-set="_icon" t-value="true"/>
+                                <t t-set="_icon_class" t-valuef="fa-stack"/>
+                                <t t-set="_item_class" t-valuef="dropdown"/>
+                                <t t-set="_link_class" t-valuef="hm-icon-item p-0 dropdown-toggle-none"/>
+                                <t t-set="_icon_class" t-valuef="asi asi-user"/>
+                                <t t-set="_icon_wrap_class" t-value="'hm-icon'"/>
+                                <t t-set="_dropdown_menu_class" t-valuef="dropdown-menu-end"/>
+                            </t>
+                        </ul>
+                    </div>
+                </div>
+
+                <div aria-label="Bottom" class="header-navbar">
+                    <div class="container">
+                        <!-- Navbar -->
+                        <t t-call="website.navbar_nav">
+                            <t t-set="_nav_class" t-valuef="justify-content-center"/>
+
+                            <!-- Menu -->
+                            <t t-foreach="website.menu_id.child_id" t-as="submenu">
+                                <t t-call="website.submenu">
+                                    <t t-set="item_class" t-valuef="nav-item"/>
+                                    <t t-set="link_class" t-valuef="nav-link"/>
+                                </t>
+                            </t>
+                        </t>
+                    </div>
+                </div>
+
+            </div>
+            </t>
+            <t t-call="website.template_header_mobile">
+                <t t-set="_txt_elt_content" t-valuef="list"/>
+                <t t-set="_extra_navbar_classes" t-valuef="o_header_force_no_radius"/>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="as_header_11" inherit_id="website.layout" name="Alan: Header 11" active="False">
+
+        <xpath expr="//header//nav" position="replace">
+            <t t-call="website.navbar">
+            <t t-set="_navbar_classes" t-valuef="d-none d-lg-block p-0 shadow-sm as-main-header"/>
+
+            <div id="o_main_nav">
+                <div aria-label="Bottom" t-if="is_view_active('website.header_text_element') or is_view_active('website.header_social_links') or is_view_active('website.header_language_selector')" class="o_header_sales_one_bot o_header_hide_on_scroll gap-3 header-top">
+                    <div class="container">
+                        <ul class="ht-top-start">
+                            <!-- Text element -->
+                            <t t-call="website.placeholder_header_text_element">
+                                <t t-set="_txt_elt_content" t-valuef="phone_mail"/>
+                                <t t-set="_div_class" t-valuef="as-header-phone-link"/>
+                            </t>
+
+                        </ul>
+                        <ul class="ht-top-end">
+                            <!-- Social -->
+                            <t t-call="website.placeholder_header_social_links">
+                                <t t-set="_div_class" t-valuef="as-header-social-link"/>
+                            </t>
+
+                        </ul>
+
+                    </div>
+                </div>
+                <div class="header-middle">
+                    <div class="container d-flex align-items-center justify-content-between">
+                        <!-- Brand -->
+                        <t t-call="website.placeholder_header_brand">
+                            <t t-set="_link_class" t-valuef="me-4"/>
+                        </t>
+
+
+                        <!-- Search bar -->
+                        <ul class="hm-search m-0 list-unstyled">
+                            <t t-call="theme_alan.as_advance_headers">
+                                <t t-set="_input_classes" t-valuef="as-h-search-input"/>
+                                <t t-set="_submit_classes" t-valuef="as-h-search-btn"/>
+                                <t t-set="_form_classes" t-valuef="as-h-search-form"/>
+                                <t t-set="_classes" t-valuef=""/>
+                            </t>
+
+                        </ul>
+
+                          <ul class="mh-end d-flex  list-unstyled gap-4">
+                            <!-- User Dropdown -->
+                            <t t-call="portal.user_dropdown">
+                                <t t-set="_user_name" t-value="true"/>
+                                <t t-set="_icon" t-value="true"/>
+                                <t t-set="_icon_class" t-valuef="fa-stack"/>
+                                <t t-set="_item_class" t-valuef="dropdown"/>
+                                <t t-set="_link_class" t-valuef="hm-icon-item p-0 dropdown-toggle-none"/>
+                                <t t-set="_icon_class" t-valuef="asi asi-user"/>
+                                <t t-set="_icon_wrap_class" t-value="'hm-icon'"/>
+                                <t t-set="_dropdown_menu_class" t-valuef="dropdown-menu-end"/>
+                            </t>
+                            <!-- Website wishlist -->
+                            <t t-call="website_sale_wishlist.header_wishlist_link">
+                                <t t-set="_icon" t-value="True"/>
+                                <t t-set="_link_class" t-value="'hm-icon-item as-h-wish'"/>
+                                <t t-set="_badge_class" t-value="'h-sup'"/>
+                                <t t-set="_icon_wrap_class" t-value="'hm-icon'"/>
+                                <t t-set="_text" t-value="True"/>
+                            </t>
+
+                            <!-- Website Cart -->
+                            <t t-call="website_sale.header_cart_link">
+                                <t t-set="_icon" t-value="True"/>
+                                <t t-set="_link_class" t-value="'o_navlink_background hm-icon-item as-h-cart'"/>
+                                <t t-set="_badge_class" t-value="'h-sup'"/>
+                                <t t-set="_icon_wrap_class" t-value="'hm-icon'"/>
+                                <t t-set="_text" t-value="True"/>
+                            </t>
+
+                            <!-- Sign In -->
+                            <t t-call="portal.placeholder_user_sign_in">
+                                <t t-set="_link_class" t-valuef="hm-icon hm-icon-item as-login-icon as-h-user"/>
+                            </t>
+
+
+                            <!-- <li t-attf-class="#{_item_class}" t-if="is_view_active('website.header_call_to_action')">
+                                <div t-attf-class="oe_structure oe_structure_solo as-header-button-link hm-contact">
+                                    <section class="oe_unremovable oe_unmovable s_text_block" data-snippet="s_text_block" data-name="Text">
+                                        <div class="container h-100">
+                                            <a href="/contactus" class="oe_unremovable hm-icon-item btn border-0 btn-cta btn_ctaw-100 d-flex align-items-center p-0 rounded-0">
+                                            <i class="fa fa-headphones"></i>
+                                            Contact Us</a>
+                                        </div>
+                                    </section>
+                                </div>
+                            </li> -->
+
+                        </ul>
+                    </div>
+                </div>
+
+
+                <div aria-label="Bottom" class="header-navbar">
+                    <div class="container">
+                        <div class="header-nav-end">
+                            <!-- Navbar -->
+                            <t t-call="website.navbar_nav">
+                                <t t-set="_nav_class" t-valuef="justify-content-center"/>
+
+                                <!-- Menu -->
+                                <t t-foreach="website.menu_id.child_id" t-as="submenu">
+                                    <t t-call="website.submenu">
+                                        <t t-set="item_class" t-valuef="nav-item"/>
+                                        <t t-set="link_class" t-valuef="nav-link"/>
+                                    </t>
+                                </t>
+
+                            </t>
+                               <!-- Language Selector -->
+                               <ul class="m-0 p-0">
+                                    <t t-call="website.placeholder_header_language_selector">
+                                        <t t-set="_btn_class" t-valuef="o_nav-link_secondary"/>
+                                        <t t-set="_txt_class" t-valuef="ms-1"/>
+                                        <t t-set="_dropdown_menu_class" t-valuef="dropdown-menu-end"/>
+                                        <t t-set="_item_class" t-valuef="position-relative"/>
+                                    </t>
+                               </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </t>
+            <t t-call="website.template_header_mobile">
+                <t t-set="_txt_elt_content" t-valuef="list"/>
+                <t t-set="_extra_navbar_classes" t-valuef="o_header_force_no_radius"/>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="as_header_12" inherit_id="website.layout" name="Alan: Header 12" active="False">
+        <xpath expr="//header//nav" position="replace">
+            <t t-call="website.navbar">
+            <t t-set="_navbar_classes" t-valuef="d-none d-lg-block p-0 shadow-sm as-main-header"/>
+
+            <div id="o_main_nav">
+                <div aria-label="Bottom" t-if="is_view_active('website.header_text_element') or is_view_active('website.header_social_links') or is_view_active('website.header_language_selector')" class="o_header_sales_one_bot o_header_hide_on_scroll gap-3 header-top">
+                    <div class="container">
+                        <ul class="d-flex align-items-center mb-0 list-unstyled w-100">
+                           <!-- Text element -->
+                            <t t-call="website.placeholder_header_text_element" >
+                                <t t-set="_txt_elt_content" t-valuef="phone_mail"/>
+                                <t t-set="_div_class" t-valuef="as-header-phone-link"/>
+                            </t>
+
+                            <!-- Social -->
+                            <t t-call="website.placeholder_header_social_links" >
+                                <t t-set="_div_class" t-valuef="as-header-social-link"/>
+                            </t>
+                        </ul>
+                    </div>
+                </div>
+                <div class="header-middle">
+                    <div class="container">
+                        <!-- Brand -->
+                        <div class="hm-logo">
+                            <t t-call="website.placeholder_header_brand">
+                                <t t-set="_link_class" t-valuef="me-4"/>
+                            </t>
+                        </div>
+                        <div class="hm-middle">
+                            <!-- Search bar -->
+                            <ul class="hm-search m-0 list-unstyled">
+                                <t t-call="theme_alan.as_advance_headers">
+                                    <t t-set="_submit_classes" t-valuef="as-h-search-btn"/>
+                                    <t t-set="_input_classes" t-valuef="as-h-search-input"/>
+                                    <t t-set="_form_classes" t-valuef="as-h-search-form"/>
+                                    <t t-set="_classes" t-valuef=""/>
+                                </t>
+                            </ul>
+                        </div>
+
+
+                        <ul class="hm-end d-flex m-0 list-unstyled gap-1">
+                            <!-- Website wishlist -->
+                            <t t-call="website_sale_wishlist.header_wishlist_link">
+                                <t t-set="_icon" t-value="True"/>
+                                <t t-set="_link_class" t-value="'hm-icon-item as-h-wish'"/>
+                                <t t-set="_badge_class" t-value="'h-sup'"/>
+                                <t t-set="_icon_wrap_class" t-value="'hm-icon'"/>
+                            </t>
+                            <!-- Sign In -->
+                            <t t-call="portal.placeholder_user_sign_in">
+                                <t t-set="_link_class" t-valuef="hm-icon as-login-icon as-h-user"/>
+                            </t>
+                            <!-- User Dropdown -->
+                            <t t-call="portal.user_dropdown">
+                                <t t-set="_user_name" t-value="false"/>
+                                <t t-set="_icon" t-value="true"/>
+                                <t t-set="_icon_class" t-valuef="fa-stack"/>
+                                <t t-set="_item_class" t-valuef="dropdown"/>
+                                <t t-set="_link_class" t-valuef="hm-icon-item p-0 dropdown-toggle-none"/>
+                                <t t-set="_icon_class" t-valuef="asi asi-user"/>
+                                <t t-set="_icon_wrap_class" t-value="'hm-icon'"/>
+                                <t t-set="_dropdown_menu_class" t-valuef="dropdown-menu-end"/>
+                            </t>
+
+                            <!-- Website Cart -->
+                            <t t-call="website_sale.header_cart_link">
+                                <t t-set="_icon" t-value="True"/>
+                                <t t-set="_link_class" t-value="'o_navlink_background hm-icon-item as-h-cart'"/>
+                                <t t-set="_badge_class" t-value="'h-sup'"/>
+                                <t t-set="_icon_wrap_class" t-value="'hm-icon'"/>
+                            </t>
+
+                            <!-- Language Selector  -->
+                            <t t-call="website.placeholder_header_language_selector">
+                                <t t-set="_btn_class" t-valuef="o_nav-link_secondary"/>
+                                <t t-set="_txt_class" t-valuef=""/>
+                                <t t-set="_dropdown_menu_class" t-valuef="dropdown-menu-end"/>
+                                <t t-set="_item_class" t-valuef="position-relative"/>
+                            </t>
+                        </ul>
+                    </div>
+                </div>
+
+
+                <div aria-label="Bottom" class="header-navbar">
+                    <div class="container">
+                        <!-- Navbar -->
+                        <t t-call="website.navbar_nav">
+                            <t t-set="_nav_class" t-valuef=""/>
+
+                            <!-- Menu -->
+                            <t t-foreach="website.menu_id.child_id" t-as="submenu">
+                                <t t-call="website.submenu">
+                                    <t t-set="item_class" t-valuef="nav-item"/>
+                                    <t t-set="link_class" t-valuef="nav-link"/>
+                                </t>
+                            </t>
+                        </t>
+                    </div>
+                </div>
+            </div>
+            </t>
+            <t t-call="website.template_header_mobile">
+                <t t-set="_txt_elt_content" t-valuef="list"/>
+                <t t-set="_extra_navbar_classes" t-valuef="o_header_force_no_radius"/>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="as_header_13" inherit_id="website.layout" name="Alan: Header 13" active="False">
+        <xpath expr="//header//nav" position="replace">
+            <t t-call="website.navbar">
+            <t t-set="_navbar_classes" t-valuef="d-none d-lg-block p-0 as-main-header"/>
+
+            <div id="o_main_nav">
+                <div aria-label="Bottom" t-if="is_view_active('website.header_text_element') or is_view_active('website.header_social_links') or is_view_active('website.header_language_selector')" class="o_header_sales_one_bot o_header_hide_on_scroll gap-3 header-top">
+                    <div class="container">
+                        <ul class="ht-bar">
+                            <!-- Social -->
+                            <t t-call="website.placeholder_header_social_links" >
+                                <t t-set="_div_class" t-valuef="as-header-social-link"/>
+                            </t>
+                            <!-- Text element -->
+                            <t t-call="website.placeholder_header_text_element">
+                                <t t-set="_txt_elt_content" t-valuef="sentence"/>
+                            </t>
+
+                            <!-- Language Selector  -->
+                            <t t-call="website.placeholder_header_language_selector">
+                                <t t-set="_btn_class" t-valuef="o_nav-link_secondary"/>
+                                <t t-set="_txt_class" t-valuef=""/>
+                                <t t-set="_dropdown_menu_class" t-valuef="dropdown-menu-end"/>
+                                <t t-set="_item_class" t-valuef="position-relative"/>
+                            </t>
+                        </ul>
+                    </div>
+                </div>
+                <div aria-label="Header menu" class="header-middle">
+                    <div class="container">
+                        <!-- Navbar -->
+                        <t t-call="website.navbar_nav">
+                            <t t-set="_nav_class" t-valuef=""/>
+
+                            <!-- Menu -->
+                            <t t-foreach="website.menu_id.child_id" t-as="submenu">
+                                <t t-call="website.submenu">
+                                    <t t-set="item_class" t-valuef="nav-item"/>
+                                    <t t-set="link_class" t-valuef="nav-link"/>
+                                </t>
+                            </t>
+                        </t>
+                        <!-- Brand -->
+                        <div class="hm-logo">
+                            <t t-call="website.placeholder_header_brand">
+                                <t t-set="_link_class" t-valuef="m-0"/>
+                            </t>
+                        </div>
+                        <ul class="hm-end d-flex m-0 list-unstyled gap-1">
+                            <t t-call="theme_alan.as_advance_headers">
+                                <t t-set="_layout" t-valuef="modal"/>
+                                <t t-set="_input_classes" t-valuef="border border-end-0 p-3"/>
+                                <t t-set="_submit_classes" t-valuef="border border-start-0 px-4 bg-o-color-4"/>
+                                <t t-set="_button_classes" t-valuef="hm-icon"/>
+                            </t>
+
+                            <!-- Sign In -->
+                            <t t-call="portal.placeholder_user_sign_in">
+                                <t t-set="_link_class" t-valuef="hm-icon as-login-icon as-h-user"/>
+                            </t>
+                            <!-- User Dropdown -->
+                            <t t-call="portal.user_dropdown">
+                                <t t-set="_user_name" t-value="false"/>
+                                <t t-set="_icon" t-value="true"/>
+                                <t t-set="_icon_class" t-valuef="fa-stack"/>
+                                <t t-set="_item_class" t-valuef="dropdown"/>
+                                <t t-set="_link_class" t-valuef="hm-icon-item p-0 dropdown-toggle-none"/>
+                                <t t-set="_icon_class" t-valuef="asi asi-user"/>
+                                <t t-set="_icon_wrap_class" t-value="'hm-icon'"/>
+                                <t t-set="_dropdown_menu_class" t-valuef="dropdown-menu-end"/>
+                            </t>
+                            <!-- Website wishlist -->
+                            <t t-call="website_sale_wishlist.header_wishlist_link">
+                                <t t-set="_icon" t-value="True"/>
+                                <t t-set="_link_class" t-value="'hm-icon-item as-h-wish'"/>
+                                <t t-set="_badge_class" t-value="'h-sup'"/>
+                                <t t-set="_icon_wrap_class" t-value="'hm-icon'"/>
+                            </t>
+
+                            <!-- Website Cart -->
+                            <t t-call="website_sale.header_cart_link">
+                                <t t-set="_icon" t-value="True"/>
+                                <t t-set="_link_class" t-value="'o_navlink_background hm-icon-item as-h-cart'"/>
+                                <t t-set="_badge_class" t-value="'h-sup'"/>
+                                <t t-set="_icon_wrap_class" t-value="'hm-icon'"/>
+                            </t>
+
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            </t>
+            <t t-call="website.template_header_mobile">
+                <t t-set="_txt_elt_content" t-valuef="list"/>
+                <t t-set="_extra_navbar_classes" t-valuef="o_header_force_no_radius"/>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="as_advance_headers" name="Alan Header Search">
+        <t t-if="_layout == 'modal'">
+            <div class="modal fade css_editable_mode_hidden" id="o_search_modal" aria-hidden="true" tabindex="-1">
+                <div class="modal-dialog modal-lg pt-5">
+                    <div class="modal-content mt-5">
+                        <t t-call="theme_alan.as_advance_headers_search_box_input">
+                            <t t-set="_classes" t-valuef="input-group-lg"/>
+                        </t>
+                    </div>
+                </div>
+            </div>
+            <a t-attf-class="btn rounded-circle p-1 lh-1 #{_button_classes or 'bg-o-color-3'} o_not_editable" data-bs-target="#o_search_modal" data-bs-toggle="modal" role="button" title="Search" href="#">
+                <i class="oi oi-search fa-stack lh-lg"/>
+            </a>
+        </t>
+        <t t-else="">
+            <t t-call="theme_alan.as_advance_headers_search_box_input"/>
+        </t>
+
+
+    </template>
+
+    <template id="as_advance_headers_search_box_input" name="Alan Header Search">
+        <t t-call="website.website_search_box_input">
+            <t t-set="_form_classes" t-valuef="{{_form_classes}}"/>
+            <t t-set="_classes" t-valuef=" "/>
+            <t t-set="search_type" t-valuef="as_advance_search"/>
+            <t t-set="action" t-valuef="/shop"/>
+            <t t-set="display_image" t-valuef="true"/>
+            <t t-set="_input_classes" t-valuef="{{_input_classes}}"/>
+            <t t-set="_submit_classes" t-valuef="{{_submit_classes}}"/>
+
+            <t t-if="request.env.user._is_public() and request.website.active_b2b_mode">
+                <t t-set="limit" t-value="101"/>
+            </t>
+            <t t-else="">
+                <t t-set="limit" t-value="100"/>
+            </t>
+
+            <t t-set="display_description" t-valuef="true"/>
+            <t t-set="display_extra_link" t-valuef="true"/>
+            <t t-if="website.user_id != user_id or website.user_id == user_id">
+                <t t-set="display_detail" t-valuef="true"/>
+            </t>
+            <t t-else="">
+                <t t-set="display_detail" t-valuef="false"/>
+            </t>
+            <t t-if="attrib_values">
+                <t t-foreach="attrib_values" t-as="a">
+                    <input type="hidden" name="attrib" t-att-value="'%s-%s' % (a[0], a[1])" />
+                </t>
+            </t>
+            <t t-if="sel_brand_list">
+                <t t-foreach="sel_brand_list" t-as="b">
+                    <input type="hidden" name="brand" t-att-value="b"/>
+                </t>
+            </t>
+            <t t-if="sel_tag_list">
+                <t t-foreach="sel_tag_list" t-as="t">
+                    <input type="hidden" name="tag" t-att-value="t"/>
+                </t>
+            </t>
+            <t t-if="category and as_shop">
+                <input type="hidden" name="category" t-att-value="category.id"/>
+            </t>
+            <t t-if="min_price">
+                <input type="hidden" name="min_price" t-att-value="min_price"/>
+            </t>
+            <t t-if="max_price">
+                <input type="hidden" name="max_price" t-att-value="max_price"/>
+            </t>
+        </t>
+    </template>
+
+
+</odoo>

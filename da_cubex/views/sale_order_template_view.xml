@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <template id="report_saleorder_document_inherit" inherit_id="sale.report_saleorder_document">
+            <xpath expr="//div[@t-if='doc.user_id.name']" position="after">
+                <div class="col-auto col-3 mw-100 mb-2">
+                    <strong>IBAN Code:</strong>
+                    <p class="m-0">IT96A0338822101000000015720</p>
+                    <p class="m-0">Banca Stabiese</p>
+                </div>
+            </xpath>
+
+            <xpath expr="//table/thead/tr/th[@name='th_subtotal']" position="before">
+                <th groups="account.group_show_line_subtotals_tax_included" name="th_sub" class="text-right">Imponibile</th>
+            </xpath>
+            <xpath expr="//table/tbody/t/tr/t/td[@name='td_subtotal']" position="before">
+                <td groups="account.group_show_line_subtotals_tax_included" class="text-right">
+                    <span t-field="line.price_subtotal"/>
+                </td>
+            </xpath>
+
+        </template>
+
+    </data>
+</odoo>

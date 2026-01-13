@@ -1,0 +1,14 @@
+<odoo>
+    <record id="action_overdue_invoice_report" model="ir.actions.report">
+        <field name="name">Overdue Invoices</field>
+        <field name="model">account.move</field>
+        <field name="report_type">qweb-pdf</field>
+        <field
+            name="report_name"
+        >da_overdue_invoice_report.overdue_inv_report_template</field>
+        <field
+            name="report_file"
+        >da_overdue_invoice_report.overdue_inv_report_template</field>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

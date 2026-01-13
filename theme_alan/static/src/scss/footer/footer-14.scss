@@ -1,0 +1,84 @@
+@if o-website-value('footer-template')=='alan_footer14' {
+    #footer {
+
+        .s_social_media {
+            a {
+                width: 35px;
+                height: 35px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 3px;
+                background-color: rgba(var(--as-footer-color), 0.1);
+                color: rgba(var(--as-footer-color), 1) !important;
+                transition: ease all 0.35s;
+                &:hover {
+                    background-color: $primary;
+                    color: $white !important;
+                }
+                i {
+                    width: 100%;
+                    height: 100%;
+                    margin: 0 !important;
+                }
+            }
+        }
+
+
+        .footer-title {
+            margin: 0 0 20px;
+            position: relative;
+
+            h5 {
+                margin: 0;
+                font-size: 1.1rem;
+            }
+        }
+
+
+        .footer-link {
+            li {
+                position: relative;
+
+                +li {
+                    margin-top: 12px;
+                }
+            }
+
+            a {
+                font-size: 1em;
+                position: relative;
+
+                &:after {
+                    content: "";
+                    display: inline-block;
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    right: auto;
+                    height: 1px;
+                    width: 100%;
+                    background-color: currentColor;
+                    transition: ease all 0.35s;
+                    opacity: 0;
+                }
+
+                &:hover {
+                    &:after {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+
+        .footer-top {
+            padding-top: 50px;
+        }
+
+        .footer-full-logo {
+            padding-bottom: 50px;
+            padding-top: 30px;
+        }
+
+    }
+}

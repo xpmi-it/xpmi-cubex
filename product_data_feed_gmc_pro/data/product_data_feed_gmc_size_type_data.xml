@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <record id="type_regular" model="product.data.feed.gmc_size_type">
+        <field name="name">regular</field>
+    </record>
+    <record id="type_petite" model="product.data.feed.gmc_size_type">
+        <field name="name">petite</field>
+    </record>
+    <record id="type_plus" model="product.data.feed.gmc_size_type">
+        <field name="name">plus</field>
+    </record>
+    <record id="type_tall" model="product.data.feed.gmc_size_type">
+        <field name="name">tall</field>
+    </record>
+    <record id="type_big" model="product.data.feed.gmc_size_type">
+        <field name="name">big</field>
+    </record>
+    <record id="type_maternity" model="product.data.feed.gmc_size_type">
+        <field name="name">maternity</field>
+    </record>
+
+</odoo>

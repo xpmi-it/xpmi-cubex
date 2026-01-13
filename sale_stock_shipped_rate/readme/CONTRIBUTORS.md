@@ -1,0 +1,2 @@
+- Ignacio Ibeas \<ignacio@acysos.com\>
+- Gianmarco Conte - Dinamiche Aziendali srl \<gconte@dinamicheaziendali.it\>

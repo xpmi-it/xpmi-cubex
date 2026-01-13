@@ -1,0 +1,33 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* da_sale_order_product_price_sold
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-04-02 15:31+0000\n"
+"PO-Revision-Date: 2024-04-02 15:31+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: da_sale_order_product_price_sold
+#: model_terms:ir.ui.view,arch_db:da_sale_order_product_price_sold.sale_order_product_sale_inherit_form_view
+msgid "Sales"
+msgstr "Vendite"
+
+#. module: da_sale_order_product_price_sold
+#: model:ir.model,name:da_sale_order_product_price_sold.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Riga ordine di vendita"
+
+#. module: da_sale_order_product_price_sold
+#. odoo-python
+#: code:addons/da_sale_order_product_price_sold/models/sale_order_line.py:0
+#, python-format
+msgid "Sales Order(s)"
+msgstr "Ordine(i) di vendita"

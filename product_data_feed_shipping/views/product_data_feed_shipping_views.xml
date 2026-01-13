@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="product_data_feed_shipping_view_form" model="ir.ui.view">
+        <field name="name">product.data.feed.shipping.view.form</field>
+        <field name="model">product.data.feed.shipping</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="group_id" class="oe_edit_only"/>
+                        <h3><field name="group_id"/></h3>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="country_id" options="{'no_open': True, 'no_create': True}"/>
+                            <field name="use_postal_codes" widget="boolean_toggle"/>
+                            <field name="state_id" options="{'no_open': True, 'no_create': True}" invisible="not use_postal_codes"/>
+                            <label for="postal_code_from" string="Postal Codes" invisible="not use_postal_codes"/>
+                            <div class="o_row" invisible="not use_postal_codes">
+                                <field name="postal_code_from" placeholder="94002, or use a mask: 900*"/>
+                                <span class="text-muted"> - </span>
+                                <field name="postal_code_to" placeholder="95460, or use a mask: 901*"/>
+                            </div>
+                        </group>
+                        <group>
+                            <label for="price"/>
+                            <div class="o_row">
+                                <field name="price"/>
+                                <field name="currency_id"/>
+                            </div>
+                            <label for="min_handling_time" string="Handling Time"/>
+                            <div class="o_row">
+                                <field name="min_handling_time" />
+                                <span class="text-muted"> - </span>
+                                <field name="max_handling_time"/>
+                                <span class="text-muted"> days</span>
+                            </div>
+                            <label for="min_transit_time" string="Transit Time"/>
+                            <div class="o_row">
+                                <field name="min_transit_time"/>
+                                <span class="text-muted"> - </span>
+                                <field name="max_transit_time"/>
+                                <span class="text-muted"> days</span>
+                            </div>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="product_data_feed_shipping_view_tree" model="ir.ui.view">
+        <field name="name">product.data.feed.shipping.view.list</field>
+        <field name="model">product.data.feed.shipping</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="group_id" optional="show"/>
+                <field name="display_name" string="Name" optional="show"/>
+                <field name="country_id" optional="show"/>
+                <field name="state_id" optional="hide"/>
+                <field name="use_postal_codes" invisible="1"/>
+                <field name="postal_code_from" optional="hide"/>
+                <field name="postal_code_to" optional="hide"/>
+                <field name="price"/>
+                <field name="currency_id" optional="show"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="product_data_feed_shipping_view_search" model="ir.ui.view">
+        <field name="name">product.data.feed.shipping.view.search</field>
+        <field name="model">product.data.feed.shipping</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="country_id" filter_domain="[('country_id', 'ilike', self)]"/>
+                <group expand="0" string="Group By">
+                    <filter name="group_country_id" string="Country" domain="[]" context="{'group_by': 'country_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_product_data_feed_shipping_list" model="ir.actions.act_window">
+        <field name="name">Shipping Costs</field>
+        <field name="res_model">product.data.feed.shipping</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="menu_product_data_feed_shipping" model="ir.ui.menu">
+        <field name="name">Shipping Costs</field>
+        <field name="parent_id" ref="product_data_feed.menu_data_feed_config"/>
+        <field name="action" ref="action_product_data_feed_shipping_list"/>
+        <field name="sequence" eval="40"/>
+    </record>
+
+    <record id="product_data_feed_shipping_group_view_tree" model="ir.ui.view">
+        <field name="name">product.data.feed.shipping.group.view.list</field>
+        <field name="model">product.data.feed.shipping.group</field>
+        <field name="arch" type="xml">
+            <list editable="bottom">
+                <field name="type" optional="show"/>
+                <field name="name"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_product_data_feed_shipping_group_list" model="ir.actions.act_window">
+        <field name="name">Shipping Groups</field>
+        <field name="res_model">product.data.feed.shipping.group</field>
+        <field name="view_mode">list</field>
+    </record>
+
+    <record id="menu_product_data_feed_shipping_group" model="ir.ui.menu">
+        <field name="name">Shipping Groups</field>
+        <field name="parent_id" ref="product_data_feed.menu_data_feed_config"/>
+        <field name="action" ref="action_product_data_feed_shipping_group_list"/>
+        <field name="sequence" eval="30"/>
+    </record>
+
+</odoo>

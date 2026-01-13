@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="sale_order_commitment_date_form_view" model="ir.ui.view">
+        <field name="name">sale.order.commitment_date.form.view</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form/sheet/notebook/page[@name='other_information']/group/group[@name='sale_shipping']/label[@for='commitment_date']"
+                   position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//form/sheet/notebook/page[@name='other_information']/group/group[@name='sale_shipping']/div"
+                   position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//form/sheet/group/group[@name='partner_details']/field[@name='partner_shipping_id']" position="after">
+                <label for="commitment_date" string="Delivery Date"/>
+                <div name="commitment_date_div" class="o_row">
+                    <field name="commitment_date"/>
+                    <span name="expected_date_span" class="text-muted">Expected:
+                        <field name="expected_date" widget="date"/>
+                    </span>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="sale_order_tree_payment_term_view" model="ir.ui.view">
+        <field name="name">sale.order.list.inherit.view</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_tree"/>
+        <field name="arch" type="xml">
+            <field name="amount_total" position="after">
+                <field name="payment_term_id"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="sale_order_search_inherit_view" model="ir.ui.view">
+        <field name="name">sale.order.search.inherit.view</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group/filter[@name='customer']" position="after">
+                <filter name="delivery_address" string="Delivery Address" domain="[]" context="{'group_by': 'partner_shipping_id'}" />
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

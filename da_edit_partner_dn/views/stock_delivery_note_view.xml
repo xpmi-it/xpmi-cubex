@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="stock_delivery_note_form_view_inherit" model="ir.ui.view">
+        <field name="name">stock.delivery.note.form.view.inherit</field>
+        <field name="model">stock.delivery.note</field>
+        <field
+            name="inherit_id"
+            ref="l10n_it_delivery_note.stock_delivery_note_form_view"
+        />
+        <field name="arch" type="xml">
+            <xpath
+                expr="//form/sheet/group/group/field[@name='partner_id']"
+                position="attributes"
+            >
+                <attribute name="attrs" />
+                <attribute name="readonly">0</attribute>
+                <attribute name="required">1</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>
