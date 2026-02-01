@@ -9,6 +9,7 @@ from bs4 import BeautifulSoup
 import requests
 from odoo.exceptions import UserError
 import unidecode
+from odoo.tools import float_round
 
 url = "https://labelservice.gls-italy.com/ilswebservice.asmx/AddParcel"
 url_delete = "https://labelservice.gls-italy.com/ilswebservice.asmx/DeleteSped"
@@ -284,9 +285,10 @@ class StockPickingGlsInherit(models.Model):
         model_tc = self.env['transport.carrier']
         partner_picking = picking_id.compute_partner_picking()
         transport_carrier_id = picking_id.transport_carrier_id
-        weight_label = lab_line.weight
+        #weight_label = lab_line.shipping_weight
+        weight_label =float_round(lab_line.shipping_weight, precision_digits=2)
         if force_weight:
-            if weight_label >= transport_carrier_id.check_min_weight and lab_line.weight <= transport_carrier_id.check_max_weight:
+            if weight_label >= transport_carrier_id.check_min_weight and shipping_weight <= transport_carrier_id.check_max_weight:
                 weight_label = transport_carrier_id.force_weight
         text = """<Parcel>
                         <CodiceContrattoGls>%s</CodiceContrattoGls>
