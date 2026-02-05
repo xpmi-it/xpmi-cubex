@@ -407,6 +407,7 @@ class StockPickingGlsInherit(models.Model):
             error = self.get_error_gls(response)
             if error:
                 raise UserError(error)
+            picking.write({'validation_done': True})
             self.get_list_sped(picking_ids[0].transport_carrier_id)
 
     def get_list_sped(self, transport_carrier_id):
